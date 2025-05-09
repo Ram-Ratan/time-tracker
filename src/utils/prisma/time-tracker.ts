@@ -1,4 +1,4 @@
-import { PrismaClient } from 'generated/time-tracker/prisma/client/index.js';
+import { PrismaClient } from "../../generated/prisma";
 
 const timePrisma = new PrismaClient();
 
