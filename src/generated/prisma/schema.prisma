@@ -1,0 +1,100 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum organisationType {
+  GOOD
+  EVIL
+}
+
+model organisation {
+  orgId String           @unique
+  type  organisationType @default(GOOD)
+}
+
+model UserCategoryLinkUp {
+  id         String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  uid        String       @unique
+  categoryId String       @db.Uuid
+  category   UserCategory @relation("UserCategoryLinkUp", fields: [categoryId], references: [id])
+  createdAt  DateTime     @default(now())
+
+  @@index([categoryId])
+}
+
+model UserLeaves {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  uid             String   @unique
+  sickLeaves      Decimal  @db.Decimal(5, 2)
+  vacationLeaves  Decimal  @db.Decimal(5, 2)
+  parentalLeaves  Decimal  @db.Decimal(5, 2)
+  maternityLeaves Decimal  @db.Decimal(5, 2)
+  createdAt       DateTime @default(now())
+}
+
+model UserCategory {
+  id          String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  createdAt   DateTime             @default(now())
+  users       UserCategoryLinkUp[] @relation("UserCategoryLinkUp")
+  holidays    Holiday[]            @relation("UserCategoryHoliday")
+  leavePolicy LeavePolicy?         @relation("UserCategoryLeavePolicy")
+}
+
+enum HolidayType {
+  OPTIONAL
+  MANDATORY
+}
+
+model Holiday {
+  id             String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String
+  date           DateTime
+  type           HolidayType    @default(MANDATORY)
+  createdAt      DateTime       @default(now())
+  userCategories UserCategory[] @relation("UserCategoryHoliday")
+}
+
+enum LeaveType {
+  SICK
+  VACATION
+  PARENTAL
+  MATERNITY
+}
+
+model LeavePolicy {
+  id              String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  categoryId      String       @unique @db.Uuid
+  category        UserCategory @relation("UserCategoryLeavePolicy", fields: [categoryId], references: [id])
+  sickLeaves      Decimal      @db.Decimal(5, 2)
+  vacationLeaves  Decimal      @db.Decimal(5, 2)
+  parentalLeaves  Decimal      @db.Decimal(5, 2)
+  maternityLeaves Decimal      @db.Decimal(5, 2)
+  createdAt       DateTime     @default(now())
+
+  @@index([categoryId])
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Leave {
+  id        String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  type      LeaveType
+  uid       String      @unique
+  message   String?
+  startDate DateTime
+  endDate   DateTime
+  status    LeaveStatus @default(PENDING)
+  createdAt DateTime    @default(now())
+}
