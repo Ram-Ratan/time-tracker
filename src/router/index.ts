@@ -2,13 +2,18 @@ import { Router } from 'express';
 import { helloWorldEndpoint } from 'modules/hello-world';
 import { getCommonHolidaysEndpoint } from 'modules/holidays/get-common-holidays';
 import { upsertHolidayEndpoint } from 'modules/holidays/upsert-holidays';
+import timeTrackerServiceRouter from 'modules/time-tracker/timeTracker.router';
 
-const surfaceServiceRouter = Router();
+const myServiceRouter = Router();
 
-surfaceServiceRouter.get('/hello-world', helloWorldEndpoint);
-surfaceServiceRouter.get('/get-common-holidays', getCommonHolidaysEndpoint);
-surfaceServiceRouter.post('/upsert-holidays', upsertHolidayEndpoint)
+myServiceRouter.get('/hello-world', helloWorldEndpoint);
+myServiceRouter.get('/get-common-holidays', getCommonHolidaysEndpoint);
+myServiceRouter.post('/upsert-holidays', upsertHolidayEndpoint)
+
+myServiceRouter.use('/time-tracker', timeTrackerServiceRouter);
+
+
 
 //Coooment to restart
 
-export default surfaceServiceRouter;
+export default myServiceRouter;
