@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "es6",
+        "noEmit": false,
+        "module": "commonjs",
+        "sourceMap": true,
+        "baseUrl": "src",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "composite": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "inlineSources": false,
+        "isolatedModules": true,
+        "lib": ["ES2021", "DOM", "DOM.Iterable"],
+        "moduleResolution": "node",
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "preserveWatchOutput": true,
+        "skipLibCheck": true,
+        "paths": {
+            "utils/*": ["utils/*"],
+            "utils": ["utils"],
+            "router/*": ["router/*"],
+            "router": ["router"],
+            "modules/*": ["modules/*"],
+            "modules": ["modules"],
+            "events-handler/*": ["events-handler/*"],
+            "events-handler": ["events-handler"],
+            "appConstants/*": ["appConstants/*"],
+            "appConstants": ["appConstants"],
+            "*": ["../", "../@types/", "./types/", "../node_modules", "src/*"]
+        },
+        "typeRoots": ["./types/", "node_modules/@types"],
+        "types": ["node", "express", "dotenv"]
+    },
+    "include": ["src/**/*", "../auth-service/post/queries.ts", "../auth-service/post"],
+    "exclude": ["node_modules", "dist"]
+}

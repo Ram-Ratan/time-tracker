@@ -1,0 +1,18 @@
+trigger:
+  tags:
+    include:
+      - v*.*.*
+
+resources:
+  repositories:
+    - repository: deployment-configs
+      type: git
+      name: compenly/deployment-configs
+      ref: main # or the branch where the template is stored
+
+extends:
+  template: global-release-pipeline-template.yml@deployment-configs
+  parameters:
+    serviceName: "surface-service"
+    imageName: "surface-services"
+    jobName: "surface_service"

@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: surface-service
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: surface-service
+    template:
+        metadata:
+            labels:
+                app: surface-service
+        spec:
+            containers:
+                - name: surface-service
+                  image: monkdevregistry.azurecr.io/surface-services:latest
+                  ports:
+                      - containerPort: 7073
+                  volumeMounts:
+                      - name: config-volume
+                        mountPath: /surface-service/.env
+                        readOnly: true
+                      - name: key-vault
+                        mountPath: /surface-service/secrets
+                        readOnly: true
+
+                  envFrom:
+                      - configMapRef:
+                            name: surface-service-config
+                  env:
+                      - name: PKG_UTILS_AZURE_CLIENT_SECRET
+                        valueFrom:
+                            secretKeyRef:
+                                name: keyvault
+                                key: utilis-azure-client-secret
+                      - name: PKG_UTILS_AZURE_STORAGE_CONNECTION_STRING
+                        valueFrom:
+                            secretKeyRef:
+                                name: keyvault
+                                key: utils-azure-storage-connection-string
+            volumes:
+                - name: config-volume
+                  configMap:
+                      name: surface-service-config
+                - name: key-vault
+                  csi:
+                      driver: secrets-store.csi.k8s.io
+                      readOnly: true
+                      volumeAttributes:
+                          secretProviderClass: 'azure-secretsvault'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: surface-service
+spec:
+    type: ClusterIP
+    ports:
+        - port: 80
+          protocol: TCP
+          targetPort: 7073
+    selector:
+        app: surface-service

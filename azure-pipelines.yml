@@ -1,0 +1,73 @@
+#surface-service
+variables:
+    - group: AZP_TOKEN
+    - name: serviceName
+      value: 'surface-service'
+    - name: imageName
+      value: 'surface-services'
+
+trigger:
+    branches:
+        include:
+            - dev
+stages:
+    - stage: Build
+      displayName: 'Build and Push Docker Image'
+      jobs:
+          - job: docker_build
+            displayName: 'Build and Push'
+            pool:
+                vmImage: '$(BUILD_IMAGEPOOL)'
+            steps:
+                - task: Docker@2
+                  displayName: 'Build Docker Image'
+                  inputs:
+                      containerRegistry: '$(ACR_REGISTRY)'
+                      repository: '$(imageName)'
+                      command: 'build'
+                      Dockerfile: 'Dockerfile'
+                      buildContext: '$(Build.SourcesDirectory)'
+                      tags: |
+                          $(Build.SourceBranchName)-$(Build.SourceVersion)
+
+                - task: Docker@2
+                  displayName: 'PUSH Docker Image to ACR'
+                  inputs:
+                      containerRegistry: '$(ACR_REGISTRY)'
+                      repository: '$(imageName)'
+                      command: 'push'
+                      tags: |
+                          $(Build.SourceBranchName)-$(Build.SourceVersion)
+
+    - stage: Deploy
+      dependsOn: Build
+      displayName: 'Dev - Deployment'
+      jobs:
+          - job: dev_deployment
+            displayName: 'Dev Deploy to AKS'
+            pool:
+                name: '$(DEV_DEPLOY_IMAGEPOOL)'
+            steps:
+                - task: Bash@3
+                  displayName: 'Downloading Configmap'
+                  inputs:
+                      targetType: 'inline'
+                      script: |
+                          raw_file_url="https://dev.azure.com/talentmonk/compenly/_apis/git/repositories/3a10068f-c7c8-4c8a-a2e4-266ef74de9c1/items?path=/$(serviceName)/dev/configmap.yml&version=main&download=true&api-version=5.1"
+                          cd /tmp
+                          curl -u :$(TOKEN) -o $(serviceName)-configmap.yml $raw_file_url
+                          cat $(serviceName)-configmap.yml
+
+                - task: KubernetesManifest@0
+                  displayName: 'Deploying files in Manifest'
+                  inputs:
+                      action: deploy
+                      kubernetesServiceConnection: $(DEV_SA)
+                      namespace: 'dev-v2'
+                      manifests: |
+                          $(Build.SourcesDirectory)/manifest/deployment.yml
+                          /tmp/$(serviceName)-configmap.yml
+                      imagePullSecrets: |
+                          $(imagePullSecret)
+                      containers: |
+                          $(ACR_REGISTRY).azurecr.io/$(imageName):$(Build.SourceBranchName)-$(Build.SourceVersion)
