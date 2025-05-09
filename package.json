@@ -24,7 +24,6 @@
     },
     "dependencies": {
         "@google-cloud/local-auth": "^2.1.0",
-        "@nowhereonyoutube/prisma-generate-file": "^1.0.0",
         "@prisma/client": "^5.17.0",
         "@talent-monk/client-schema": "2.0.246",
         "@talent-monk/client-shared": "1.1.23",

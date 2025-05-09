@@ -179,6 +179,31 @@ exports.Prisma.LeaveScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.UserScheduleScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  workingDay: 'workingDay',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TimeEntryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  loginTime: 'loginTime',
+  logoutTime: 'logoutTime',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BreakScalarFieldEnum = {
+  id: 'id',
+  timeEntryId: 'timeEntryId',
+  breakStart: 'breakStart',
+  breakEnd: 'breakEnd'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -223,7 +248,10 @@ exports.Prisma.ModelName = {
   UserCategory: 'UserCategory',
   Holiday: 'Holiday',
   LeavePolicy: 'LeavePolicy',
-  Leave: 'Leave'
+  Leave: 'Leave',
+  UserSchedule: 'UserSchedule',
+  TimeEntry: 'TimeEntry',
+  Break: 'Break'
 };
 
 /**

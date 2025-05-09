@@ -20,12 +20,8 @@ export const helloWorldService = createServiceWithZod(z.object({}), z.string(), 
                 }
             });
 
-            // const test = await timePrisma.testDb.create({
-            //     data: {
-            //         name: 'test'
-            //     }
-            // });
-            // console.log(test)
+            const userSchedule = await timePrisma.userSchedule.findFirst({});
+            console.log(userSchedule)
             logger.log.info(`user: ${JSON.stringify(user)}`);
         } catch (error) {
             logger.log.error(`Error fetching user: ${error}`);

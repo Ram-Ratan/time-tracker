@@ -48,6 +48,21 @@ export type LeavePolicy = $Result.DefaultSelection<Prisma.$LeavePolicyPayload>
  * 
  */
 export type Leave = $Result.DefaultSelection<Prisma.$LeavePayload>
+/**
+ * Model UserSchedule
+ * 
+ */
+export type UserSchedule = $Result.DefaultSelection<Prisma.$UserSchedulePayload>
+/**
+ * Model TimeEntry
+ * 
+ */
+export type TimeEntry = $Result.DefaultSelection<Prisma.$TimeEntryPayload>
+/**
+ * Model Break
+ * 
+ */
+export type Break = $Result.DefaultSelection<Prisma.$BreakPayload>
 
 /**
  * Enums
@@ -297,6 +312,36 @@ export class PrismaClient<
     * ```
     */
   get leave(): Prisma.LeaveDelegate<ExtArgs>;
+
+  /**
+   * `prisma.userSchedule`: Exposes CRUD operations for the **UserSchedule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserSchedules
+    * const userSchedules = await prisma.userSchedule.findMany()
+    * ```
+    */
+  get userSchedule(): Prisma.UserScheduleDelegate<ExtArgs>;
+
+  /**
+   * `prisma.timeEntry`: Exposes CRUD operations for the **TimeEntry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TimeEntries
+    * const timeEntries = await prisma.timeEntry.findMany()
+    * ```
+    */
+  get timeEntry(): Prisma.TimeEntryDelegate<ExtArgs>;
+
+  /**
+   * `prisma.break`: Exposes CRUD operations for the **Break** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Breaks
+    * const breaks = await prisma.break.findMany()
+    * ```
+    */
+  get break(): Prisma.BreakDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -744,7 +789,10 @@ export namespace Prisma {
     UserCategory: 'UserCategory',
     Holiday: 'Holiday',
     LeavePolicy: 'LeavePolicy',
-    Leave: 'Leave'
+    Leave: 'Leave',
+    UserSchedule: 'UserSchedule',
+    TimeEntry: 'TimeEntry',
+    Break: 'Break'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -760,7 +808,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userCategory" | "holiday" | "leavePolicy" | "leave"
+      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1254,6 +1302,216 @@ export namespace Prisma {
           }
         }
       }
+      UserSchedule: {
+        payload: Prisma.$UserSchedulePayload<ExtArgs>
+        fields: Prisma.UserScheduleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserScheduleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserScheduleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+          }
+          findFirst: {
+            args: Prisma.UserScheduleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserScheduleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+          }
+          findMany: {
+            args: Prisma.UserScheduleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>[]
+          }
+          create: {
+            args: Prisma.UserScheduleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+          }
+          createMany: {
+            args: Prisma.UserScheduleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserScheduleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>[]
+          }
+          delete: {
+            args: Prisma.UserScheduleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+          }
+          update: {
+            args: Prisma.UserScheduleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+          }
+          deleteMany: {
+            args: Prisma.UserScheduleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserScheduleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserScheduleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+          }
+          aggregate: {
+            args: Prisma.UserScheduleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserSchedule>
+          }
+          groupBy: {
+            args: Prisma.UserScheduleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserScheduleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserScheduleCountArgs<ExtArgs>
+            result: $Utils.Optional<UserScheduleCountAggregateOutputType> | number
+          }
+        }
+      }
+      TimeEntry: {
+        payload: Prisma.$TimeEntryPayload<ExtArgs>
+        fields: Prisma.TimeEntryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TimeEntryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TimeEntryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>
+          }
+          findFirst: {
+            args: Prisma.TimeEntryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TimeEntryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>
+          }
+          findMany: {
+            args: Prisma.TimeEntryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>[]
+          }
+          create: {
+            args: Prisma.TimeEntryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>
+          }
+          createMany: {
+            args: Prisma.TimeEntryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TimeEntryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>[]
+          }
+          delete: {
+            args: Prisma.TimeEntryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>
+          }
+          update: {
+            args: Prisma.TimeEntryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>
+          }
+          deleteMany: {
+            args: Prisma.TimeEntryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TimeEntryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TimeEntryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeEntryPayload>
+          }
+          aggregate: {
+            args: Prisma.TimeEntryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTimeEntry>
+          }
+          groupBy: {
+            args: Prisma.TimeEntryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TimeEntryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TimeEntryCountArgs<ExtArgs>
+            result: $Utils.Optional<TimeEntryCountAggregateOutputType> | number
+          }
+        }
+      }
+      Break: {
+        payload: Prisma.$BreakPayload<ExtArgs>
+        fields: Prisma.BreakFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BreakFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BreakFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>
+          }
+          findFirst: {
+            args: Prisma.BreakFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BreakFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>
+          }
+          findMany: {
+            args: Prisma.BreakFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>[]
+          }
+          create: {
+            args: Prisma.BreakCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>
+          }
+          createMany: {
+            args: Prisma.BreakCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BreakCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>[]
+          }
+          delete: {
+            args: Prisma.BreakDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>
+          }
+          update: {
+            args: Prisma.BreakUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>
+          }
+          deleteMany: {
+            args: Prisma.BreakDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BreakUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BreakUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakPayload>
+          }
+          aggregate: {
+            args: Prisma.BreakAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBreak>
+          }
+          groupBy: {
+            args: Prisma.BreakGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BreakGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BreakCountArgs<ExtArgs>
+            result: $Utils.Optional<BreakCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1478,6 +1736,37 @@ export namespace Prisma {
    */
   export type HolidayCountOutputTypeCountUserCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserCategoryWhereInput
+  }
+
+
+  /**
+   * Count Type TimeEntryCountOutputType
+   */
+
+  export type TimeEntryCountOutputType = {
+    breaks: number
+  }
+
+  export type TimeEntryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    breaks?: boolean | TimeEntryCountOutputTypeCountBreaksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TimeEntryCountOutputType without action
+   */
+  export type TimeEntryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntryCountOutputType
+     */
+    select?: TimeEntryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TimeEntryCountOutputType without action
+   */
+  export type TimeEntryCountOutputTypeCountBreaksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakWhereInput
   }
 
 
@@ -8029,6 +8318,2777 @@ export namespace Prisma {
 
 
   /**
+   * Model UserSchedule
+   */
+
+  export type AggregateUserSchedule = {
+    _count: UserScheduleCountAggregateOutputType | null
+    _min: UserScheduleMinAggregateOutputType | null
+    _max: UserScheduleMaxAggregateOutputType | null
+  }
+
+  export type UserScheduleMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    workingDay: string | null
+    startTime: string | null
+    endTime: string | null
+    createdAt: Date | null
+  }
+
+  export type UserScheduleMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    workingDay: string | null
+    startTime: string | null
+    endTime: string | null
+    createdAt: Date | null
+  }
+
+  export type UserScheduleCountAggregateOutputType = {
+    id: number
+    userId: number
+    workingDay: number
+    startTime: number
+    endTime: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type UserScheduleMinAggregateInputType = {
+    id?: true
+    userId?: true
+    workingDay?: true
+    startTime?: true
+    endTime?: true
+    createdAt?: true
+  }
+
+  export type UserScheduleMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    workingDay?: true
+    startTime?: true
+    endTime?: true
+    createdAt?: true
+  }
+
+  export type UserScheduleCountAggregateInputType = {
+    id?: true
+    userId?: true
+    workingDay?: true
+    startTime?: true
+    endTime?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type UserScheduleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserSchedule to aggregate.
+     */
+    where?: UserScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserSchedules to fetch.
+     */
+    orderBy?: UserScheduleOrderByWithRelationInput | UserScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserSchedules
+    **/
+    _count?: true | UserScheduleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserScheduleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserScheduleMaxAggregateInputType
+  }
+
+  export type GetUserScheduleAggregateType<T extends UserScheduleAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserSchedule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserSchedule[P]>
+      : GetScalarType<T[P], AggregateUserSchedule[P]>
+  }
+
+
+
+
+  export type UserScheduleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserScheduleWhereInput
+    orderBy?: UserScheduleOrderByWithAggregationInput | UserScheduleOrderByWithAggregationInput[]
+    by: UserScheduleScalarFieldEnum[] | UserScheduleScalarFieldEnum
+    having?: UserScheduleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserScheduleCountAggregateInputType | true
+    _min?: UserScheduleMinAggregateInputType
+    _max?: UserScheduleMaxAggregateInputType
+  }
+
+  export type UserScheduleGroupByOutputType = {
+    id: string
+    userId: string
+    workingDay: string
+    startTime: string
+    endTime: string
+    createdAt: Date
+    _count: UserScheduleCountAggregateOutputType | null
+    _min: UserScheduleMinAggregateOutputType | null
+    _max: UserScheduleMaxAggregateOutputType | null
+  }
+
+  type GetUserScheduleGroupByPayload<T extends UserScheduleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserScheduleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserScheduleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserScheduleGroupByOutputType[P]>
+            : GetScalarType<T[P], UserScheduleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    workingDay?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["userSchedule"]>
+
+  export type UserScheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    workingDay?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["userSchedule"]>
+
+  export type UserScheduleSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    workingDay?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $UserSchedulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserSchedule"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      workingDay: string
+      startTime: string
+      endTime: string
+      createdAt: Date
+    }, ExtArgs["result"]["userSchedule"]>
+    composites: {}
+  }
+
+  type UserScheduleGetPayload<S extends boolean | null | undefined | UserScheduleDefaultArgs> = $Result.GetResult<Prisma.$UserSchedulePayload, S>
+
+  type UserScheduleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserScheduleFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UserScheduleCountAggregateInputType | true
+    }
+
+  export interface UserScheduleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserSchedule'], meta: { name: 'UserSchedule' } }
+    /**
+     * Find zero or one UserSchedule that matches the filter.
+     * @param {UserScheduleFindUniqueArgs} args - Arguments to find a UserSchedule
+     * @example
+     * // Get one UserSchedule
+     * const userSchedule = await prisma.userSchedule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserScheduleFindUniqueArgs>(args: SelectSubset<T, UserScheduleFindUniqueArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one UserSchedule that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {UserScheduleFindUniqueOrThrowArgs} args - Arguments to find a UserSchedule
+     * @example
+     * // Get one UserSchedule
+     * const userSchedule = await prisma.userSchedule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserScheduleFindUniqueOrThrowArgs>(args: SelectSubset<T, UserScheduleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first UserSchedule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleFindFirstArgs} args - Arguments to find a UserSchedule
+     * @example
+     * // Get one UserSchedule
+     * const userSchedule = await prisma.userSchedule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserScheduleFindFirstArgs>(args?: SelectSubset<T, UserScheduleFindFirstArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first UserSchedule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleFindFirstOrThrowArgs} args - Arguments to find a UserSchedule
+     * @example
+     * // Get one UserSchedule
+     * const userSchedule = await prisma.userSchedule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserScheduleFindFirstOrThrowArgs>(args?: SelectSubset<T, UserScheduleFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more UserSchedules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserSchedules
+     * const userSchedules = await prisma.userSchedule.findMany()
+     * 
+     * // Get first 10 UserSchedules
+     * const userSchedules = await prisma.userSchedule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userScheduleWithIdOnly = await prisma.userSchedule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserScheduleFindManyArgs>(args?: SelectSubset<T, UserScheduleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a UserSchedule.
+     * @param {UserScheduleCreateArgs} args - Arguments to create a UserSchedule.
+     * @example
+     * // Create one UserSchedule
+     * const UserSchedule = await prisma.userSchedule.create({
+     *   data: {
+     *     // ... data to create a UserSchedule
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserScheduleCreateArgs>(args: SelectSubset<T, UserScheduleCreateArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many UserSchedules.
+     * @param {UserScheduleCreateManyArgs} args - Arguments to create many UserSchedules.
+     * @example
+     * // Create many UserSchedules
+     * const userSchedule = await prisma.userSchedule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserScheduleCreateManyArgs>(args?: SelectSubset<T, UserScheduleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserSchedules and returns the data saved in the database.
+     * @param {UserScheduleCreateManyAndReturnArgs} args - Arguments to create many UserSchedules.
+     * @example
+     * // Create many UserSchedules
+     * const userSchedule = await prisma.userSchedule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserSchedules and only return the `id`
+     * const userScheduleWithIdOnly = await prisma.userSchedule.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserScheduleCreateManyAndReturnArgs>(args?: SelectSubset<T, UserScheduleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a UserSchedule.
+     * @param {UserScheduleDeleteArgs} args - Arguments to delete one UserSchedule.
+     * @example
+     * // Delete one UserSchedule
+     * const UserSchedule = await prisma.userSchedule.delete({
+     *   where: {
+     *     // ... filter to delete one UserSchedule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserScheduleDeleteArgs>(args: SelectSubset<T, UserScheduleDeleteArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one UserSchedule.
+     * @param {UserScheduleUpdateArgs} args - Arguments to update one UserSchedule.
+     * @example
+     * // Update one UserSchedule
+     * const userSchedule = await prisma.userSchedule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserScheduleUpdateArgs>(args: SelectSubset<T, UserScheduleUpdateArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more UserSchedules.
+     * @param {UserScheduleDeleteManyArgs} args - Arguments to filter UserSchedules to delete.
+     * @example
+     * // Delete a few UserSchedules
+     * const { count } = await prisma.userSchedule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserScheduleDeleteManyArgs>(args?: SelectSubset<T, UserScheduleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserSchedules
+     * const userSchedule = await prisma.userSchedule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserScheduleUpdateManyArgs>(args: SelectSubset<T, UserScheduleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserSchedule.
+     * @param {UserScheduleUpsertArgs} args - Arguments to update or create a UserSchedule.
+     * @example
+     * // Update or create a UserSchedule
+     * const userSchedule = await prisma.userSchedule.upsert({
+     *   create: {
+     *     // ... data to create a UserSchedule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserSchedule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserScheduleUpsertArgs>(args: SelectSubset<T, UserScheduleUpsertArgs<ExtArgs>>): Prisma__UserScheduleClient<$Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of UserSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleCountArgs} args - Arguments to filter UserSchedules to count.
+     * @example
+     * // Count the number of UserSchedules
+     * const count = await prisma.userSchedule.count({
+     *   where: {
+     *     // ... the filter for the UserSchedules we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserScheduleCountArgs>(
+      args?: Subset<T, UserScheduleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserScheduleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserScheduleAggregateArgs>(args: Subset<T, UserScheduleAggregateArgs>): Prisma.PrismaPromise<GetUserScheduleAggregateType<T>>
+
+    /**
+     * Group by UserSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserScheduleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserScheduleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserScheduleGroupByArgs['orderBy'] }
+        : { orderBy?: UserScheduleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserScheduleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserScheduleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserSchedule model
+   */
+  readonly fields: UserScheduleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserSchedule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserScheduleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserSchedule model
+   */ 
+  interface UserScheduleFieldRefs {
+    readonly id: FieldRef<"UserSchedule", 'String'>
+    readonly userId: FieldRef<"UserSchedule", 'String'>
+    readonly workingDay: FieldRef<"UserSchedule", 'String'>
+    readonly startTime: FieldRef<"UserSchedule", 'String'>
+    readonly endTime: FieldRef<"UserSchedule", 'String'>
+    readonly createdAt: FieldRef<"UserSchedule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserSchedule findUnique
+   */
+  export type UserScheduleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * Filter, which UserSchedule to fetch.
+     */
+    where: UserScheduleWhereUniqueInput
+  }
+
+  /**
+   * UserSchedule findUniqueOrThrow
+   */
+  export type UserScheduleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * Filter, which UserSchedule to fetch.
+     */
+    where: UserScheduleWhereUniqueInput
+  }
+
+  /**
+   * UserSchedule findFirst
+   */
+  export type UserScheduleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * Filter, which UserSchedule to fetch.
+     */
+    where?: UserScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserSchedules to fetch.
+     */
+    orderBy?: UserScheduleOrderByWithRelationInput | UserScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserSchedules.
+     */
+    cursor?: UserScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserSchedules.
+     */
+    distinct?: UserScheduleScalarFieldEnum | UserScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * UserSchedule findFirstOrThrow
+   */
+  export type UserScheduleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * Filter, which UserSchedule to fetch.
+     */
+    where?: UserScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserSchedules to fetch.
+     */
+    orderBy?: UserScheduleOrderByWithRelationInput | UserScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserSchedules.
+     */
+    cursor?: UserScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserSchedules.
+     */
+    distinct?: UserScheduleScalarFieldEnum | UserScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * UserSchedule findMany
+   */
+  export type UserScheduleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * Filter, which UserSchedules to fetch.
+     */
+    where?: UserScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserSchedules to fetch.
+     */
+    orderBy?: UserScheduleOrderByWithRelationInput | UserScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserSchedules.
+     */
+    cursor?: UserScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserSchedules.
+     */
+    skip?: number
+    distinct?: UserScheduleScalarFieldEnum | UserScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * UserSchedule create
+   */
+  export type UserScheduleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * The data needed to create a UserSchedule.
+     */
+    data: XOR<UserScheduleCreateInput, UserScheduleUncheckedCreateInput>
+  }
+
+  /**
+   * UserSchedule createMany
+   */
+  export type UserScheduleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserSchedules.
+     */
+    data: UserScheduleCreateManyInput | UserScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserSchedule createManyAndReturn
+   */
+  export type UserScheduleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many UserSchedules.
+     */
+    data: UserScheduleCreateManyInput | UserScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserSchedule update
+   */
+  export type UserScheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * The data needed to update a UserSchedule.
+     */
+    data: XOR<UserScheduleUpdateInput, UserScheduleUncheckedUpdateInput>
+    /**
+     * Choose, which UserSchedule to update.
+     */
+    where: UserScheduleWhereUniqueInput
+  }
+
+  /**
+   * UserSchedule updateMany
+   */
+  export type UserScheduleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserSchedules.
+     */
+    data: XOR<UserScheduleUpdateManyMutationInput, UserScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which UserSchedules to update
+     */
+    where?: UserScheduleWhereInput
+  }
+
+  /**
+   * UserSchedule upsert
+   */
+  export type UserScheduleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * The filter to search for the UserSchedule to update in case it exists.
+     */
+    where: UserScheduleWhereUniqueInput
+    /**
+     * In case the UserSchedule found by the `where` argument doesn't exist, create a new UserSchedule with this data.
+     */
+    create: XOR<UserScheduleCreateInput, UserScheduleUncheckedCreateInput>
+    /**
+     * In case the UserSchedule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserScheduleUpdateInput, UserScheduleUncheckedUpdateInput>
+  }
+
+  /**
+   * UserSchedule delete
+   */
+  export type UserScheduleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+    /**
+     * Filter which UserSchedule to delete.
+     */
+    where: UserScheduleWhereUniqueInput
+  }
+
+  /**
+   * UserSchedule deleteMany
+   */
+  export type UserScheduleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserSchedules to delete
+     */
+    where?: UserScheduleWhereInput
+  }
+
+  /**
+   * UserSchedule without action
+   */
+  export type UserScheduleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSchedule
+     */
+    select?: UserScheduleSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TimeEntry
+   */
+
+  export type AggregateTimeEntry = {
+    _count: TimeEntryCountAggregateOutputType | null
+    _min: TimeEntryMinAggregateOutputType | null
+    _max: TimeEntryMaxAggregateOutputType | null
+  }
+
+  export type TimeEntryMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    date: Date | null
+    loginTime: Date | null
+    logoutTime: Date | null
+    createdAt: Date | null
+  }
+
+  export type TimeEntryMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    date: Date | null
+    loginTime: Date | null
+    logoutTime: Date | null
+    createdAt: Date | null
+  }
+
+  export type TimeEntryCountAggregateOutputType = {
+    id: number
+    userId: number
+    date: number
+    loginTime: number
+    logoutTime: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TimeEntryMinAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    loginTime?: true
+    logoutTime?: true
+    createdAt?: true
+  }
+
+  export type TimeEntryMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    loginTime?: true
+    logoutTime?: true
+    createdAt?: true
+  }
+
+  export type TimeEntryCountAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    loginTime?: true
+    logoutTime?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TimeEntryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TimeEntry to aggregate.
+     */
+    where?: TimeEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeEntries to fetch.
+     */
+    orderBy?: TimeEntryOrderByWithRelationInput | TimeEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TimeEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TimeEntries
+    **/
+    _count?: true | TimeEntryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TimeEntryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TimeEntryMaxAggregateInputType
+  }
+
+  export type GetTimeEntryAggregateType<T extends TimeEntryAggregateArgs> = {
+        [P in keyof T & keyof AggregateTimeEntry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTimeEntry[P]>
+      : GetScalarType<T[P], AggregateTimeEntry[P]>
+  }
+
+
+
+
+  export type TimeEntryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TimeEntryWhereInput
+    orderBy?: TimeEntryOrderByWithAggregationInput | TimeEntryOrderByWithAggregationInput[]
+    by: TimeEntryScalarFieldEnum[] | TimeEntryScalarFieldEnum
+    having?: TimeEntryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TimeEntryCountAggregateInputType | true
+    _min?: TimeEntryMinAggregateInputType
+    _max?: TimeEntryMaxAggregateInputType
+  }
+
+  export type TimeEntryGroupByOutputType = {
+    id: string
+    userId: string
+    date: Date
+    loginTime: Date | null
+    logoutTime: Date | null
+    createdAt: Date
+    _count: TimeEntryCountAggregateOutputType | null
+    _min: TimeEntryMinAggregateOutputType | null
+    _max: TimeEntryMaxAggregateOutputType | null
+  }
+
+  type GetTimeEntryGroupByPayload<T extends TimeEntryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TimeEntryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TimeEntryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TimeEntryGroupByOutputType[P]>
+            : GetScalarType<T[P], TimeEntryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TimeEntrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    loginTime?: boolean
+    logoutTime?: boolean
+    createdAt?: boolean
+    breaks?: boolean | TimeEntry$breaksArgs<ExtArgs>
+    _count?: boolean | TimeEntryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["timeEntry"]>
+
+  export type TimeEntrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    loginTime?: boolean
+    logoutTime?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["timeEntry"]>
+
+  export type TimeEntrySelectScalar = {
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    loginTime?: boolean
+    logoutTime?: boolean
+    createdAt?: boolean
+  }
+
+  export type TimeEntryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    breaks?: boolean | TimeEntry$breaksArgs<ExtArgs>
+    _count?: boolean | TimeEntryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TimeEntryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TimeEntryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TimeEntry"
+    objects: {
+      breaks: Prisma.$BreakPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      date: Date
+      loginTime: Date | null
+      logoutTime: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["timeEntry"]>
+    composites: {}
+  }
+
+  type TimeEntryGetPayload<S extends boolean | null | undefined | TimeEntryDefaultArgs> = $Result.GetResult<Prisma.$TimeEntryPayload, S>
+
+  type TimeEntryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TimeEntryFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TimeEntryCountAggregateInputType | true
+    }
+
+  export interface TimeEntryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TimeEntry'], meta: { name: 'TimeEntry' } }
+    /**
+     * Find zero or one TimeEntry that matches the filter.
+     * @param {TimeEntryFindUniqueArgs} args - Arguments to find a TimeEntry
+     * @example
+     * // Get one TimeEntry
+     * const timeEntry = await prisma.timeEntry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TimeEntryFindUniqueArgs>(args: SelectSubset<T, TimeEntryFindUniqueArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one TimeEntry that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TimeEntryFindUniqueOrThrowArgs} args - Arguments to find a TimeEntry
+     * @example
+     * // Get one TimeEntry
+     * const timeEntry = await prisma.timeEntry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TimeEntryFindUniqueOrThrowArgs>(args: SelectSubset<T, TimeEntryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first TimeEntry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryFindFirstArgs} args - Arguments to find a TimeEntry
+     * @example
+     * // Get one TimeEntry
+     * const timeEntry = await prisma.timeEntry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TimeEntryFindFirstArgs>(args?: SelectSubset<T, TimeEntryFindFirstArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first TimeEntry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryFindFirstOrThrowArgs} args - Arguments to find a TimeEntry
+     * @example
+     * // Get one TimeEntry
+     * const timeEntry = await prisma.timeEntry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TimeEntryFindFirstOrThrowArgs>(args?: SelectSubset<T, TimeEntryFindFirstOrThrowArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more TimeEntries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TimeEntries
+     * const timeEntries = await prisma.timeEntry.findMany()
+     * 
+     * // Get first 10 TimeEntries
+     * const timeEntries = await prisma.timeEntry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const timeEntryWithIdOnly = await prisma.timeEntry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TimeEntryFindManyArgs>(args?: SelectSubset<T, TimeEntryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a TimeEntry.
+     * @param {TimeEntryCreateArgs} args - Arguments to create a TimeEntry.
+     * @example
+     * // Create one TimeEntry
+     * const TimeEntry = await prisma.timeEntry.create({
+     *   data: {
+     *     // ... data to create a TimeEntry
+     *   }
+     * })
+     * 
+     */
+    create<T extends TimeEntryCreateArgs>(args: SelectSubset<T, TimeEntryCreateArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many TimeEntries.
+     * @param {TimeEntryCreateManyArgs} args - Arguments to create many TimeEntries.
+     * @example
+     * // Create many TimeEntries
+     * const timeEntry = await prisma.timeEntry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TimeEntryCreateManyArgs>(args?: SelectSubset<T, TimeEntryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TimeEntries and returns the data saved in the database.
+     * @param {TimeEntryCreateManyAndReturnArgs} args - Arguments to create many TimeEntries.
+     * @example
+     * // Create many TimeEntries
+     * const timeEntry = await prisma.timeEntry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TimeEntries and only return the `id`
+     * const timeEntryWithIdOnly = await prisma.timeEntry.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TimeEntryCreateManyAndReturnArgs>(args?: SelectSubset<T, TimeEntryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a TimeEntry.
+     * @param {TimeEntryDeleteArgs} args - Arguments to delete one TimeEntry.
+     * @example
+     * // Delete one TimeEntry
+     * const TimeEntry = await prisma.timeEntry.delete({
+     *   where: {
+     *     // ... filter to delete one TimeEntry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TimeEntryDeleteArgs>(args: SelectSubset<T, TimeEntryDeleteArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one TimeEntry.
+     * @param {TimeEntryUpdateArgs} args - Arguments to update one TimeEntry.
+     * @example
+     * // Update one TimeEntry
+     * const timeEntry = await prisma.timeEntry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TimeEntryUpdateArgs>(args: SelectSubset<T, TimeEntryUpdateArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more TimeEntries.
+     * @param {TimeEntryDeleteManyArgs} args - Arguments to filter TimeEntries to delete.
+     * @example
+     * // Delete a few TimeEntries
+     * const { count } = await prisma.timeEntry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TimeEntryDeleteManyArgs>(args?: SelectSubset<T, TimeEntryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TimeEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TimeEntries
+     * const timeEntry = await prisma.timeEntry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TimeEntryUpdateManyArgs>(args: SelectSubset<T, TimeEntryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TimeEntry.
+     * @param {TimeEntryUpsertArgs} args - Arguments to update or create a TimeEntry.
+     * @example
+     * // Update or create a TimeEntry
+     * const timeEntry = await prisma.timeEntry.upsert({
+     *   create: {
+     *     // ... data to create a TimeEntry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TimeEntry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TimeEntryUpsertArgs>(args: SelectSubset<T, TimeEntryUpsertArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of TimeEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryCountArgs} args - Arguments to filter TimeEntries to count.
+     * @example
+     * // Count the number of TimeEntries
+     * const count = await prisma.timeEntry.count({
+     *   where: {
+     *     // ... the filter for the TimeEntries we want to count
+     *   }
+     * })
+    **/
+    count<T extends TimeEntryCountArgs>(
+      args?: Subset<T, TimeEntryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TimeEntryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TimeEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TimeEntryAggregateArgs>(args: Subset<T, TimeEntryAggregateArgs>): Prisma.PrismaPromise<GetTimeEntryAggregateType<T>>
+
+    /**
+     * Group by TimeEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeEntryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TimeEntryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TimeEntryGroupByArgs['orderBy'] }
+        : { orderBy?: TimeEntryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TimeEntryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTimeEntryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TimeEntry model
+   */
+  readonly fields: TimeEntryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TimeEntry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TimeEntryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    breaks<T extends TimeEntry$breaksArgs<ExtArgs> = {}>(args?: Subset<T, TimeEntry$breaksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TimeEntry model
+   */ 
+  interface TimeEntryFieldRefs {
+    readonly id: FieldRef<"TimeEntry", 'String'>
+    readonly userId: FieldRef<"TimeEntry", 'String'>
+    readonly date: FieldRef<"TimeEntry", 'DateTime'>
+    readonly loginTime: FieldRef<"TimeEntry", 'DateTime'>
+    readonly logoutTime: FieldRef<"TimeEntry", 'DateTime'>
+    readonly createdAt: FieldRef<"TimeEntry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TimeEntry findUnique
+   */
+  export type TimeEntryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeEntry to fetch.
+     */
+    where: TimeEntryWhereUniqueInput
+  }
+
+  /**
+   * TimeEntry findUniqueOrThrow
+   */
+  export type TimeEntryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeEntry to fetch.
+     */
+    where: TimeEntryWhereUniqueInput
+  }
+
+  /**
+   * TimeEntry findFirst
+   */
+  export type TimeEntryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeEntry to fetch.
+     */
+    where?: TimeEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeEntries to fetch.
+     */
+    orderBy?: TimeEntryOrderByWithRelationInput | TimeEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TimeEntries.
+     */
+    cursor?: TimeEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TimeEntries.
+     */
+    distinct?: TimeEntryScalarFieldEnum | TimeEntryScalarFieldEnum[]
+  }
+
+  /**
+   * TimeEntry findFirstOrThrow
+   */
+  export type TimeEntryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeEntry to fetch.
+     */
+    where?: TimeEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeEntries to fetch.
+     */
+    orderBy?: TimeEntryOrderByWithRelationInput | TimeEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TimeEntries.
+     */
+    cursor?: TimeEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TimeEntries.
+     */
+    distinct?: TimeEntryScalarFieldEnum | TimeEntryScalarFieldEnum[]
+  }
+
+  /**
+   * TimeEntry findMany
+   */
+  export type TimeEntryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeEntries to fetch.
+     */
+    where?: TimeEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeEntries to fetch.
+     */
+    orderBy?: TimeEntryOrderByWithRelationInput | TimeEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TimeEntries.
+     */
+    cursor?: TimeEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeEntries.
+     */
+    skip?: number
+    distinct?: TimeEntryScalarFieldEnum | TimeEntryScalarFieldEnum[]
+  }
+
+  /**
+   * TimeEntry create
+   */
+  export type TimeEntryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TimeEntry.
+     */
+    data: XOR<TimeEntryCreateInput, TimeEntryUncheckedCreateInput>
+  }
+
+  /**
+   * TimeEntry createMany
+   */
+  export type TimeEntryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TimeEntries.
+     */
+    data: TimeEntryCreateManyInput | TimeEntryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TimeEntry createManyAndReturn
+   */
+  export type TimeEntryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many TimeEntries.
+     */
+    data: TimeEntryCreateManyInput | TimeEntryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TimeEntry update
+   */
+  export type TimeEntryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TimeEntry.
+     */
+    data: XOR<TimeEntryUpdateInput, TimeEntryUncheckedUpdateInput>
+    /**
+     * Choose, which TimeEntry to update.
+     */
+    where: TimeEntryWhereUniqueInput
+  }
+
+  /**
+   * TimeEntry updateMany
+   */
+  export type TimeEntryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TimeEntries.
+     */
+    data: XOR<TimeEntryUpdateManyMutationInput, TimeEntryUncheckedUpdateManyInput>
+    /**
+     * Filter which TimeEntries to update
+     */
+    where?: TimeEntryWhereInput
+  }
+
+  /**
+   * TimeEntry upsert
+   */
+  export type TimeEntryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TimeEntry to update in case it exists.
+     */
+    where: TimeEntryWhereUniqueInput
+    /**
+     * In case the TimeEntry found by the `where` argument doesn't exist, create a new TimeEntry with this data.
+     */
+    create: XOR<TimeEntryCreateInput, TimeEntryUncheckedCreateInput>
+    /**
+     * In case the TimeEntry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TimeEntryUpdateInput, TimeEntryUncheckedUpdateInput>
+  }
+
+  /**
+   * TimeEntry delete
+   */
+  export type TimeEntryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+    /**
+     * Filter which TimeEntry to delete.
+     */
+    where: TimeEntryWhereUniqueInput
+  }
+
+  /**
+   * TimeEntry deleteMany
+   */
+  export type TimeEntryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TimeEntries to delete
+     */
+    where?: TimeEntryWhereInput
+  }
+
+  /**
+   * TimeEntry.breaks
+   */
+  export type TimeEntry$breaksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    where?: BreakWhereInput
+    orderBy?: BreakOrderByWithRelationInput | BreakOrderByWithRelationInput[]
+    cursor?: BreakWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BreakScalarFieldEnum | BreakScalarFieldEnum[]
+  }
+
+  /**
+   * TimeEntry without action
+   */
+  export type TimeEntryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeEntry
+     */
+    select?: TimeEntrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeEntryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Break
+   */
+
+  export type AggregateBreak = {
+    _count: BreakCountAggregateOutputType | null
+    _min: BreakMinAggregateOutputType | null
+    _max: BreakMaxAggregateOutputType | null
+  }
+
+  export type BreakMinAggregateOutputType = {
+    id: string | null
+    timeEntryId: string | null
+    breakStart: Date | null
+    breakEnd: Date | null
+  }
+
+  export type BreakMaxAggregateOutputType = {
+    id: string | null
+    timeEntryId: string | null
+    breakStart: Date | null
+    breakEnd: Date | null
+  }
+
+  export type BreakCountAggregateOutputType = {
+    id: number
+    timeEntryId: number
+    breakStart: number
+    breakEnd: number
+    _all: number
+  }
+
+
+  export type BreakMinAggregateInputType = {
+    id?: true
+    timeEntryId?: true
+    breakStart?: true
+    breakEnd?: true
+  }
+
+  export type BreakMaxAggregateInputType = {
+    id?: true
+    timeEntryId?: true
+    breakStart?: true
+    breakEnd?: true
+  }
+
+  export type BreakCountAggregateInputType = {
+    id?: true
+    timeEntryId?: true
+    breakStart?: true
+    breakEnd?: true
+    _all?: true
+  }
+
+  export type BreakAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Break to aggregate.
+     */
+    where?: BreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Breaks to fetch.
+     */
+    orderBy?: BreakOrderByWithRelationInput | BreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Breaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Breaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Breaks
+    **/
+    _count?: true | BreakCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BreakMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BreakMaxAggregateInputType
+  }
+
+  export type GetBreakAggregateType<T extends BreakAggregateArgs> = {
+        [P in keyof T & keyof AggregateBreak]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBreak[P]>
+      : GetScalarType<T[P], AggregateBreak[P]>
+  }
+
+
+
+
+  export type BreakGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakWhereInput
+    orderBy?: BreakOrderByWithAggregationInput | BreakOrderByWithAggregationInput[]
+    by: BreakScalarFieldEnum[] | BreakScalarFieldEnum
+    having?: BreakScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BreakCountAggregateInputType | true
+    _min?: BreakMinAggregateInputType
+    _max?: BreakMaxAggregateInputType
+  }
+
+  export type BreakGroupByOutputType = {
+    id: string
+    timeEntryId: string
+    breakStart: Date
+    breakEnd: Date | null
+    _count: BreakCountAggregateOutputType | null
+    _min: BreakMinAggregateOutputType | null
+    _max: BreakMaxAggregateOutputType | null
+  }
+
+  type GetBreakGroupByPayload<T extends BreakGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BreakGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BreakGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BreakGroupByOutputType[P]>
+            : GetScalarType<T[P], BreakGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BreakSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timeEntryId?: boolean
+    breakStart?: boolean
+    breakEnd?: boolean
+    timeEntry?: boolean | TimeEntryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["break"]>
+
+  export type BreakSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timeEntryId?: boolean
+    breakStart?: boolean
+    breakEnd?: boolean
+    timeEntry?: boolean | TimeEntryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["break"]>
+
+  export type BreakSelectScalar = {
+    id?: boolean
+    timeEntryId?: boolean
+    breakStart?: boolean
+    breakEnd?: boolean
+  }
+
+  export type BreakInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    timeEntry?: boolean | TimeEntryDefaultArgs<ExtArgs>
+  }
+  export type BreakIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    timeEntry?: boolean | TimeEntryDefaultArgs<ExtArgs>
+  }
+
+  export type $BreakPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Break"
+    objects: {
+      timeEntry: Prisma.$TimeEntryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      timeEntryId: string
+      breakStart: Date
+      breakEnd: Date | null
+    }, ExtArgs["result"]["break"]>
+    composites: {}
+  }
+
+  type BreakGetPayload<S extends boolean | null | undefined | BreakDefaultArgs> = $Result.GetResult<Prisma.$BreakPayload, S>
+
+  type BreakCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BreakFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BreakCountAggregateInputType | true
+    }
+
+  export interface BreakDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Break'], meta: { name: 'Break' } }
+    /**
+     * Find zero or one Break that matches the filter.
+     * @param {BreakFindUniqueArgs} args - Arguments to find a Break
+     * @example
+     * // Get one Break
+     * const break = await prisma.break.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BreakFindUniqueArgs>(args: SelectSubset<T, BreakFindUniqueArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Break that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {BreakFindUniqueOrThrowArgs} args - Arguments to find a Break
+     * @example
+     * // Get one Break
+     * const break = await prisma.break.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BreakFindUniqueOrThrowArgs>(args: SelectSubset<T, BreakFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Break that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakFindFirstArgs} args - Arguments to find a Break
+     * @example
+     * // Get one Break
+     * const break = await prisma.break.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BreakFindFirstArgs>(args?: SelectSubset<T, BreakFindFirstArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Break that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakFindFirstOrThrowArgs} args - Arguments to find a Break
+     * @example
+     * // Get one Break
+     * const break = await prisma.break.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BreakFindFirstOrThrowArgs>(args?: SelectSubset<T, BreakFindFirstOrThrowArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Breaks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Breaks
+     * const breaks = await prisma.break.findMany()
+     * 
+     * // Get first 10 Breaks
+     * const breaks = await prisma.break.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const breakWithIdOnly = await prisma.break.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BreakFindManyArgs>(args?: SelectSubset<T, BreakFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Break.
+     * @param {BreakCreateArgs} args - Arguments to create a Break.
+     * @example
+     * // Create one Break
+     * const Break = await prisma.break.create({
+     *   data: {
+     *     // ... data to create a Break
+     *   }
+     * })
+     * 
+     */
+    create<T extends BreakCreateArgs>(args: SelectSubset<T, BreakCreateArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Breaks.
+     * @param {BreakCreateManyArgs} args - Arguments to create many Breaks.
+     * @example
+     * // Create many Breaks
+     * const break = await prisma.break.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BreakCreateManyArgs>(args?: SelectSubset<T, BreakCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Breaks and returns the data saved in the database.
+     * @param {BreakCreateManyAndReturnArgs} args - Arguments to create many Breaks.
+     * @example
+     * // Create many Breaks
+     * const break = await prisma.break.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Breaks and only return the `id`
+     * const breakWithIdOnly = await prisma.break.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BreakCreateManyAndReturnArgs>(args?: SelectSubset<T, BreakCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Break.
+     * @param {BreakDeleteArgs} args - Arguments to delete one Break.
+     * @example
+     * // Delete one Break
+     * const Break = await prisma.break.delete({
+     *   where: {
+     *     // ... filter to delete one Break
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BreakDeleteArgs>(args: SelectSubset<T, BreakDeleteArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Break.
+     * @param {BreakUpdateArgs} args - Arguments to update one Break.
+     * @example
+     * // Update one Break
+     * const break = await prisma.break.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BreakUpdateArgs>(args: SelectSubset<T, BreakUpdateArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Breaks.
+     * @param {BreakDeleteManyArgs} args - Arguments to filter Breaks to delete.
+     * @example
+     * // Delete a few Breaks
+     * const { count } = await prisma.break.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BreakDeleteManyArgs>(args?: SelectSubset<T, BreakDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Breaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Breaks
+     * const break = await prisma.break.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BreakUpdateManyArgs>(args: SelectSubset<T, BreakUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Break.
+     * @param {BreakUpsertArgs} args - Arguments to update or create a Break.
+     * @example
+     * // Update or create a Break
+     * const break = await prisma.break.upsert({
+     *   create: {
+     *     // ... data to create a Break
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Break we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BreakUpsertArgs>(args: SelectSubset<T, BreakUpsertArgs<ExtArgs>>): Prisma__BreakClient<$Result.GetResult<Prisma.$BreakPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Breaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakCountArgs} args - Arguments to filter Breaks to count.
+     * @example
+     * // Count the number of Breaks
+     * const count = await prisma.break.count({
+     *   where: {
+     *     // ... the filter for the Breaks we want to count
+     *   }
+     * })
+    **/
+    count<T extends BreakCountArgs>(
+      args?: Subset<T, BreakCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BreakCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Break.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BreakAggregateArgs>(args: Subset<T, BreakAggregateArgs>): Prisma.PrismaPromise<GetBreakAggregateType<T>>
+
+    /**
+     * Group by Break.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BreakGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BreakGroupByArgs['orderBy'] }
+        : { orderBy?: BreakGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BreakGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBreakGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Break model
+   */
+  readonly fields: BreakFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Break.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BreakClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    timeEntry<T extends TimeEntryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TimeEntryDefaultArgs<ExtArgs>>): Prisma__TimeEntryClient<$Result.GetResult<Prisma.$TimeEntryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Break model
+   */ 
+  interface BreakFieldRefs {
+    readonly id: FieldRef<"Break", 'String'>
+    readonly timeEntryId: FieldRef<"Break", 'String'>
+    readonly breakStart: FieldRef<"Break", 'DateTime'>
+    readonly breakEnd: FieldRef<"Break", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Break findUnique
+   */
+  export type BreakFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * Filter, which Break to fetch.
+     */
+    where: BreakWhereUniqueInput
+  }
+
+  /**
+   * Break findUniqueOrThrow
+   */
+  export type BreakFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * Filter, which Break to fetch.
+     */
+    where: BreakWhereUniqueInput
+  }
+
+  /**
+   * Break findFirst
+   */
+  export type BreakFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * Filter, which Break to fetch.
+     */
+    where?: BreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Breaks to fetch.
+     */
+    orderBy?: BreakOrderByWithRelationInput | BreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Breaks.
+     */
+    cursor?: BreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Breaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Breaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Breaks.
+     */
+    distinct?: BreakScalarFieldEnum | BreakScalarFieldEnum[]
+  }
+
+  /**
+   * Break findFirstOrThrow
+   */
+  export type BreakFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * Filter, which Break to fetch.
+     */
+    where?: BreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Breaks to fetch.
+     */
+    orderBy?: BreakOrderByWithRelationInput | BreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Breaks.
+     */
+    cursor?: BreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Breaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Breaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Breaks.
+     */
+    distinct?: BreakScalarFieldEnum | BreakScalarFieldEnum[]
+  }
+
+  /**
+   * Break findMany
+   */
+  export type BreakFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * Filter, which Breaks to fetch.
+     */
+    where?: BreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Breaks to fetch.
+     */
+    orderBy?: BreakOrderByWithRelationInput | BreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Breaks.
+     */
+    cursor?: BreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Breaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Breaks.
+     */
+    skip?: number
+    distinct?: BreakScalarFieldEnum | BreakScalarFieldEnum[]
+  }
+
+  /**
+   * Break create
+   */
+  export type BreakCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Break.
+     */
+    data: XOR<BreakCreateInput, BreakUncheckedCreateInput>
+  }
+
+  /**
+   * Break createMany
+   */
+  export type BreakCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Breaks.
+     */
+    data: BreakCreateManyInput | BreakCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Break createManyAndReturn
+   */
+  export type BreakCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Breaks.
+     */
+    data: BreakCreateManyInput | BreakCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Break update
+   */
+  export type BreakUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Break.
+     */
+    data: XOR<BreakUpdateInput, BreakUncheckedUpdateInput>
+    /**
+     * Choose, which Break to update.
+     */
+    where: BreakWhereUniqueInput
+  }
+
+  /**
+   * Break updateMany
+   */
+  export type BreakUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Breaks.
+     */
+    data: XOR<BreakUpdateManyMutationInput, BreakUncheckedUpdateManyInput>
+    /**
+     * Filter which Breaks to update
+     */
+    where?: BreakWhereInput
+  }
+
+  /**
+   * Break upsert
+   */
+  export type BreakUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Break to update in case it exists.
+     */
+    where: BreakWhereUniqueInput
+    /**
+     * In case the Break found by the `where` argument doesn't exist, create a new Break with this data.
+     */
+    create: XOR<BreakCreateInput, BreakUncheckedCreateInput>
+    /**
+     * In case the Break was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BreakUpdateInput, BreakUncheckedUpdateInput>
+  }
+
+  /**
+   * Break delete
+   */
+  export type BreakDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+    /**
+     * Filter which Break to delete.
+     */
+    where: BreakWhereUniqueInput
+  }
+
+  /**
+   * Break deleteMany
+   */
+  export type BreakDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Breaks to delete
+     */
+    where?: BreakWhereInput
+  }
+
+  /**
+   * Break without action
+   */
+  export type BreakDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Break
+     */
+    select?: BreakSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8118,6 +11178,40 @@ export namespace Prisma {
   };
 
   export type LeaveScalarFieldEnum = (typeof LeaveScalarFieldEnum)[keyof typeof LeaveScalarFieldEnum]
+
+
+  export const UserScheduleScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    workingDay: 'workingDay',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    createdAt: 'createdAt'
+  };
+
+  export type UserScheduleScalarFieldEnum = (typeof UserScheduleScalarFieldEnum)[keyof typeof UserScheduleScalarFieldEnum]
+
+
+  export const TimeEntryScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    date: 'date',
+    loginTime: 'loginTime',
+    logoutTime: 'logoutTime',
+    createdAt: 'createdAt'
+  };
+
+  export type TimeEntryScalarFieldEnum = (typeof TimeEntryScalarFieldEnum)[keyof typeof TimeEntryScalarFieldEnum]
+
+
+  export const BreakScalarFieldEnum: {
+    id: 'id',
+    timeEntryId: 'timeEntryId',
+    breakStart: 'breakStart',
+    breakEnd: 'breakEnd'
+  };
+
+  export type BreakScalarFieldEnum = (typeof BreakScalarFieldEnum)[keyof typeof BreakScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8655,6 +11749,175 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Leave"> | Date | string
   }
 
+  export type UserScheduleWhereInput = {
+    AND?: UserScheduleWhereInput | UserScheduleWhereInput[]
+    OR?: UserScheduleWhereInput[]
+    NOT?: UserScheduleWhereInput | UserScheduleWhereInput[]
+    id?: StringFilter<"UserSchedule"> | string
+    userId?: StringFilter<"UserSchedule"> | string
+    workingDay?: StringFilter<"UserSchedule"> | string
+    startTime?: StringFilter<"UserSchedule"> | string
+    endTime?: StringFilter<"UserSchedule"> | string
+    createdAt?: DateTimeFilter<"UserSchedule"> | Date | string
+  }
+
+  export type UserScheduleOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    workingDay?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type UserScheduleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_workingDay?: UserScheduleUserIdWorkingDayCompoundUniqueInput
+    AND?: UserScheduleWhereInput | UserScheduleWhereInput[]
+    OR?: UserScheduleWhereInput[]
+    NOT?: UserScheduleWhereInput | UserScheduleWhereInput[]
+    userId?: StringFilter<"UserSchedule"> | string
+    workingDay?: StringFilter<"UserSchedule"> | string
+    startTime?: StringFilter<"UserSchedule"> | string
+    endTime?: StringFilter<"UserSchedule"> | string
+    createdAt?: DateTimeFilter<"UserSchedule"> | Date | string
+  }, "id" | "userId_workingDay">
+
+  export type UserScheduleOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    workingDay?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+    _count?: UserScheduleCountOrderByAggregateInput
+    _max?: UserScheduleMaxOrderByAggregateInput
+    _min?: UserScheduleMinOrderByAggregateInput
+  }
+
+  export type UserScheduleScalarWhereWithAggregatesInput = {
+    AND?: UserScheduleScalarWhereWithAggregatesInput | UserScheduleScalarWhereWithAggregatesInput[]
+    OR?: UserScheduleScalarWhereWithAggregatesInput[]
+    NOT?: UserScheduleScalarWhereWithAggregatesInput | UserScheduleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserSchedule"> | string
+    userId?: StringWithAggregatesFilter<"UserSchedule"> | string
+    workingDay?: StringWithAggregatesFilter<"UserSchedule"> | string
+    startTime?: StringWithAggregatesFilter<"UserSchedule"> | string
+    endTime?: StringWithAggregatesFilter<"UserSchedule"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"UserSchedule"> | Date | string
+  }
+
+  export type TimeEntryWhereInput = {
+    AND?: TimeEntryWhereInput | TimeEntryWhereInput[]
+    OR?: TimeEntryWhereInput[]
+    NOT?: TimeEntryWhereInput | TimeEntryWhereInput[]
+    id?: StringFilter<"TimeEntry"> | string
+    userId?: StringFilter<"TimeEntry"> | string
+    date?: DateTimeFilter<"TimeEntry"> | Date | string
+    loginTime?: DateTimeNullableFilter<"TimeEntry"> | Date | string | null
+    logoutTime?: DateTimeNullableFilter<"TimeEntry"> | Date | string | null
+    createdAt?: DateTimeFilter<"TimeEntry"> | Date | string
+    breaks?: BreakListRelationFilter
+  }
+
+  export type TimeEntryOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    loginTime?: SortOrderInput | SortOrder
+    logoutTime?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    breaks?: BreakOrderByRelationAggregateInput
+  }
+
+  export type TimeEntryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_date?: TimeEntryUserIdDateCompoundUniqueInput
+    AND?: TimeEntryWhereInput | TimeEntryWhereInput[]
+    OR?: TimeEntryWhereInput[]
+    NOT?: TimeEntryWhereInput | TimeEntryWhereInput[]
+    userId?: StringFilter<"TimeEntry"> | string
+    date?: DateTimeFilter<"TimeEntry"> | Date | string
+    loginTime?: DateTimeNullableFilter<"TimeEntry"> | Date | string | null
+    logoutTime?: DateTimeNullableFilter<"TimeEntry"> | Date | string | null
+    createdAt?: DateTimeFilter<"TimeEntry"> | Date | string
+    breaks?: BreakListRelationFilter
+  }, "id" | "userId_date">
+
+  export type TimeEntryOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    loginTime?: SortOrderInput | SortOrder
+    logoutTime?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: TimeEntryCountOrderByAggregateInput
+    _max?: TimeEntryMaxOrderByAggregateInput
+    _min?: TimeEntryMinOrderByAggregateInput
+  }
+
+  export type TimeEntryScalarWhereWithAggregatesInput = {
+    AND?: TimeEntryScalarWhereWithAggregatesInput | TimeEntryScalarWhereWithAggregatesInput[]
+    OR?: TimeEntryScalarWhereWithAggregatesInput[]
+    NOT?: TimeEntryScalarWhereWithAggregatesInput | TimeEntryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TimeEntry"> | string
+    userId?: StringWithAggregatesFilter<"TimeEntry"> | string
+    date?: DateTimeWithAggregatesFilter<"TimeEntry"> | Date | string
+    loginTime?: DateTimeNullableWithAggregatesFilter<"TimeEntry"> | Date | string | null
+    logoutTime?: DateTimeNullableWithAggregatesFilter<"TimeEntry"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TimeEntry"> | Date | string
+  }
+
+  export type BreakWhereInput = {
+    AND?: BreakWhereInput | BreakWhereInput[]
+    OR?: BreakWhereInput[]
+    NOT?: BreakWhereInput | BreakWhereInput[]
+    id?: StringFilter<"Break"> | string
+    timeEntryId?: StringFilter<"Break"> | string
+    breakStart?: DateTimeFilter<"Break"> | Date | string
+    breakEnd?: DateTimeNullableFilter<"Break"> | Date | string | null
+    timeEntry?: XOR<TimeEntryRelationFilter, TimeEntryWhereInput>
+  }
+
+  export type BreakOrderByWithRelationInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    breakStart?: SortOrder
+    breakEnd?: SortOrderInput | SortOrder
+    timeEntry?: TimeEntryOrderByWithRelationInput
+  }
+
+  export type BreakWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BreakWhereInput | BreakWhereInput[]
+    OR?: BreakWhereInput[]
+    NOT?: BreakWhereInput | BreakWhereInput[]
+    timeEntryId?: StringFilter<"Break"> | string
+    breakStart?: DateTimeFilter<"Break"> | Date | string
+    breakEnd?: DateTimeNullableFilter<"Break"> | Date | string | null
+    timeEntry?: XOR<TimeEntryRelationFilter, TimeEntryWhereInput>
+  }, "id">
+
+  export type BreakOrderByWithAggregationInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    breakStart?: SortOrder
+    breakEnd?: SortOrderInput | SortOrder
+    _count?: BreakCountOrderByAggregateInput
+    _max?: BreakMaxOrderByAggregateInput
+    _min?: BreakMinOrderByAggregateInput
+  }
+
+  export type BreakScalarWhereWithAggregatesInput = {
+    AND?: BreakScalarWhereWithAggregatesInput | BreakScalarWhereWithAggregatesInput[]
+    OR?: BreakScalarWhereWithAggregatesInput[]
+    NOT?: BreakScalarWhereWithAggregatesInput | BreakScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Break"> | string
+    timeEntryId?: StringWithAggregatesFilter<"Break"> | string
+    breakStart?: DateTimeWithAggregatesFilter<"Break"> | Date | string
+    breakEnd?: DateTimeNullableWithAggregatesFilter<"Break"> | Date | string | null
+  }
+
   export type organisationCreateInput = {
     orgId: string
     type?: $Enums.organisationType
@@ -9066,6 +12329,184 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumLeaveStatusFieldUpdateOperationsInput | $Enums.LeaveStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserScheduleCreateInput = {
+    id?: string
+    userId: string
+    workingDay: string
+    startTime: string
+    endTime: string
+    createdAt?: Date | string
+  }
+
+  export type UserScheduleUncheckedCreateInput = {
+    id?: string
+    userId: string
+    workingDay: string
+    startTime: string
+    endTime: string
+    createdAt?: Date | string
+  }
+
+  export type UserScheduleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    workingDay?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserScheduleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    workingDay?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserScheduleCreateManyInput = {
+    id?: string
+    userId: string
+    workingDay: string
+    startTime: string
+    endTime: string
+    createdAt?: Date | string
+  }
+
+  export type UserScheduleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    workingDay?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserScheduleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    workingDay?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TimeEntryCreateInput = {
+    id?: string
+    userId: string
+    date: Date | string
+    loginTime?: Date | string | null
+    logoutTime?: Date | string | null
+    createdAt?: Date | string
+    breaks?: BreakCreateNestedManyWithoutTimeEntryInput
+  }
+
+  export type TimeEntryUncheckedCreateInput = {
+    id?: string
+    userId: string
+    date: Date | string
+    loginTime?: Date | string | null
+    logoutTime?: Date | string | null
+    createdAt?: Date | string
+    breaks?: BreakUncheckedCreateNestedManyWithoutTimeEntryInput
+  }
+
+  export type TimeEntryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    loginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: BreakUpdateManyWithoutTimeEntryNestedInput
+  }
+
+  export type TimeEntryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    loginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: BreakUncheckedUpdateManyWithoutTimeEntryNestedInput
+  }
+
+  export type TimeEntryCreateManyInput = {
+    id?: string
+    userId: string
+    date: Date | string
+    loginTime?: Date | string | null
+    logoutTime?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type TimeEntryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    loginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TimeEntryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    loginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BreakCreateInput = {
+    id?: string
+    breakStart: Date | string
+    breakEnd?: Date | string | null
+    timeEntry: TimeEntryCreateNestedOneWithoutBreaksInput
+  }
+
+  export type BreakUncheckedCreateInput = {
+    id?: string
+    timeEntryId: string
+    breakStart: Date | string
+    breakEnd?: Date | string | null
+  }
+
+  export type BreakUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    timeEntry?: TimeEntryUpdateOneRequiredWithoutBreaksNestedInput
+  }
+
+  export type BreakUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeEntryId?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BreakCreateManyInput = {
+    id?: string
+    timeEntryId: string
+    breakStart: Date | string
+    breakEnd?: Date | string | null
+  }
+
+  export type BreakUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BreakUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeEntryId?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9525,6 +12966,131 @@ export namespace Prisma {
     _max?: NestedEnumLeaveStatusFilter<$PrismaModel>
   }
 
+  export type UserScheduleUserIdWorkingDayCompoundUniqueInput = {
+    userId: string
+    workingDay: string
+  }
+
+  export type UserScheduleCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    workingDay?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type UserScheduleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    workingDay?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type UserScheduleMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    workingDay?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BreakListRelationFilter = {
+    every?: BreakWhereInput
+    some?: BreakWhereInput
+    none?: BreakWhereInput
+  }
+
+  export type BreakOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TimeEntryUserIdDateCompoundUniqueInput = {
+    userId: string
+    date: Date | string
+  }
+
+  export type TimeEntryCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    loginTime?: SortOrder
+    logoutTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TimeEntryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    loginTime?: SortOrder
+    logoutTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TimeEntryMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    loginTime?: SortOrder
+    logoutTime?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type TimeEntryRelationFilter = {
+    is?: TimeEntryWhereInput
+    isNot?: TimeEntryWhereInput
+  }
+
+  export type BreakCountOrderByAggregateInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    breakStart?: SortOrder
+    breakEnd?: SortOrder
+  }
+
+  export type BreakMaxOrderByAggregateInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    breakStart?: SortOrder
+    breakEnd?: SortOrder
+  }
+
+  export type BreakMinOrderByAggregateInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    breakStart?: SortOrder
+    breakEnd?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -9737,6 +13303,66 @@ export namespace Prisma {
 
   export type EnumLeaveStatusFieldUpdateOperationsInput = {
     set?: $Enums.LeaveStatus
+  }
+
+  export type BreakCreateNestedManyWithoutTimeEntryInput = {
+    create?: XOR<BreakCreateWithoutTimeEntryInput, BreakUncheckedCreateWithoutTimeEntryInput> | BreakCreateWithoutTimeEntryInput[] | BreakUncheckedCreateWithoutTimeEntryInput[]
+    connectOrCreate?: BreakCreateOrConnectWithoutTimeEntryInput | BreakCreateOrConnectWithoutTimeEntryInput[]
+    createMany?: BreakCreateManyTimeEntryInputEnvelope
+    connect?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+  }
+
+  export type BreakUncheckedCreateNestedManyWithoutTimeEntryInput = {
+    create?: XOR<BreakCreateWithoutTimeEntryInput, BreakUncheckedCreateWithoutTimeEntryInput> | BreakCreateWithoutTimeEntryInput[] | BreakUncheckedCreateWithoutTimeEntryInput[]
+    connectOrCreate?: BreakCreateOrConnectWithoutTimeEntryInput | BreakCreateOrConnectWithoutTimeEntryInput[]
+    createMany?: BreakCreateManyTimeEntryInputEnvelope
+    connect?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type BreakUpdateManyWithoutTimeEntryNestedInput = {
+    create?: XOR<BreakCreateWithoutTimeEntryInput, BreakUncheckedCreateWithoutTimeEntryInput> | BreakCreateWithoutTimeEntryInput[] | BreakUncheckedCreateWithoutTimeEntryInput[]
+    connectOrCreate?: BreakCreateOrConnectWithoutTimeEntryInput | BreakCreateOrConnectWithoutTimeEntryInput[]
+    upsert?: BreakUpsertWithWhereUniqueWithoutTimeEntryInput | BreakUpsertWithWhereUniqueWithoutTimeEntryInput[]
+    createMany?: BreakCreateManyTimeEntryInputEnvelope
+    set?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    disconnect?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    delete?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    connect?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    update?: BreakUpdateWithWhereUniqueWithoutTimeEntryInput | BreakUpdateWithWhereUniqueWithoutTimeEntryInput[]
+    updateMany?: BreakUpdateManyWithWhereWithoutTimeEntryInput | BreakUpdateManyWithWhereWithoutTimeEntryInput[]
+    deleteMany?: BreakScalarWhereInput | BreakScalarWhereInput[]
+  }
+
+  export type BreakUncheckedUpdateManyWithoutTimeEntryNestedInput = {
+    create?: XOR<BreakCreateWithoutTimeEntryInput, BreakUncheckedCreateWithoutTimeEntryInput> | BreakCreateWithoutTimeEntryInput[] | BreakUncheckedCreateWithoutTimeEntryInput[]
+    connectOrCreate?: BreakCreateOrConnectWithoutTimeEntryInput | BreakCreateOrConnectWithoutTimeEntryInput[]
+    upsert?: BreakUpsertWithWhereUniqueWithoutTimeEntryInput | BreakUpsertWithWhereUniqueWithoutTimeEntryInput[]
+    createMany?: BreakCreateManyTimeEntryInputEnvelope
+    set?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    disconnect?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    delete?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    connect?: BreakWhereUniqueInput | BreakWhereUniqueInput[]
+    update?: BreakUpdateWithWhereUniqueWithoutTimeEntryInput | BreakUpdateWithWhereUniqueWithoutTimeEntryInput[]
+    updateMany?: BreakUpdateManyWithWhereWithoutTimeEntryInput | BreakUpdateManyWithWhereWithoutTimeEntryInput[]
+    deleteMany?: BreakScalarWhereInput | BreakScalarWhereInput[]
+  }
+
+  export type TimeEntryCreateNestedOneWithoutBreaksInput = {
+    create?: XOR<TimeEntryCreateWithoutBreaksInput, TimeEntryUncheckedCreateWithoutBreaksInput>
+    connectOrCreate?: TimeEntryCreateOrConnectWithoutBreaksInput
+    connect?: TimeEntryWhereUniqueInput
+  }
+
+  export type TimeEntryUpdateOneRequiredWithoutBreaksNestedInput = {
+    create?: XOR<TimeEntryCreateWithoutBreaksInput, TimeEntryUncheckedCreateWithoutBreaksInput>
+    connectOrCreate?: TimeEntryCreateOrConnectWithoutBreaksInput
+    upsert?: TimeEntryUpsertWithoutBreaksInput
+    connect?: TimeEntryWhereUniqueInput
+    update?: XOR<XOR<TimeEntryUpdateToOneWithWhereWithoutBreaksInput, TimeEntryUpdateWithoutBreaksInput>, TimeEntryUncheckedUpdateWithoutBreaksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9966,6 +13592,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLeaveStatusFilter<$PrismaModel>
     _max?: NestedEnumLeaveStatusFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type UserCategoryCreateWithoutUsersInput = {
@@ -10258,6 +13909,106 @@ export namespace Prisma {
     holidays?: HolidayUncheckedUpdateManyWithoutUserCategoriesNestedInput
   }
 
+  export type BreakCreateWithoutTimeEntryInput = {
+    id?: string
+    breakStart: Date | string
+    breakEnd?: Date | string | null
+  }
+
+  export type BreakUncheckedCreateWithoutTimeEntryInput = {
+    id?: string
+    breakStart: Date | string
+    breakEnd?: Date | string | null
+  }
+
+  export type BreakCreateOrConnectWithoutTimeEntryInput = {
+    where: BreakWhereUniqueInput
+    create: XOR<BreakCreateWithoutTimeEntryInput, BreakUncheckedCreateWithoutTimeEntryInput>
+  }
+
+  export type BreakCreateManyTimeEntryInputEnvelope = {
+    data: BreakCreateManyTimeEntryInput | BreakCreateManyTimeEntryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BreakUpsertWithWhereUniqueWithoutTimeEntryInput = {
+    where: BreakWhereUniqueInput
+    update: XOR<BreakUpdateWithoutTimeEntryInput, BreakUncheckedUpdateWithoutTimeEntryInput>
+    create: XOR<BreakCreateWithoutTimeEntryInput, BreakUncheckedCreateWithoutTimeEntryInput>
+  }
+
+  export type BreakUpdateWithWhereUniqueWithoutTimeEntryInput = {
+    where: BreakWhereUniqueInput
+    data: XOR<BreakUpdateWithoutTimeEntryInput, BreakUncheckedUpdateWithoutTimeEntryInput>
+  }
+
+  export type BreakUpdateManyWithWhereWithoutTimeEntryInput = {
+    where: BreakScalarWhereInput
+    data: XOR<BreakUpdateManyMutationInput, BreakUncheckedUpdateManyWithoutTimeEntryInput>
+  }
+
+  export type BreakScalarWhereInput = {
+    AND?: BreakScalarWhereInput | BreakScalarWhereInput[]
+    OR?: BreakScalarWhereInput[]
+    NOT?: BreakScalarWhereInput | BreakScalarWhereInput[]
+    id?: StringFilter<"Break"> | string
+    timeEntryId?: StringFilter<"Break"> | string
+    breakStart?: DateTimeFilter<"Break"> | Date | string
+    breakEnd?: DateTimeNullableFilter<"Break"> | Date | string | null
+  }
+
+  export type TimeEntryCreateWithoutBreaksInput = {
+    id?: string
+    userId: string
+    date: Date | string
+    loginTime?: Date | string | null
+    logoutTime?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type TimeEntryUncheckedCreateWithoutBreaksInput = {
+    id?: string
+    userId: string
+    date: Date | string
+    loginTime?: Date | string | null
+    logoutTime?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type TimeEntryCreateOrConnectWithoutBreaksInput = {
+    where: TimeEntryWhereUniqueInput
+    create: XOR<TimeEntryCreateWithoutBreaksInput, TimeEntryUncheckedCreateWithoutBreaksInput>
+  }
+
+  export type TimeEntryUpsertWithoutBreaksInput = {
+    update: XOR<TimeEntryUpdateWithoutBreaksInput, TimeEntryUncheckedUpdateWithoutBreaksInput>
+    create: XOR<TimeEntryCreateWithoutBreaksInput, TimeEntryUncheckedCreateWithoutBreaksInput>
+    where?: TimeEntryWhereInput
+  }
+
+  export type TimeEntryUpdateToOneWithWhereWithoutBreaksInput = {
+    where?: TimeEntryWhereInput
+    data: XOR<TimeEntryUpdateWithoutBreaksInput, TimeEntryUncheckedUpdateWithoutBreaksInput>
+  }
+
+  export type TimeEntryUpdateWithoutBreaksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    loginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TimeEntryUncheckedUpdateWithoutBreaksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    loginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    logoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCategoryLinkUpCreateManyCategoryInput = {
     id?: string
     uid: string
@@ -10328,6 +14079,30 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BreakCreateManyTimeEntryInput = {
+    id?: string
+    breakStart: Date | string
+    breakEnd?: Date | string | null
+  }
+
+  export type BreakUpdateWithoutTimeEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BreakUncheckedUpdateWithoutTimeEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BreakUncheckedUpdateManyWithoutTimeEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    breakStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
 
 
   /**
@@ -10341,6 +14116,10 @@ export namespace Prisma {
      * @deprecated Use HolidayCountOutputTypeDefaultArgs instead
      */
     export type HolidayCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = HolidayCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TimeEntryCountOutputTypeDefaultArgs instead
+     */
+    export type TimeEntryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TimeEntryCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use organisationDefaultArgs instead
      */
@@ -10369,6 +14148,18 @@ export namespace Prisma {
      * @deprecated Use LeaveDefaultArgs instead
      */
     export type LeaveArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LeaveDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserScheduleDefaultArgs instead
+     */
+    export type UserScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserScheduleDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TimeEntryDefaultArgs instead
+     */
+    export type TimeEntryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TimeEntryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BreakDefaultArgs instead
+     */
+    export type BreakArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BreakDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

@@ -98,3 +98,40 @@ model Leave {
   status     LeaveStatus @default(PENDING)
   createdAt  DateTime    @default(now())
 }
+
+
+// time tracker
+
+
+model UserSchedule {
+  id          String   @id @default(uuid())
+  userId      String
+  workingDay  String                          // e.g., "Mon", "Tue", etc.
+  startTime   String                          // e.g., "09:00"
+  endTime     String                          // e.g., "18:00"
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, workingDay])              // Each user can have one schedule per day
+}
+
+
+model TimeEntry {
+  id          String   @id @default(uuid())
+  userId      String                           
+  date        DateTime
+  loginTime   DateTime?
+  logoutTime  DateTime?
+  breaks      Break[]
+  createdAt   DateTime     @default(now())
+
+  @@unique([userId, date]) 
+}
+
+model Break {
+  id            String   @id @default(uuid())
+  timeEntryId   String
+  breakStart    DateTime
+  breakEnd      DateTime?
+
+  timeEntry     TimeEntry @relation(fields: [timeEntryId], references: [id])
+}
