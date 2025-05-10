@@ -15,4 +15,4 @@ surfaceServiceRouter.use('/leave', leaveRouter);
 surfaceServiceRouter.use('/organization', organizationRouter);
 surfaceServiceRouter.use('/user', userRouter);
 
-export default myServiceRouter;
+export default surfaceServiceRouter;
