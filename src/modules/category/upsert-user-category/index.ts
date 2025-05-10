@@ -36,9 +36,11 @@ export const upsertUserCategoryEndpoint = createPrivateEndpointWithZod(
         }
       });
     } else {
+      console.log('name', name)
       userCategory = await timePrisma.userCategory.create({
         data: { name: name! }
       });
+      console.log('userCategory', userCategory)
     }
 
     return {
