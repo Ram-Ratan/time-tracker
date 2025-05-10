@@ -21,7 +21,7 @@ model organisation {
 
 model UserCategoryLinkUp {
   id         String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  uid        String       @unique
+  userId     String       @unique @db.Uuid
   categoryId String       @db.Uuid
   category   UserCategory @relation("UserCategoryLinkUp", fields: [categoryId], references: [id])
   createdAt  DateTime     @default(now())
@@ -31,7 +31,7 @@ model UserCategoryLinkUp {
 
 model UserLeaves {
   id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  uid             String   @unique
+  userId          String   @unique @db.Uuid
   sickLeaves      Decimal  @db.Decimal(5, 2)
   vacationLeaves  Decimal  @db.Decimal(5, 2)
   parentalLeaves  Decimal  @db.Decimal(5, 2)
@@ -39,13 +39,24 @@ model UserLeaves {
   createdAt       DateTime @default(now())
 }
 
+model UserHoliday {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @db.Uuid
+  holidayId String   @db.Uuid
+  holiday   Holiday  @relation("UserHoliday", fields: [holidayId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
 model UserCategory {
-  id          String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name        String
-  createdAt   DateTime             @default(now())
-  users       UserCategoryLinkUp[] @relation("UserCategoryLinkUp")
-  holidays    Holiday[]            @relation("UserCategoryHoliday")
-  leavePolicy LeavePolicy?         @relation("UserCategoryLeavePolicy")
+  id               String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name             String               @unique
+  createdAt        DateTime             @default(now())
+  users            UserCategoryLinkUp[] @relation("UserCategoryLinkUp")
+  holidays         Holiday[]            @relation("UserCategoryHoliday")
+  leavePolicy      LeavePolicy?         @relation("UserCategoryLeavePolicy")
+  optionalHolidays Int                  @default(0)
 }
 
 enum HolidayType {
@@ -60,6 +71,7 @@ model Holiday {
   type           HolidayType    @default(MANDATORY)
   createdAt      DateTime       @default(now())
   userCategories UserCategory[] @relation("UserCategoryHoliday")
+  userHolidays   UserHoliday[]  @relation("UserHoliday")
 }
 
 enum LeaveType {
@@ -91,7 +103,7 @@ enum LeaveStatus {
 model Leave {
   id        String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   type      LeaveType
-  uid       String      @unique
+  userId    String      @unique @db.Uuid
   message   String?
   startDate DateTime
   endDate   DateTime

@@ -22,7 +22,7 @@ export const managerLeaveListEndpoint = createPrivateEndpointWithZod(
                     id: true
                 }
             })
-            const employeesUnderMe = await prisma.employeeFieldData.findMany({
+            const employees = await prisma.employeeFieldData.findMany({
                 where: {
                     value: currentUser?.id,
                     field: {
@@ -34,15 +34,36 @@ export const managerLeaveListEndpoint = createPrivateEndpointWithZod(
                 }
             })
 
-            const empIds = employeesUnderMe.map((emp: { userId: string }) => emp.userId);
+            const empIds = employees.map((emp) => emp.userId);
 
-            const leaves = await prisma.leave.findMany({
+            const leaves = await timePrisma.leave.findMany({
                 where: {
-                    uid: {
-                        in: empIds
-                    }
+                    userId: { in: empIds },
+                    OR: [
+                        { endDate: { gte: new Date() } },
+                        { startDate: { lte: new Date() }, endDate: { gte: new Date() } }
+                    ]
+                },
+                orderBy: { startDate: 'asc' }
+            });
+
+
+            const usersOnLeave = leaves.map((leave) => leave.userId);
+
+            const employeeOnLeave = await EmployeeHandler.getUserDataForMultiple({
+                userIds: usersOnLeave
+            })
+
+            const leaveList = employeeOnLeave.map((emp) => {
+                const leave = leaves.find((leave) => leave.userId === emp.userId);
+                return {
+                    ...emp,
+                    leave
                 }
             })
+
+            return leaveList;
+
         } catch (error) {
             console.error('Leave policy upsert error:', error);
             throw new Error('Failed to upsert leave policy');

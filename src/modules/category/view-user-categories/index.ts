@@ -10,7 +10,7 @@ export const getUserCategoriesEndpoint = createPublicEndpointWithZod(
     z.object({
       id: z.string().uuid(),
       name: z.string(),
-      createdAt: z.string(), 
+      createdAt: z.date(), 
     })
   ),
   async () => {
