@@ -7,6 +7,7 @@ import { z } from 'zod';
 import prismaFactory from 'utils/prisma';
 import timePrisma from 'utils/prisma/time-tracker';
 import { getDay } from 'date-fns';
+import { convertDayNumberToString } from 'utils/time-tracker';
 
 export const punchOutEndpoint = createPrivateEndpointWithZod(
     'PUNCH OUT',
@@ -25,8 +26,7 @@ export const punchOutEndpoint = createPrivateEndpointWithZod(
 
             const todayDayInNum = getDay(now);
             // conver today day 0 to 6 to string
-            const todayDayString = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const todayDay = todayDayString[todayDayInNum];
+            const todayDay = convertDayNumberToString(todayDayInNum);
             // check if today day in there in userSchedule or not
 
             const userSchedule = await timePrisma.userSchedule.findFirst({
