@@ -22,6 +22,7 @@ model organisation {
 model UserCategoryLinkUp {
   id         String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId     String       @unique @db.Uuid
+  userName   String       @default("Unknown")
   categoryId String       @db.Uuid
   category   UserCategory @relation("UserCategoryLinkUp", fields: [categoryId], references: [id])
   createdAt  DateTime     @default(now())
@@ -143,4 +144,11 @@ model Break {
   breakEnd    DateTime?
 
   timeEntry TimeEntry @relation(fields: [timeEntryId], references: [id])
+}
+
+model NlqSqlMapping {
+  id        Int    @id @default(autoincrement())
+  nlq       String
+  sql       String
+  embedding Bytes?
 }
