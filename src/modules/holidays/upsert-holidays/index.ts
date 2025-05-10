@@ -33,42 +33,50 @@ export const upsertHolidayEndpoint = createPrivateEndpointWithZod(
     async (input) => {
         const { id, name, date, type, userCategoryIds = [] } = input.data.body;
 
-        if (id) {
-            const updated = await timePrisma.holiday.update({
-                where: { id },
-                data: {
-                    ...(name && { name }),
-                    ...(date && { date: new Date(date) }),
-                    ...(type && { type }),
-                    ...(userCategoryIds && {
-                        userCategories: {
-                            set: userCategoryIds.map((id) => ({ id })),
-                        },
-                    }),
-                },
-            });
-
-            return {
-                success: true,
-                message: 'Holiday updated successfully',
-                id: updated.id,
-            };
-        } else {
-            const created = await timePrisma.holiday.create({
-                data: {
-                    name: name!,
-                    date: new Date(date!),
-                    type,
-                    userCategories: {
-                        connect: userCategoryIds.map((id) => ({ id })),
+        try {
+            if (id) {
+                const updated = await timePrisma.holiday.update({
+                    where: { id },
+                    data: {
+                        ...(name && { name }),
+                        ...(date && { date: new Date(date) }),
+                        ...(type && { type }),
+                        ...(userCategoryIds && {
+                            userCategories: {
+                                set: userCategoryIds.map((id) => ({ id })),
+                            },
+                        }),
                     },
-                },
-            });
+                });
 
+                return {
+                    success: true,
+                    message: 'Holiday updated successfully',
+                    id: updated.id,
+                };
+            } else {
+                const created = await timePrisma.holiday.create({
+                    data: {
+                        name: name!,
+                        date: new Date(date!),
+                        type,
+                        userCategories: {
+                            connect: userCategoryIds.map((id) => ({ id }))
+                        },
+                    },
+                });
+
+                return {
+                    success: true,
+                    message: 'Holiday created successfully',
+                    id: created.id,
+                };
+            }
+        } catch (error) {
+            console.error(error);
             return {
-                success: true,
-                message: 'Holiday created successfully',
-                id: created.id,
+                success: false,
+                message: 'Error occurred while upserting holiday',
             };
         }
     },
