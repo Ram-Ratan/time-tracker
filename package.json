@@ -29,7 +29,7 @@
         "@talent-monk/client-shared": "1.1.23",
         "@talent-monk/rbac": "0.0.4",
         "@talent-monk/shared-workflow": "0.0.15",
-        "@talent-monk/utils": "1.0.2",
+        "@talent-monk/utils": "1.0.3",
         "axios": "^1.9.0",
         "csv-parser": "^3.0.0",
         "date-fns": "^4.1.0",
