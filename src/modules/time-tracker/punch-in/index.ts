@@ -6,7 +6,8 @@ import { StatusCodes } from 'http-status-codes';
 import { z } from 'zod';
 import prismaFactory from 'utils/prisma';
 import timePrisma from 'utils/prisma/time-tracker';
-import { getDay } from 'date-fns'
+import { getDay } from 'date-fns';
+import { convertDayNumberToString } from 'utils/time-tracker';
 
 export const punchInEndpoint = createPrivateEndpointWithZod(
     'PUNCH IN',
@@ -26,8 +27,7 @@ export const punchInEndpoint = createPrivateEndpointWithZod(
 
             const todayDayInNum = getDay(now);
             // conver today day 0 to 6 to string
-            const todayDayString = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const todayDay = todayDayString[todayDayInNum];
+            const todayDay = convertDayNumberToString(todayDayInNum);
 
             // check if today day in there in userSchedule or not
             // user schedule contains day of week and start time and end time

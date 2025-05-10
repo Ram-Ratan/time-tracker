@@ -1,5 +1,3 @@
-
-
 import { createHTTPResponse } from '@talent-monk/utils';
 import { createPrivateEndpointWithZod } from '@talent-monk/utils';
 import { StatusCodes } from 'http-status-codes';
@@ -7,9 +5,17 @@ import { z } from 'zod';
 import prismaFactory from 'utils/prisma';
 import timePrisma from 'utils/prisma/time-tracker';
 import { getDay } from 'date-fns';
+import { EmployeeHandler } from '@talent-monk/client-shared';
+import { convertDayNumberToString } from 'utils/time-tracker';
 
-type status = 'NOT_PUNCHED_IN' | 'PUNCHED_IN' | 'ON_BREAK' | 'PUNCHED_OUT' | 'LEAVE' | 'NON_WORKING_DAY' | 'HOLIDAY';
-
+type status =
+    | 'NOT_PUNCHED_IN'
+    | 'PUNCHED_IN'
+    | 'ON_BREAK'
+    | 'PUNCHED_OUT'
+    | 'LEAVE'
+    | 'NON_WORKING_DAY'
+    | 'HOLIDAY';
 
 export const getStatusEndpoint = createPrivateEndpointWithZod(
     'GET STATUS',
@@ -31,16 +37,7 @@ export const getStatusEndpoint = createPrivateEndpointWithZod(
 
             const todayDayInNum = getDay(now);
             // conver today day 0 to 6 to string
-            const todayDayString = [
-                'Sunday',
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday'
-            ];
-            const todayDay = todayDayString[todayDayInNum];
+            const todayDay = convertDayNumberToString(todayDayInNum);
 
             // check if today day in there in userSchedule or not
             // user schedule contains day of week and start time and end time
@@ -51,6 +48,8 @@ export const getStatusEndpoint = createPrivateEndpointWithZod(
                     workingDay: todayDay
                 }
             });
+
+            const employeeData = await EmployeeHandler.getUserDataForOne({ userId: user.id });
             let status: status = 'NOT_PUNCHED_IN';
 
             if (!userSchedule) {
@@ -58,7 +57,8 @@ export const getStatusEndpoint = createPrivateEndpointWithZod(
                 status = 'NON_WORKING_DAY';
                 return {
                     ...user,
-                    status
+                    status,
+                    employeeData
                 };
             }
 
@@ -79,7 +79,8 @@ export const getStatusEndpoint = createPrivateEndpointWithZod(
                 status = 'NOT_PUNCHED_IN';
                 return {
                     ...user,
-                    status
+                    status,
+                    employeeData
                 };
             }
             status = 'PUNCHED_IN';
@@ -109,7 +110,8 @@ export const getStatusEndpoint = createPrivateEndpointWithZod(
                 ...user,
                 status,
                 breaks: allBreaks,
-                timeEntry
+                timeEntry,
+                employeeData
             };
         } catch (error) {
             throw error;
