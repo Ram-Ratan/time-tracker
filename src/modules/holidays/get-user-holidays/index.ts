@@ -14,46 +14,69 @@ export const getAllHolidaysForUserEndpoint = createPrivateEndpointWithZod(
     type: z.enum(['OPTIONAL', 'MANDATORY']),
   })),
   async ({ userAuthId }) => {
-    const prisma = prismaFactory.get();
+    try {
+      const prisma = prismaFactory.get();
 
-    const user = await prisma.user.findUnique({
-      where: { uid: userAuthId },
-      select: { id: true },
-    });
-    if (!user) throw new Error('User not found');
+      const user = await prisma.user.findUnique({
+        where: { uid: userAuthId },
+        select: { id: true },
+      });
+      if (!user) throw new Error('User not found');
 
-    const userCategoryLink = await timePrisma.userCategoryLinkUp.findUnique({
-      where: { userId: user.id },
-      select: { categoryId: true },
-    });
-    
-    if (!userCategoryLink) throw new Error('User category not found');
+      let userCategoryLink;
+      try {
+        userCategoryLink = await timePrisma.userCategoryLinkUp.findUnique({
+          where: { userId: user.id },
+          select: { categoryId: true },
+        });
 
-    const holidays = await timePrisma.holiday.findMany({
-      where: {
-        userCategories: {
-          some: {
-            id: userCategoryLink.categoryId,
+        if (!userCategoryLink){
+          const defaultCategory = await timePrisma.userCategory.findFirst({
+            where: {
+              name: 'DEFAULT'
+            }
+          })
+          if (!defaultCategory) throw new Error('Default category not found');  
+          userCategoryLink = await timePrisma.userCategoryLinkUp.create({
+            data: {
+              userId: user.id,
+              categoryId: defaultCategory.id
+            }
+          })
+        }
+      } catch (error) {
+        throw new Error('User category not found');
+      }
+      
+
+      const holidays = await timePrisma.holiday.findMany({
+        where: {
+          userCategories: {
+            some: {
+              id: userCategoryLink.categoryId,
+            },
           },
         },
-      },
-      select: {
-        id: true,
-        name: true,
-        date: true,
-        type: true,
-      },
-      orderBy: {
-        date: 'asc',
-      },
-    });
+        select: {
+          id: true,
+          name: true,
+          date: true,
+          type: true,
+        },
+        orderBy: {
+          date: 'asc',
+        },
+      });
 
-    return holidays.map(h => ({
-      id: h.id,
-      name: h.name,
-      date: h.date.toISOString(),
-      type: h.type,
-    }));
+      return holidays.map(h => ({
+        id: h.id,
+        name: h.name,
+        date: h.date.toISOString(),
+        type: h.type,
+      }));
+    } catch (error) {
+      throw error;
+    }
   },
   async (res, output) => {
     createHTTPResponse(res, StatusCodes.OK, 'All holidays fetched for user category', output);

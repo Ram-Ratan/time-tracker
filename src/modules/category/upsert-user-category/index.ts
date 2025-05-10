@@ -10,6 +10,7 @@ export const upsertUserCategoryEndpoint = createPrivateEndpointWithZod(
     body: z.object({
       id: z.string().uuid().optional(), 
       name: z.string().optional(),    
+      optionalHolidays: z.number().optional(),
     }).refine(
       (data) => {
         if (!data.id && !data.name) return false;
@@ -24,7 +25,7 @@ export const upsertUserCategoryEndpoint = createPrivateEndpointWithZod(
     id: z.string().uuid()
   }),
   async (input) => {
-    const { id, name } = input.data.body;
+    const { id, name, optionalHolidays } = input.data.body;
 
     let userCategory;
 
@@ -32,15 +33,14 @@ export const upsertUserCategoryEndpoint = createPrivateEndpointWithZod(
       userCategory = await timePrisma.userCategory.update({
         where: { id },
         data: {
-          ...(name && { name })
+          ...(name && { name }),
+          ...(optionalHolidays && { optionalHolidays })
         }
       });
     } else {
-      console.log('name', name)
       userCategory = await timePrisma.userCategory.create({
         data: { name: name! }
       });
-      console.log('userCategory', userCategory)
     }
 
     return {

@@ -12695,16 +12695,16 @@ export namespace Prisma {
 
   export type UserCategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     AND?: UserCategoryWhereInput | UserCategoryWhereInput[]
     OR?: UserCategoryWhereInput[]
     NOT?: UserCategoryWhereInput | UserCategoryWhereInput[]
-    name?: StringFilter<"UserCategory"> | string
     createdAt?: DateTimeFilter<"UserCategory"> | Date | string
     optionalHolidays?: IntFilter<"UserCategory"> | number
     users?: UserCategoryLinkUpListRelationFilter
     holidays?: HolidayListRelationFilter
     leavePolicy?: XOR<LeavePolicyNullableRelationFilter, LeavePolicyWhereInput> | null
-  }, "id">
+  }, "id" | "name">
 
   export type UserCategoryOrderByWithAggregationInput = {
     id?: SortOrder
@@ -15594,6 +15594,25 @@ export namespace Prisma {
   export type UserCategoryUncheckedUpdateManyWithoutHolidaysInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    optionalHolidays?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserHolidayUpdateWithoutHolidayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserHolidayUncheckedUpdateWithoutHolidayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserHolidayUncheckedUpdateManyWithoutHolidayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

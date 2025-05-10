@@ -51,7 +51,7 @@ model UserHoliday {
 
 model UserCategory {
   id               String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name             String
+  name             String               @unique
   createdAt        DateTime             @default(now())
   users            UserCategoryLinkUp[] @relation("UserCategoryLinkUp")
   holidays         Holiday[]            @relation("UserCategoryHoliday")
