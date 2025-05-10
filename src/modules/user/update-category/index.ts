@@ -5,6 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import timePrisma from 'utils/prisma/time-tracker';
 import { isManagerOfEmployee } from 'utils/checkManager';
 import prismaFactory from 'utils/prisma';
+import { EmployeeHandler } from '@talent-monk/client-shared';
 
 export const upsertUserCategoryLinkUpEndpoint = createPrivateEndpointWithZod(
     'UPSERT USER CATEGORY LINKUP',
@@ -45,15 +46,23 @@ export const upsertUserCategoryLinkUpEndpoint = createPrivateEndpointWithZod(
                 throw new Error('Only manager can update user category');
             }
 
+            const userDetails = await EmployeeHandler.getFieldsDataForOne({
+                userId: userId
+            })
+
+            console.log(userDetails, 'userDetails');
+
             await timePrisma.userCategoryLinkUp.upsert({
                 where: {
                     userId: userId
                 },
                 create: {
                     userId: userId,
+                    userName: userDetails.fullName.value,
                     categoryId: userCategoryId,
                 },
                 update: {
+                    userName: userDetails.fullName.value,
                     categoryId: userCategoryId,
                 }
             });

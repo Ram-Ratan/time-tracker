@@ -22,6 +22,7 @@ model organisation {
 model UserCategoryLinkUp {
   id         String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId  String          @db.Uuid @unique
+  userName String         @default("Unknown")
   categoryId String        @db.Uuid
   category   UserCategory  @relation("UserCategoryLinkUp", fields: [categoryId], references: [id])
   createdAt  DateTime      @default(now())
@@ -103,7 +104,7 @@ enum LeaveStatus {
 model Leave {
   id         String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   type       LeaveType
-  userId  String          @db.Uuid @unique
+  userId     String      @db.Uuid @unique
   message    String?
   startDate  DateTime
   endDate    DateTime
@@ -144,6 +145,12 @@ model Break {
   timeEntryId   String
   breakStart    DateTime
   breakEnd      DateTime?
-
   timeEntry     TimeEntry @relation(fields: [timeEntryId], references: [id])
+}
+
+model NlqSqlMapping {
+  id        Int    @id @default(autoincrement())
+  nlq       String
+  sql       String
+  embedding Bytes? 
 }

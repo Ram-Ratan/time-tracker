@@ -3,6 +3,7 @@ import { createPrivateEndpointWithZod, createHTTPResponse } from '@talent-monk/u
 import { isWeekend, eachDayOfInterval } from 'date-fns';
 import timePrisma from 'utils/prisma/time-tracker';
 import { Prisma } from '../../../generated/prisma';
+import prismaFactory from 'utils/prisma';
 
 const dateString = z
   .string()
@@ -30,6 +31,8 @@ export const applyLeaveEndpoint = createPrivateEndpointWithZod(
   async ({ data, orgId, userAuthId }) => {
     const { type, startDate, endDate, message, halfDay } = data.body;
 
+    const prisma = prismaFactory.get();
+
     if (startDate > endDate) {
       throw new Error('Start date must be before end date');
     }
@@ -47,10 +50,16 @@ export const applyLeaveEndpoint = createPrivateEndpointWithZod(
 
     const isEvilOrg = organisation?.type === 'EVIL';
 
-    const userCategory = await timePrisma.userCategoryLinkUp.findUnique({
+    const currentUser = await prisma.user.findUnique({
       where: { uid: userAuthId },
+      select: { id: true },
+    });
+
+    const userCategory = await timePrisma.userCategoryLinkUp.findUnique({
+      where: { userId: currentUser?.id },
       include: { category: { include: { holidays: true } } },
     });
+
     if (!userCategory) throw new Error('User category not found');
 
     const mandatoryHolidayDates = userCategory.category.holidays
@@ -105,10 +114,26 @@ export const applyLeaveEndpoint = createPrivateEndpointWithZod(
         }
       }
 
-    const userLeaveRecord = await timePrisma.userLeaves.findUnique({ where: { uid: userAuthId } });
-    if (!userLeaveRecord) throw new Error('User leave balance not found');
+    let userLeaveRecord = await timePrisma.userLeaves.findUnique({ where: { userId: currentUser.id } });
+    if (!userLeaveRecord) {
+      const leavePolicy = await timePrisma.leavePolicy.findUnique({
+        where: {
+          categoryId: userCategory.category.id
+        }
+      })
+      if(!leavePolicy) throw new Error('Leave policy not found');
+      userLeaveRecord = await timePrisma.userLeaves.create({
+        data: {
+          userId: currentUser.id,
+          sickLeaves: leavePolicy.sickLeaves,
+          vacationLeaves: leavePolicy.vacationLeaves,
+          parentalLeaves: leavePolicy.parentalLeaves,
+          maternityLeaves: leavePolicy.maternityLeaves
+        }
+      })
+    }
 
-    const balanceKey = type.toLowerCase() as keyof typeof userLeaveRecord;
+    const balanceKey = type.toLowerCase() + 'Leaves';
     const currentBalance = userLeaveRecord[balanceKey] as Prisma.Decimal;
 
     const effectiveDecimal = new Prisma.Decimal(effectiveDays);
@@ -116,9 +141,22 @@ export const applyLeaveEndpoint = createPrivateEndpointWithZod(
       throw new Error(`Insufficient ${type.toLowerCase()} leave balance`);
     }
 
+    const existingLeave = await timePrisma.leave.findFirst({
+      where: {
+        userId: currentUser.id,
+        startDate: { lte: endDate },
+        endDate: { gte: startDate },
+        status: { in: ['PENDING', 'APPROVED'] },
+      },
+    });
+
+    if (existingLeave) {
+      throw new Error('Leave already exists for the selected dates');
+    }
+
     const leave = await timePrisma.leave.create({
       data: {
-        uid: userAuthId,
+        userId: currentUser.id,
         type,
         startDate,
         endDate,
@@ -127,8 +165,9 @@ export const applyLeaveEndpoint = createPrivateEndpointWithZod(
       },
     });
 
+
     await timePrisma.userLeaves.update({
-      where: { uid: userAuthId },
+      where: { userId: currentUser.id },
       data: {
         [balanceKey]: currentBalance.sub(effectiveDecimal),
       },

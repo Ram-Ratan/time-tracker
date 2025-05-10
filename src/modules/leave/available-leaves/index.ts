@@ -3,6 +3,7 @@ import { createPrivateEndpointWithZod, createHTTPResponse } from '@talent-monk/u
 import { StatusCodes } from 'http-status-codes';
 import prismaFactory from 'utils/prisma';
 import { isManagerOfEmployee } from 'utils/checkManager';
+import timePrisma from 'utils/prisma/time-tracker';
 
 export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
   'GET AVAILABLE LEAVES',
@@ -24,7 +25,7 @@ export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
     if (!userId) {
       const currentUser = await prisma.user.findUnique({
         where: { uid: userAuthId },
-        select: { id: true },
+        select: { id: true }
       });
       if (!currentUser) throw new Error('User not found');
 
@@ -42,7 +43,7 @@ export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
       }
     }
 
-    const userLeaves = await prisma.userLeaves.findUnique({
+    const userLeaves = await timePrisma.userLeaves.findUnique({
       where: { userId },
     });
 
