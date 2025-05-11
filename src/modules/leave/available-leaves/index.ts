@@ -43,12 +43,31 @@ export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
       }
     }
 
-    const userLeaves = await timePrisma.userLeaves.findUnique({
+    let userLeaves = await timePrisma.userLeaves.findUnique({
       where: { userId },
     });
 
     if (!userLeaves) {
-      throw new Error('Leave data not found for this user');
+      const category = await timePrisma.userCategoryLinkUp.findUnique({
+        where: { userId },
+        select: { categoryId: true },
+      }); 
+      if (!category) throw new Error('User category not found');
+      const leavePolicy = await timePrisma.leavePolicy.findUnique({
+        where: { categoryId: category.categoryId }
+      });
+      if (!leavePolicy) throw new Error('Leave policy not found');
+
+      userLeaves = await timePrisma.userLeaves.create({
+        data: {
+          userId,
+          sickLeaves: leavePolicy.sickLeaves,
+          vacationLeaves: leavePolicy.vacationLeaves,
+          parentalLeaves: leavePolicy.parentalLeaves,
+          maternityLeaves: leavePolicy.maternityLeaves
+        }
+      });
+      
     }
 
     return {
