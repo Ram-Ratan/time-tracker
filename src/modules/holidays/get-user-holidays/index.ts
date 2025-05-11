@@ -44,12 +44,13 @@ export const getAllHolidaysForUserEndpoint = createPrivateEndpointWithZod(
           userCategoryLink = await timePrisma.userCategoryLinkUp.create({
             data: {
               userId: user.id,
-              userName: userDetails.fullName,
+              userName: userDetails.fullName.value,
               categoryId: defaultCategory.id
             }
           })
         }
       } catch (error) {
+        console.log(error)
         throw new Error('User category not found');
       }
       
