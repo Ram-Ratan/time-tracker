@@ -33,6 +33,13 @@ export const getEmployeeLeaveHistoryEndpoint = createPrivateEndpointWithZod(
 
       employeeId = currentUser.id;
     }
+    else {
+      // check is manager of employee
+      const isManager = await isManagerOfEmployee(employeeId, currentUser.id);
+      if (!isManager) {
+        throw new Error('You are not authorized to view this user\'s leave data');
+      }
+    }
 
     // Fetch all leaves for the given employee
     const leaves = await timePrisma.leave.findMany({
