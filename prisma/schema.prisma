@@ -23,7 +23,7 @@ model UserCategoryLinkUp {
   id         String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId  String          @db.Uuid @unique
   userName String         @default("Unknown")
-  categoryId String        @db.Uuid  @unique
+  categoryId String        @db.Uuid 
   category   UserCategory  @relation("UserCategoryLinkUp", fields: [categoryId], references: [id])
   createdAt  DateTime      @default(now())
   
@@ -32,7 +32,7 @@ model UserCategoryLinkUp {
 
 model UserLeaves {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  userId  String          @db.Uuid @unique
+  userId  String          @db.Uuid  @unique
   sickLeaves Decimal @db.Decimal(5, 2)
   vacationLeaves Decimal @db.Decimal(5, 2)
   parentalLeaves Decimal @db.Decimal(5, 2)
@@ -104,7 +104,7 @@ enum LeaveStatus {
 model Leave {
   id         String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   type       LeaveType
-  userId     String      @db.Uuid @unique
+  userId     String      @db.Uuid
   message    String?
   effectiveDays Decimal?
   startDate  DateTime

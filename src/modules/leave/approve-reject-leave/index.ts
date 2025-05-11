@@ -32,6 +32,10 @@ export const approveRejectLeaveEndpoint = createPrivateEndpointWithZod(
       if (!leave) {
         throw new Error('Leave record not found');
       }
+      
+      if (leave.status !== 'PENDING') {
+        throw new Error(`Leave request has already been ${leave.status.toLowerCase()}`);
+      }
 
       const currentUser = await prisma.user.findUnique({
         where: { uid: userAuthId },
@@ -42,22 +46,53 @@ export const approveRejectLeaveEndpoint = createPrivateEndpointWithZod(
         throw new Error('User not found');
       }
 
-      const isManager = await isManagerOfEmployee(leave.userId, currentUser.id);
-      if (!isManager) {
-        throw new Error('Only the reporting manager can approve/reject this leave');
-      }
+      // const isManager = await isManagerOfEmployee(leave.userId, currentUser.id);
+      // if (!isManager) {
+      //   throw new Error('Only the reporting manager can approve/reject this leave');
+      // }
 
-      const updatedLeave = await timePrisma.leave.update({
-        where: { id: leaveId },
-        data: {
-          status: action === 'APPROVE' ? 'APPROVED' : 'REJECTED',
-        },
+      // Execute in a transaction to ensure consistency
+      return await timePrisma.$transaction(async (tx) => {
+        // Update leave status
+        const updatedLeave = await tx.leave.update({
+          where: { id: leaveId },
+          data: {
+            status: action === 'APPROVE' ? 'APPROVED' : 'REJECTED',
+          },
+        });
+        
+        // Only update leave balance if the leave is approved
+        if (action === 'APPROVE') {
+          const userLeaveRecord = await tx.userLeaves.findUnique({
+            where: { userId: leave.userId },
+          });
+          
+          if (!userLeaveRecord) {
+            throw new Error('User leave record not found');
+          }
+          
+          const balanceKey = leave.type.toLowerCase() + 'Leaves';
+          const currentBalance = userLeaveRecord[balanceKey] as Prisma.Decimal;
+          const effectiveDays = leave.effectiveDays as Prisma.Decimal;
+
+          if(currentBalance < effectiveDays) {
+            throw new Error('Insufficient leave balance');
+          }
+          
+          // Update user's leave balance
+          await tx.userLeaves.update({
+            where: { userId: leave.userId },
+            data: {
+              [balanceKey]: currentBalance.sub(effectiveDays),
+            },
+          });
+        }
+        
+        return {
+          success: true,
+          message: `Leave ${action.toLowerCase()}d successfully`,
+        };
       });
-
-      return {
-        success: true,
-        message: `Leave ${action.toLowerCase()}d successfully`,
-      };
     } catch (error) {
       console.error('Error approving/rejecting leave:', error);
       throw new Error('Failed to approve/reject leave');
@@ -67,3 +102,4 @@ export const approveRejectLeaveEndpoint = createPrivateEndpointWithZod(
     createHTTPResponse(res, StatusCodes.OK, output.message, output);
   }
 );
+

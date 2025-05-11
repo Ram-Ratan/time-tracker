@@ -68,6 +68,11 @@ export type TimeEntry = $Result.DefaultSelection<Prisma.$TimeEntryPayload>
  * 
  */
 export type Break = $Result.DefaultSelection<Prisma.$BreakPayload>
+/**
+ * Model NlqSqlMapping
+ * 
+ */
+export type NlqSqlMapping = $Result.DefaultSelection<Prisma.$NlqSqlMappingPayload>
 
 /**
  * Enums
@@ -357,6 +362,16 @@ export class PrismaClient<
     * ```
     */
   get break(): Prisma.BreakDelegate<ExtArgs>;
+
+  /**
+   * `prisma.nlqSqlMapping`: Exposes CRUD operations for the **NlqSqlMapping** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NlqSqlMappings
+    * const nlqSqlMappings = await prisma.nlqSqlMapping.findMany()
+    * ```
+    */
+  get nlqSqlMapping(): Prisma.NlqSqlMappingDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -808,7 +823,8 @@ export namespace Prisma {
     Leave: 'Leave',
     UserSchedule: 'UserSchedule',
     TimeEntry: 'TimeEntry',
-    Break: 'Break'
+    Break: 'Break',
+    NlqSqlMapping: 'NlqSqlMapping'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -824,7 +840,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userHoliday" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break"
+      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userHoliday" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break" | "nlqSqlMapping"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1595,6 +1611,76 @@ export namespace Prisma {
           count: {
             args: Prisma.BreakCountArgs<ExtArgs>
             result: $Utils.Optional<BreakCountAggregateOutputType> | number
+          }
+        }
+      }
+      NlqSqlMapping: {
+        payload: Prisma.$NlqSqlMappingPayload<ExtArgs>
+        fields: Prisma.NlqSqlMappingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NlqSqlMappingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NlqSqlMappingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>
+          }
+          findFirst: {
+            args: Prisma.NlqSqlMappingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NlqSqlMappingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>
+          }
+          findMany: {
+            args: Prisma.NlqSqlMappingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>[]
+          }
+          create: {
+            args: Prisma.NlqSqlMappingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>
+          }
+          createMany: {
+            args: Prisma.NlqSqlMappingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NlqSqlMappingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>[]
+          }
+          delete: {
+            args: Prisma.NlqSqlMappingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>
+          }
+          update: {
+            args: Prisma.NlqSqlMappingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>
+          }
+          deleteMany: {
+            args: Prisma.NlqSqlMappingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NlqSqlMappingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.NlqSqlMappingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NlqSqlMappingPayload>
+          }
+          aggregate: {
+            args: Prisma.NlqSqlMappingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNlqSqlMapping>
+          }
+          groupBy: {
+            args: Prisma.NlqSqlMappingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NlqSqlMappingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NlqSqlMappingCountArgs<ExtArgs>
+            result: $Utils.Optional<NlqSqlMappingCountAggregateOutputType> | number
           }
         }
       }
@@ -2724,6 +2810,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    userName: string | null
     categoryId: string | null
     createdAt: Date | null
   }
@@ -2731,6 +2818,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    userName: string | null
     categoryId: string | null
     createdAt: Date | null
   }
@@ -2738,6 +2826,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpCountAggregateOutputType = {
     id: number
     userId: number
+    userName: number
     categoryId: number
     createdAt: number
     _all: number
@@ -2747,6 +2836,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpMinAggregateInputType = {
     id?: true
     userId?: true
+    userName?: true
     categoryId?: true
     createdAt?: true
   }
@@ -2754,6 +2844,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpMaxAggregateInputType = {
     id?: true
     userId?: true
+    userName?: true
     categoryId?: true
     createdAt?: true
   }
@@ -2761,6 +2852,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpCountAggregateInputType = {
     id?: true
     userId?: true
+    userName?: true
     categoryId?: true
     createdAt?: true
     _all?: true
@@ -2841,6 +2933,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpGroupByOutputType = {
     id: string
     userId: string
+    userName: string
     categoryId: string
     createdAt: Date
     _count: UserCategoryLinkUpCountAggregateOutputType | null
@@ -2865,6 +2958,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    userName?: boolean
     categoryId?: boolean
     createdAt?: boolean
     category?: boolean | UserCategoryDefaultArgs<ExtArgs>
@@ -2873,6 +2967,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    userName?: boolean
     categoryId?: boolean
     createdAt?: boolean
     category?: boolean | UserCategoryDefaultArgs<ExtArgs>
@@ -2881,6 +2976,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpSelectScalar = {
     id?: boolean
     userId?: boolean
+    userName?: boolean
     categoryId?: boolean
     createdAt?: boolean
   }
@@ -2900,6 +2996,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      userName: string
       categoryId: string
       createdAt: Date
     }, ExtArgs["result"]["userCategoryLinkUp"]>
@@ -3298,6 +3395,7 @@ export namespace Prisma {
   interface UserCategoryLinkUpFieldRefs {
     readonly id: FieldRef<"UserCategoryLinkUp", 'String'>
     readonly userId: FieldRef<"UserCategoryLinkUp", 'String'>
+    readonly userName: FieldRef<"UserCategoryLinkUp", 'String'>
     readonly categoryId: FieldRef<"UserCategoryLinkUp", 'String'>
     readonly createdAt: FieldRef<"UserCategoryLinkUp", 'DateTime'>
   }
@@ -8495,8 +8593,18 @@ export namespace Prisma {
 
   export type AggregateLeave = {
     _count: LeaveCountAggregateOutputType | null
+    _avg: LeaveAvgAggregateOutputType | null
+    _sum: LeaveSumAggregateOutputType | null
     _min: LeaveMinAggregateOutputType | null
     _max: LeaveMaxAggregateOutputType | null
+  }
+
+  export type LeaveAvgAggregateOutputType = {
+    effectiveDays: Decimal | null
+  }
+
+  export type LeaveSumAggregateOutputType = {
+    effectiveDays: Decimal | null
   }
 
   export type LeaveMinAggregateOutputType = {
@@ -8504,6 +8612,7 @@ export namespace Prisma {
     type: $Enums.LeaveType | null
     userId: string | null
     message: string | null
+    effectiveDays: Decimal | null
     startDate: Date | null
     endDate: Date | null
     status: $Enums.LeaveStatus | null
@@ -8515,6 +8624,7 @@ export namespace Prisma {
     type: $Enums.LeaveType | null
     userId: string | null
     message: string | null
+    effectiveDays: Decimal | null
     startDate: Date | null
     endDate: Date | null
     status: $Enums.LeaveStatus | null
@@ -8526,6 +8636,7 @@ export namespace Prisma {
     type: number
     userId: number
     message: number
+    effectiveDays: number
     startDate: number
     endDate: number
     status: number
@@ -8534,11 +8645,20 @@ export namespace Prisma {
   }
 
 
+  export type LeaveAvgAggregateInputType = {
+    effectiveDays?: true
+  }
+
+  export type LeaveSumAggregateInputType = {
+    effectiveDays?: true
+  }
+
   export type LeaveMinAggregateInputType = {
     id?: true
     type?: true
     userId?: true
     message?: true
+    effectiveDays?: true
     startDate?: true
     endDate?: true
     status?: true
@@ -8550,6 +8670,7 @@ export namespace Prisma {
     type?: true
     userId?: true
     message?: true
+    effectiveDays?: true
     startDate?: true
     endDate?: true
     status?: true
@@ -8561,6 +8682,7 @@ export namespace Prisma {
     type?: true
     userId?: true
     message?: true
+    effectiveDays?: true
     startDate?: true
     endDate?: true
     status?: true
@@ -8606,6 +8728,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: LeaveAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LeaveSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: LeaveMinAggregateInputType
@@ -8636,6 +8770,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: LeaveCountAggregateInputType | true
+    _avg?: LeaveAvgAggregateInputType
+    _sum?: LeaveSumAggregateInputType
     _min?: LeaveMinAggregateInputType
     _max?: LeaveMaxAggregateInputType
   }
@@ -8645,11 +8781,14 @@ export namespace Prisma {
     type: $Enums.LeaveType
     userId: string
     message: string | null
+    effectiveDays: Decimal | null
     startDate: Date
     endDate: Date
     status: $Enums.LeaveStatus
     createdAt: Date
     _count: LeaveCountAggregateOutputType | null
+    _avg: LeaveAvgAggregateOutputType | null
+    _sum: LeaveSumAggregateOutputType | null
     _min: LeaveMinAggregateOutputType | null
     _max: LeaveMaxAggregateOutputType | null
   }
@@ -8673,6 +8812,7 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     message?: boolean
+    effectiveDays?: boolean
     startDate?: boolean
     endDate?: boolean
     status?: boolean
@@ -8684,6 +8824,7 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     message?: boolean
+    effectiveDays?: boolean
     startDate?: boolean
     endDate?: boolean
     status?: boolean
@@ -8695,6 +8836,7 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     message?: boolean
+    effectiveDays?: boolean
     startDate?: boolean
     endDate?: boolean
     status?: boolean
@@ -8710,6 +8852,7 @@ export namespace Prisma {
       type: $Enums.LeaveType
       userId: string
       message: string | null
+      effectiveDays: Prisma.Decimal | null
       startDate: Date
       endDate: Date
       status: $Enums.LeaveStatus
@@ -9111,6 +9254,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Leave", 'LeaveType'>
     readonly userId: FieldRef<"Leave", 'String'>
     readonly message: FieldRef<"Leave", 'String'>
+    readonly effectiveDays: FieldRef<"Leave", 'Decimal'>
     readonly startDate: FieldRef<"Leave", 'DateTime'>
     readonly endDate: FieldRef<"Leave", 'DateTime'>
     readonly status: FieldRef<"Leave", 'LeaveStatus'>
@@ -12175,6 +12319,906 @@ export namespace Prisma {
 
 
   /**
+   * Model NlqSqlMapping
+   */
+
+  export type AggregateNlqSqlMapping = {
+    _count: NlqSqlMappingCountAggregateOutputType | null
+    _avg: NlqSqlMappingAvgAggregateOutputType | null
+    _sum: NlqSqlMappingSumAggregateOutputType | null
+    _min: NlqSqlMappingMinAggregateOutputType | null
+    _max: NlqSqlMappingMaxAggregateOutputType | null
+  }
+
+  export type NlqSqlMappingAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NlqSqlMappingSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NlqSqlMappingMinAggregateOutputType = {
+    id: number | null
+    nlq: string | null
+    sql: string | null
+    embedding: Buffer | null
+  }
+
+  export type NlqSqlMappingMaxAggregateOutputType = {
+    id: number | null
+    nlq: string | null
+    sql: string | null
+    embedding: Buffer | null
+  }
+
+  export type NlqSqlMappingCountAggregateOutputType = {
+    id: number
+    nlq: number
+    sql: number
+    embedding: number
+    _all: number
+  }
+
+
+  export type NlqSqlMappingAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type NlqSqlMappingSumAggregateInputType = {
+    id?: true
+  }
+
+  export type NlqSqlMappingMinAggregateInputType = {
+    id?: true
+    nlq?: true
+    sql?: true
+    embedding?: true
+  }
+
+  export type NlqSqlMappingMaxAggregateInputType = {
+    id?: true
+    nlq?: true
+    sql?: true
+    embedding?: true
+  }
+
+  export type NlqSqlMappingCountAggregateInputType = {
+    id?: true
+    nlq?: true
+    sql?: true
+    embedding?: true
+    _all?: true
+  }
+
+  export type NlqSqlMappingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NlqSqlMapping to aggregate.
+     */
+    where?: NlqSqlMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NlqSqlMappings to fetch.
+     */
+    orderBy?: NlqSqlMappingOrderByWithRelationInput | NlqSqlMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NlqSqlMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NlqSqlMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NlqSqlMappings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NlqSqlMappings
+    **/
+    _count?: true | NlqSqlMappingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NlqSqlMappingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NlqSqlMappingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NlqSqlMappingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NlqSqlMappingMaxAggregateInputType
+  }
+
+  export type GetNlqSqlMappingAggregateType<T extends NlqSqlMappingAggregateArgs> = {
+        [P in keyof T & keyof AggregateNlqSqlMapping]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNlqSqlMapping[P]>
+      : GetScalarType<T[P], AggregateNlqSqlMapping[P]>
+  }
+
+
+
+
+  export type NlqSqlMappingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NlqSqlMappingWhereInput
+    orderBy?: NlqSqlMappingOrderByWithAggregationInput | NlqSqlMappingOrderByWithAggregationInput[]
+    by: NlqSqlMappingScalarFieldEnum[] | NlqSqlMappingScalarFieldEnum
+    having?: NlqSqlMappingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NlqSqlMappingCountAggregateInputType | true
+    _avg?: NlqSqlMappingAvgAggregateInputType
+    _sum?: NlqSqlMappingSumAggregateInputType
+    _min?: NlqSqlMappingMinAggregateInputType
+    _max?: NlqSqlMappingMaxAggregateInputType
+  }
+
+  export type NlqSqlMappingGroupByOutputType = {
+    id: number
+    nlq: string
+    sql: string
+    embedding: Buffer | null
+    _count: NlqSqlMappingCountAggregateOutputType | null
+    _avg: NlqSqlMappingAvgAggregateOutputType | null
+    _sum: NlqSqlMappingSumAggregateOutputType | null
+    _min: NlqSqlMappingMinAggregateOutputType | null
+    _max: NlqSqlMappingMaxAggregateOutputType | null
+  }
+
+  type GetNlqSqlMappingGroupByPayload<T extends NlqSqlMappingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NlqSqlMappingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NlqSqlMappingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NlqSqlMappingGroupByOutputType[P]>
+            : GetScalarType<T[P], NlqSqlMappingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NlqSqlMappingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nlq?: boolean
+    sql?: boolean
+    embedding?: boolean
+  }, ExtArgs["result"]["nlqSqlMapping"]>
+
+  export type NlqSqlMappingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nlq?: boolean
+    sql?: boolean
+    embedding?: boolean
+  }, ExtArgs["result"]["nlqSqlMapping"]>
+
+  export type NlqSqlMappingSelectScalar = {
+    id?: boolean
+    nlq?: boolean
+    sql?: boolean
+    embedding?: boolean
+  }
+
+
+  export type $NlqSqlMappingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NlqSqlMapping"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nlq: string
+      sql: string
+      embedding: Buffer | null
+    }, ExtArgs["result"]["nlqSqlMapping"]>
+    composites: {}
+  }
+
+  type NlqSqlMappingGetPayload<S extends boolean | null | undefined | NlqSqlMappingDefaultArgs> = $Result.GetResult<Prisma.$NlqSqlMappingPayload, S>
+
+  type NlqSqlMappingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<NlqSqlMappingFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: NlqSqlMappingCountAggregateInputType | true
+    }
+
+  export interface NlqSqlMappingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NlqSqlMapping'], meta: { name: 'NlqSqlMapping' } }
+    /**
+     * Find zero or one NlqSqlMapping that matches the filter.
+     * @param {NlqSqlMappingFindUniqueArgs} args - Arguments to find a NlqSqlMapping
+     * @example
+     * // Get one NlqSqlMapping
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NlqSqlMappingFindUniqueArgs>(args: SelectSubset<T, NlqSqlMappingFindUniqueArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one NlqSqlMapping that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {NlqSqlMappingFindUniqueOrThrowArgs} args - Arguments to find a NlqSqlMapping
+     * @example
+     * // Get one NlqSqlMapping
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NlqSqlMappingFindUniqueOrThrowArgs>(args: SelectSubset<T, NlqSqlMappingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first NlqSqlMapping that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingFindFirstArgs} args - Arguments to find a NlqSqlMapping
+     * @example
+     * // Get one NlqSqlMapping
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NlqSqlMappingFindFirstArgs>(args?: SelectSubset<T, NlqSqlMappingFindFirstArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first NlqSqlMapping that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingFindFirstOrThrowArgs} args - Arguments to find a NlqSqlMapping
+     * @example
+     * // Get one NlqSqlMapping
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NlqSqlMappingFindFirstOrThrowArgs>(args?: SelectSubset<T, NlqSqlMappingFindFirstOrThrowArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more NlqSqlMappings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NlqSqlMappings
+     * const nlqSqlMappings = await prisma.nlqSqlMapping.findMany()
+     * 
+     * // Get first 10 NlqSqlMappings
+     * const nlqSqlMappings = await prisma.nlqSqlMapping.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nlqSqlMappingWithIdOnly = await prisma.nlqSqlMapping.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NlqSqlMappingFindManyArgs>(args?: SelectSubset<T, NlqSqlMappingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a NlqSqlMapping.
+     * @param {NlqSqlMappingCreateArgs} args - Arguments to create a NlqSqlMapping.
+     * @example
+     * // Create one NlqSqlMapping
+     * const NlqSqlMapping = await prisma.nlqSqlMapping.create({
+     *   data: {
+     *     // ... data to create a NlqSqlMapping
+     *   }
+     * })
+     * 
+     */
+    create<T extends NlqSqlMappingCreateArgs>(args: SelectSubset<T, NlqSqlMappingCreateArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many NlqSqlMappings.
+     * @param {NlqSqlMappingCreateManyArgs} args - Arguments to create many NlqSqlMappings.
+     * @example
+     * // Create many NlqSqlMappings
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NlqSqlMappingCreateManyArgs>(args?: SelectSubset<T, NlqSqlMappingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NlqSqlMappings and returns the data saved in the database.
+     * @param {NlqSqlMappingCreateManyAndReturnArgs} args - Arguments to create many NlqSqlMappings.
+     * @example
+     * // Create many NlqSqlMappings
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NlqSqlMappings and only return the `id`
+     * const nlqSqlMappingWithIdOnly = await prisma.nlqSqlMapping.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NlqSqlMappingCreateManyAndReturnArgs>(args?: SelectSubset<T, NlqSqlMappingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a NlqSqlMapping.
+     * @param {NlqSqlMappingDeleteArgs} args - Arguments to delete one NlqSqlMapping.
+     * @example
+     * // Delete one NlqSqlMapping
+     * const NlqSqlMapping = await prisma.nlqSqlMapping.delete({
+     *   where: {
+     *     // ... filter to delete one NlqSqlMapping
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NlqSqlMappingDeleteArgs>(args: SelectSubset<T, NlqSqlMappingDeleteArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one NlqSqlMapping.
+     * @param {NlqSqlMappingUpdateArgs} args - Arguments to update one NlqSqlMapping.
+     * @example
+     * // Update one NlqSqlMapping
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NlqSqlMappingUpdateArgs>(args: SelectSubset<T, NlqSqlMappingUpdateArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more NlqSqlMappings.
+     * @param {NlqSqlMappingDeleteManyArgs} args - Arguments to filter NlqSqlMappings to delete.
+     * @example
+     * // Delete a few NlqSqlMappings
+     * const { count } = await prisma.nlqSqlMapping.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NlqSqlMappingDeleteManyArgs>(args?: SelectSubset<T, NlqSqlMappingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NlqSqlMappings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NlqSqlMappings
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NlqSqlMappingUpdateManyArgs>(args: SelectSubset<T, NlqSqlMappingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one NlqSqlMapping.
+     * @param {NlqSqlMappingUpsertArgs} args - Arguments to update or create a NlqSqlMapping.
+     * @example
+     * // Update or create a NlqSqlMapping
+     * const nlqSqlMapping = await prisma.nlqSqlMapping.upsert({
+     *   create: {
+     *     // ... data to create a NlqSqlMapping
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NlqSqlMapping we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NlqSqlMappingUpsertArgs>(args: SelectSubset<T, NlqSqlMappingUpsertArgs<ExtArgs>>): Prisma__NlqSqlMappingClient<$Result.GetResult<Prisma.$NlqSqlMappingPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of NlqSqlMappings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingCountArgs} args - Arguments to filter NlqSqlMappings to count.
+     * @example
+     * // Count the number of NlqSqlMappings
+     * const count = await prisma.nlqSqlMapping.count({
+     *   where: {
+     *     // ... the filter for the NlqSqlMappings we want to count
+     *   }
+     * })
+    **/
+    count<T extends NlqSqlMappingCountArgs>(
+      args?: Subset<T, NlqSqlMappingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NlqSqlMappingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NlqSqlMapping.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NlqSqlMappingAggregateArgs>(args: Subset<T, NlqSqlMappingAggregateArgs>): Prisma.PrismaPromise<GetNlqSqlMappingAggregateType<T>>
+
+    /**
+     * Group by NlqSqlMapping.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NlqSqlMappingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NlqSqlMappingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NlqSqlMappingGroupByArgs['orderBy'] }
+        : { orderBy?: NlqSqlMappingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NlqSqlMappingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNlqSqlMappingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NlqSqlMapping model
+   */
+  readonly fields: NlqSqlMappingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NlqSqlMapping.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NlqSqlMappingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NlqSqlMapping model
+   */ 
+  interface NlqSqlMappingFieldRefs {
+    readonly id: FieldRef<"NlqSqlMapping", 'Int'>
+    readonly nlq: FieldRef<"NlqSqlMapping", 'String'>
+    readonly sql: FieldRef<"NlqSqlMapping", 'String'>
+    readonly embedding: FieldRef<"NlqSqlMapping", 'Bytes'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NlqSqlMapping findUnique
+   */
+  export type NlqSqlMappingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NlqSqlMapping to fetch.
+     */
+    where: NlqSqlMappingWhereUniqueInput
+  }
+
+  /**
+   * NlqSqlMapping findUniqueOrThrow
+   */
+  export type NlqSqlMappingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NlqSqlMapping to fetch.
+     */
+    where: NlqSqlMappingWhereUniqueInput
+  }
+
+  /**
+   * NlqSqlMapping findFirst
+   */
+  export type NlqSqlMappingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NlqSqlMapping to fetch.
+     */
+    where?: NlqSqlMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NlqSqlMappings to fetch.
+     */
+    orderBy?: NlqSqlMappingOrderByWithRelationInput | NlqSqlMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NlqSqlMappings.
+     */
+    cursor?: NlqSqlMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NlqSqlMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NlqSqlMappings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NlqSqlMappings.
+     */
+    distinct?: NlqSqlMappingScalarFieldEnum | NlqSqlMappingScalarFieldEnum[]
+  }
+
+  /**
+   * NlqSqlMapping findFirstOrThrow
+   */
+  export type NlqSqlMappingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NlqSqlMapping to fetch.
+     */
+    where?: NlqSqlMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NlqSqlMappings to fetch.
+     */
+    orderBy?: NlqSqlMappingOrderByWithRelationInput | NlqSqlMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NlqSqlMappings.
+     */
+    cursor?: NlqSqlMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NlqSqlMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NlqSqlMappings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NlqSqlMappings.
+     */
+    distinct?: NlqSqlMappingScalarFieldEnum | NlqSqlMappingScalarFieldEnum[]
+  }
+
+  /**
+   * NlqSqlMapping findMany
+   */
+  export type NlqSqlMappingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NlqSqlMappings to fetch.
+     */
+    where?: NlqSqlMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NlqSqlMappings to fetch.
+     */
+    orderBy?: NlqSqlMappingOrderByWithRelationInput | NlqSqlMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NlqSqlMappings.
+     */
+    cursor?: NlqSqlMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NlqSqlMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NlqSqlMappings.
+     */
+    skip?: number
+    distinct?: NlqSqlMappingScalarFieldEnum | NlqSqlMappingScalarFieldEnum[]
+  }
+
+  /**
+   * NlqSqlMapping create
+   */
+  export type NlqSqlMappingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * The data needed to create a NlqSqlMapping.
+     */
+    data: XOR<NlqSqlMappingCreateInput, NlqSqlMappingUncheckedCreateInput>
+  }
+
+  /**
+   * NlqSqlMapping createMany
+   */
+  export type NlqSqlMappingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NlqSqlMappings.
+     */
+    data: NlqSqlMappingCreateManyInput | NlqSqlMappingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NlqSqlMapping createManyAndReturn
+   */
+  export type NlqSqlMappingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many NlqSqlMappings.
+     */
+    data: NlqSqlMappingCreateManyInput | NlqSqlMappingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NlqSqlMapping update
+   */
+  export type NlqSqlMappingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * The data needed to update a NlqSqlMapping.
+     */
+    data: XOR<NlqSqlMappingUpdateInput, NlqSqlMappingUncheckedUpdateInput>
+    /**
+     * Choose, which NlqSqlMapping to update.
+     */
+    where: NlqSqlMappingWhereUniqueInput
+  }
+
+  /**
+   * NlqSqlMapping updateMany
+   */
+  export type NlqSqlMappingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NlqSqlMappings.
+     */
+    data: XOR<NlqSqlMappingUpdateManyMutationInput, NlqSqlMappingUncheckedUpdateManyInput>
+    /**
+     * Filter which NlqSqlMappings to update
+     */
+    where?: NlqSqlMappingWhereInput
+  }
+
+  /**
+   * NlqSqlMapping upsert
+   */
+  export type NlqSqlMappingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * The filter to search for the NlqSqlMapping to update in case it exists.
+     */
+    where: NlqSqlMappingWhereUniqueInput
+    /**
+     * In case the NlqSqlMapping found by the `where` argument doesn't exist, create a new NlqSqlMapping with this data.
+     */
+    create: XOR<NlqSqlMappingCreateInput, NlqSqlMappingUncheckedCreateInput>
+    /**
+     * In case the NlqSqlMapping was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NlqSqlMappingUpdateInput, NlqSqlMappingUncheckedUpdateInput>
+  }
+
+  /**
+   * NlqSqlMapping delete
+   */
+  export type NlqSqlMappingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+    /**
+     * Filter which NlqSqlMapping to delete.
+     */
+    where: NlqSqlMappingWhereUniqueInput
+  }
+
+  /**
+   * NlqSqlMapping deleteMany
+   */
+  export type NlqSqlMappingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NlqSqlMappings to delete
+     */
+    where?: NlqSqlMappingWhereInput
+  }
+
+  /**
+   * NlqSqlMapping without action
+   */
+  export type NlqSqlMappingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NlqSqlMapping
+     */
+    select?: NlqSqlMappingSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12199,6 +13243,7 @@ export namespace Prisma {
   export const UserCategoryLinkUpScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    userName: 'userName',
     categoryId: 'categoryId',
     createdAt: 'createdAt'
   };
@@ -12268,6 +13313,7 @@ export namespace Prisma {
     type: 'type',
     userId: 'userId',
     message: 'message',
+    effectiveDays: 'effectiveDays',
     startDate: 'startDate',
     endDate: 'endDate',
     status: 'status',
@@ -12309,6 +13355,16 @@ export namespace Prisma {
   };
 
   export type BreakScalarFieldEnum = (typeof BreakScalarFieldEnum)[keyof typeof BreakScalarFieldEnum]
+
+
+  export const NlqSqlMappingScalarFieldEnum: {
+    id: 'id',
+    nlq: 'nlq',
+    sql: 'sql',
+    embedding: 'embedding'
+  };
+
+  export type NlqSqlMappingScalarFieldEnum = (typeof NlqSqlMappingScalarFieldEnum)[keyof typeof NlqSqlMappingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12453,6 +13509,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Bytes'
+   */
+  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+  /**
+   * Reference to a field of type 'Bytes[]'
+   */
+  export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -12512,6 +13582,7 @@ export namespace Prisma {
     NOT?: UserCategoryLinkUpWhereInput | UserCategoryLinkUpWhereInput[]
     id?: UuidFilter<"UserCategoryLinkUp"> | string
     userId?: UuidFilter<"UserCategoryLinkUp"> | string
+    userName?: StringFilter<"UserCategoryLinkUp"> | string
     categoryId?: UuidFilter<"UserCategoryLinkUp"> | string
     createdAt?: DateTimeFilter<"UserCategoryLinkUp"> | Date | string
     category?: XOR<UserCategoryRelationFilter, UserCategoryWhereInput>
@@ -12520,6 +13591,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    userName?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     category?: UserCategoryOrderByWithRelationInput
@@ -12531,6 +13603,7 @@ export namespace Prisma {
     AND?: UserCategoryLinkUpWhereInput | UserCategoryLinkUpWhereInput[]
     OR?: UserCategoryLinkUpWhereInput[]
     NOT?: UserCategoryLinkUpWhereInput | UserCategoryLinkUpWhereInput[]
+    userName?: StringFilter<"UserCategoryLinkUp"> | string
     categoryId?: UuidFilter<"UserCategoryLinkUp"> | string
     createdAt?: DateTimeFilter<"UserCategoryLinkUp"> | Date | string
     category?: XOR<UserCategoryRelationFilter, UserCategoryWhereInput>
@@ -12539,6 +13612,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    userName?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     _count?: UserCategoryLinkUpCountOrderByAggregateInput
@@ -12552,6 +13626,7 @@ export namespace Prisma {
     NOT?: UserCategoryLinkUpScalarWhereWithAggregatesInput | UserCategoryLinkUpScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"UserCategoryLinkUp"> | string
     userId?: UuidWithAggregatesFilter<"UserCategoryLinkUp"> | string
+    userName?: StringWithAggregatesFilter<"UserCategoryLinkUp"> | string
     categoryId?: UuidWithAggregatesFilter<"UserCategoryLinkUp"> | string
     createdAt?: DateTimeWithAggregatesFilter<"UserCategoryLinkUp"> | Date | string
   }
@@ -12753,16 +13828,16 @@ export namespace Prisma {
 
   export type HolidayWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     AND?: HolidayWhereInput | HolidayWhereInput[]
     OR?: HolidayWhereInput[]
     NOT?: HolidayWhereInput | HolidayWhereInput[]
-    name?: StringFilter<"Holiday"> | string
     date?: DateTimeFilter<"Holiday"> | Date | string
     type?: EnumHolidayTypeFilter<"Holiday"> | $Enums.HolidayType
     createdAt?: DateTimeFilter<"Holiday"> | Date | string
     userCategories?: UserCategoryListRelationFilter
     userHolidays?: UserHolidayListRelationFilter
-  }, "id">
+  }, "id" | "name">
 
   export type HolidayOrderByWithAggregationInput = {
     id?: SortOrder
@@ -12861,6 +13936,7 @@ export namespace Prisma {
     type?: EnumLeaveTypeFilter<"Leave"> | $Enums.LeaveType
     userId?: UuidFilter<"Leave"> | string
     message?: StringNullableFilter<"Leave"> | string | null
+    effectiveDays?: DecimalNullableFilter<"Leave"> | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeFilter<"Leave"> | Date | string
     endDate?: DateTimeFilter<"Leave"> | Date | string
     status?: EnumLeaveStatusFilter<"Leave"> | $Enums.LeaveStatus
@@ -12872,6 +13948,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     message?: SortOrderInput | SortOrder
+    effectiveDays?: SortOrderInput | SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     status?: SortOrder
@@ -12880,30 +13957,34 @@ export namespace Prisma {
 
   export type LeaveWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId?: string
     AND?: LeaveWhereInput | LeaveWhereInput[]
     OR?: LeaveWhereInput[]
     NOT?: LeaveWhereInput | LeaveWhereInput[]
     type?: EnumLeaveTypeFilter<"Leave"> | $Enums.LeaveType
+    userId?: UuidFilter<"Leave"> | string
     message?: StringNullableFilter<"Leave"> | string | null
+    effectiveDays?: DecimalNullableFilter<"Leave"> | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeFilter<"Leave"> | Date | string
     endDate?: DateTimeFilter<"Leave"> | Date | string
     status?: EnumLeaveStatusFilter<"Leave"> | $Enums.LeaveStatus
     createdAt?: DateTimeFilter<"Leave"> | Date | string
-  }, "id" | "userId">
+  }, "id">
 
   export type LeaveOrderByWithAggregationInput = {
     id?: SortOrder
     type?: SortOrder
     userId?: SortOrder
     message?: SortOrderInput | SortOrder
+    effectiveDays?: SortOrderInput | SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     _count?: LeaveCountOrderByAggregateInput
+    _avg?: LeaveAvgOrderByAggregateInput
     _max?: LeaveMaxOrderByAggregateInput
     _min?: LeaveMinOrderByAggregateInput
+    _sum?: LeaveSumOrderByAggregateInput
   }
 
   export type LeaveScalarWhereWithAggregatesInput = {
@@ -12914,6 +13995,7 @@ export namespace Prisma {
     type?: EnumLeaveTypeWithAggregatesFilter<"Leave"> | $Enums.LeaveType
     userId?: UuidWithAggregatesFilter<"Leave"> | string
     message?: StringNullableWithAggregatesFilter<"Leave"> | string | null
+    effectiveDays?: DecimalNullableWithAggregatesFilter<"Leave"> | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeWithAggregatesFilter<"Leave"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Leave"> | Date | string
     status?: EnumLeaveStatusWithAggregatesFilter<"Leave"> | $Enums.LeaveStatus
@@ -13089,6 +14171,55 @@ export namespace Prisma {
     breakEnd?: DateTimeNullableWithAggregatesFilter<"Break"> | Date | string | null
   }
 
+  export type NlqSqlMappingWhereInput = {
+    AND?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
+    OR?: NlqSqlMappingWhereInput[]
+    NOT?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
+    id?: IntFilter<"NlqSqlMapping"> | number
+    nlq?: StringFilter<"NlqSqlMapping"> | string
+    sql?: StringFilter<"NlqSqlMapping"> | string
+    embedding?: BytesNullableFilter<"NlqSqlMapping"> | Buffer | null
+  }
+
+  export type NlqSqlMappingOrderByWithRelationInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    sql?: SortOrder
+    embedding?: SortOrderInput | SortOrder
+  }
+
+  export type NlqSqlMappingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
+    OR?: NlqSqlMappingWhereInput[]
+    NOT?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
+    nlq?: StringFilter<"NlqSqlMapping"> | string
+    sql?: StringFilter<"NlqSqlMapping"> | string
+    embedding?: BytesNullableFilter<"NlqSqlMapping"> | Buffer | null
+  }, "id">
+
+  export type NlqSqlMappingOrderByWithAggregationInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    sql?: SortOrder
+    embedding?: SortOrderInput | SortOrder
+    _count?: NlqSqlMappingCountOrderByAggregateInput
+    _avg?: NlqSqlMappingAvgOrderByAggregateInput
+    _max?: NlqSqlMappingMaxOrderByAggregateInput
+    _min?: NlqSqlMappingMinOrderByAggregateInput
+    _sum?: NlqSqlMappingSumOrderByAggregateInput
+  }
+
+  export type NlqSqlMappingScalarWhereWithAggregatesInput = {
+    AND?: NlqSqlMappingScalarWhereWithAggregatesInput | NlqSqlMappingScalarWhereWithAggregatesInput[]
+    OR?: NlqSqlMappingScalarWhereWithAggregatesInput[]
+    NOT?: NlqSqlMappingScalarWhereWithAggregatesInput | NlqSqlMappingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"NlqSqlMapping"> | number
+    nlq?: StringWithAggregatesFilter<"NlqSqlMapping"> | string
+    sql?: StringWithAggregatesFilter<"NlqSqlMapping"> | string
+    embedding?: BytesNullableWithAggregatesFilter<"NlqSqlMapping"> | Buffer | null
+  }
+
   export type organisationCreateInput = {
     orgId: string
     type?: $Enums.organisationType
@@ -13127,6 +14258,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpCreateInput = {
     id?: string
     userId: string
+    userName?: string
     createdAt?: Date | string
     category: UserCategoryCreateNestedOneWithoutUsersInput
   }
@@ -13134,6 +14266,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpUncheckedCreateInput = {
     id?: string
     userId: string
+    userName?: string
     categoryId: string
     createdAt?: Date | string
   }
@@ -13141,6 +14274,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: UserCategoryUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -13148,6 +14282,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13155,6 +14290,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpCreateManyInput = {
     id?: string
     userId: string
+    userName?: string
     categoryId: string
     createdAt?: Date | string
   }
@@ -13162,12 +14298,14 @@ export namespace Prisma {
   export type UserCategoryLinkUpUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCategoryLinkUpUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13489,6 +14627,7 @@ export namespace Prisma {
     type: $Enums.LeaveType
     userId: string
     message?: string | null
+    effectiveDays?: Decimal | DecimalJsLike | number | string | null
     startDate: Date | string
     endDate: Date | string
     status?: $Enums.LeaveStatus
@@ -13500,6 +14639,7 @@ export namespace Prisma {
     type: $Enums.LeaveType
     userId: string
     message?: string | null
+    effectiveDays?: Decimal | DecimalJsLike | number | string | null
     startDate: Date | string
     endDate: Date | string
     status?: $Enums.LeaveStatus
@@ -13511,6 +14651,7 @@ export namespace Prisma {
     type?: EnumLeaveTypeFieldUpdateOperationsInput | $Enums.LeaveType
     userId?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
+    effectiveDays?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumLeaveStatusFieldUpdateOperationsInput | $Enums.LeaveStatus
@@ -13522,6 +14663,7 @@ export namespace Prisma {
     type?: EnumLeaveTypeFieldUpdateOperationsInput | $Enums.LeaveType
     userId?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
+    effectiveDays?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumLeaveStatusFieldUpdateOperationsInput | $Enums.LeaveStatus
@@ -13533,6 +14675,7 @@ export namespace Prisma {
     type: $Enums.LeaveType
     userId: string
     message?: string | null
+    effectiveDays?: Decimal | DecimalJsLike | number | string | null
     startDate: Date | string
     endDate: Date | string
     status?: $Enums.LeaveStatus
@@ -13544,6 +14687,7 @@ export namespace Prisma {
     type?: EnumLeaveTypeFieldUpdateOperationsInput | $Enums.LeaveType
     userId?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
+    effectiveDays?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumLeaveStatusFieldUpdateOperationsInput | $Enums.LeaveStatus
@@ -13555,6 +14699,7 @@ export namespace Prisma {
     type?: EnumLeaveTypeFieldUpdateOperationsInput | $Enums.LeaveType
     userId?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
+    effectiveDays?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumLeaveStatusFieldUpdateOperationsInput | $Enums.LeaveStatus
@@ -13739,6 +14884,52 @@ export namespace Prisma {
     breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type NlqSqlMappingCreateInput = {
+    nlq: string
+    sql: string
+    embedding?: Buffer | null
+  }
+
+  export type NlqSqlMappingUncheckedCreateInput = {
+    id?: number
+    nlq: string
+    sql: string
+    embedding?: Buffer | null
+  }
+
+  export type NlqSqlMappingUpdateInput = {
+    nlq?: StringFieldUpdateOperationsInput | string
+    sql?: StringFieldUpdateOperationsInput | string
+    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+  }
+
+  export type NlqSqlMappingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nlq?: StringFieldUpdateOperationsInput | string
+    sql?: StringFieldUpdateOperationsInput | string
+    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+  }
+
+  export type NlqSqlMappingCreateManyInput = {
+    id?: number
+    nlq: string
+    sql: string
+    embedding?: Buffer | null
+  }
+
+  export type NlqSqlMappingUpdateManyMutationInput = {
+    nlq?: StringFieldUpdateOperationsInput | string
+    sql?: StringFieldUpdateOperationsInput | string
+    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+  }
+
+  export type NlqSqlMappingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nlq?: StringFieldUpdateOperationsInput | string
+    sql?: StringFieldUpdateOperationsInput | string
+    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -13835,6 +15026,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    userName?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
   }
@@ -13842,6 +15034,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    userName?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
   }
@@ -13849,6 +15042,7 @@ export namespace Prisma {
   export type UserCategoryLinkUpMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    userName?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
   }
@@ -14187,6 +15381,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type EnumLeaveStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.LeaveStatus | EnumLeaveStatusFieldRefInput<$PrismaModel>
     in?: $Enums.LeaveStatus[] | ListEnumLeaveStatusFieldRefInput<$PrismaModel>
@@ -14204,10 +15409,15 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     message?: SortOrder
+    effectiveDays?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type LeaveAvgOrderByAggregateInput = {
+    effectiveDays?: SortOrder
   }
 
   export type LeaveMaxOrderByAggregateInput = {
@@ -14215,6 +15425,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     message?: SortOrder
+    effectiveDays?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     status?: SortOrder
@@ -14226,10 +15437,15 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     message?: SortOrder
+    effectiveDays?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type LeaveSumOrderByAggregateInput = {
+    effectiveDays?: SortOrder
   }
 
   export type EnumLeaveTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -14258,6 +15474,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type EnumLeaveStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -14393,6 +15625,52 @@ export namespace Prisma {
     timeEntryId?: SortOrder
     breakStart?: SortOrder
     breakEnd?: SortOrder
+  }
+
+  export type BytesNullableFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableFilter<$PrismaModel> | Buffer | null
+  }
+
+  export type NlqSqlMappingCountOrderByAggregateInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    sql?: SortOrder
+    embedding?: SortOrder
+  }
+
+  export type NlqSqlMappingAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type NlqSqlMappingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    sql?: SortOrder
+    embedding?: SortOrder
+  }
+
+  export type NlqSqlMappingMinOrderByAggregateInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    sql?: SortOrder
+    embedding?: SortOrder
+  }
+
+  export type NlqSqlMappingSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BytesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Buffer | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBytesNullableFilter<$PrismaModel>
+    _max?: NestedBytesNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -14669,6 +15947,14 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type EnumLeaveStatusFieldUpdateOperationsInput = {
     set?: $Enums.LeaveStatus
   }
@@ -14731,6 +16017,10 @@ export namespace Prisma {
     upsert?: TimeEntryUpsertWithoutBreaksInput
     connect?: TimeEntryWhereUniqueInput
     update?: XOR<XOR<TimeEntryUpdateToOneWithWhereWithoutBreaksInput, TimeEntryUpdateWithoutBreaksInput>, TimeEntryUncheckedUpdateWithoutBreaksInput>
+  }
+
+  export type NullableBytesFieldUpdateOperationsInput = {
+    set?: Buffer | null
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -14934,6 +16224,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type NestedEnumLeaveStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.LeaveStatus | EnumLeaveStatusFieldRefInput<$PrismaModel>
     in?: $Enums.LeaveStatus[] | ListEnumLeaveStatusFieldRefInput<$PrismaModel>
@@ -14979,6 +16280,22 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumLeaveStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.LeaveStatus | EnumLeaveStatusFieldRefInput<$PrismaModel>
     in?: $Enums.LeaveStatus[] | ListEnumLeaveStatusFieldRefInput<$PrismaModel>
@@ -15012,6 +16329,23 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBytesNullableFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableFilter<$PrismaModel> | Buffer | null
+  }
+
+  export type NestedBytesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Buffer | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBytesNullableFilter<$PrismaModel>
+    _max?: NestedBytesNullableFilter<$PrismaModel>
   }
 
   export type UserCategoryCreateWithoutUsersInput = {
@@ -15121,12 +16455,14 @@ export namespace Prisma {
   export type UserCategoryLinkUpCreateWithoutCategoryInput = {
     id?: string
     userId: string
+    userName?: string
     createdAt?: Date | string
   }
 
   export type UserCategoryLinkUpUncheckedCreateWithoutCategoryInput = {
     id?: string
     userId: string
+    userName?: string
     createdAt?: Date | string
   }
 
@@ -15208,6 +16544,7 @@ export namespace Prisma {
     NOT?: UserCategoryLinkUpScalarWhereInput | UserCategoryLinkUpScalarWhereInput[]
     id?: UuidFilter<"UserCategoryLinkUp"> | string
     userId?: UuidFilter<"UserCategoryLinkUp"> | string
+    userName?: StringFilter<"UserCategoryLinkUp"> | string
     categoryId?: UuidFilter<"UserCategoryLinkUp"> | string
     createdAt?: DateTimeFilter<"UserCategoryLinkUp"> | Date | string
   }
@@ -15520,24 +16857,28 @@ export namespace Prisma {
   export type UserCategoryLinkUpCreateManyCategoryInput = {
     id?: string
     userId: string
+    userName?: string
     createdAt?: Date | string
   }
 
   export type UserCategoryLinkUpUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCategoryLinkUpUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCategoryLinkUpUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -15701,6 +17042,10 @@ export namespace Prisma {
      * @deprecated Use BreakDefaultArgs instead
      */
     export type BreakArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BreakDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use NlqSqlMappingDefaultArgs instead
+     */
+    export type NlqSqlMappingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = NlqSqlMappingDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
