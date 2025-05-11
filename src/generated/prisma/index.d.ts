@@ -69,6 +69,16 @@ export type TimeEntry = $Result.DefaultSelection<Prisma.$TimeEntryPayload>
  */
 export type Break = $Result.DefaultSelection<Prisma.$BreakPayload>
 /**
+ * Model UserStreak
+ * 
+ */
+export type UserStreak = $Result.DefaultSelection<Prisma.$UserStreakPayload>
+/**
+ * Model NqlFunctionMapping
+ * 
+ */
+export type NqlFunctionMapping = $Result.DefaultSelection<Prisma.$NqlFunctionMappingPayload>
+/**
  * Model NlqSqlMapping
  * 
  */
@@ -362,6 +372,26 @@ export class PrismaClient<
     * ```
     */
   get break(): Prisma.BreakDelegate<ExtArgs>;
+
+  /**
+   * `prisma.userStreak`: Exposes CRUD operations for the **UserStreak** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserStreaks
+    * const userStreaks = await prisma.userStreak.findMany()
+    * ```
+    */
+  get userStreak(): Prisma.UserStreakDelegate<ExtArgs>;
+
+  /**
+   * `prisma.nqlFunctionMapping`: Exposes CRUD operations for the **NqlFunctionMapping** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NqlFunctionMappings
+    * const nqlFunctionMappings = await prisma.nqlFunctionMapping.findMany()
+    * ```
+    */
+  get nqlFunctionMapping(): Prisma.NqlFunctionMappingDelegate<ExtArgs>;
 
   /**
    * `prisma.nlqSqlMapping`: Exposes CRUD operations for the **NlqSqlMapping** model.
@@ -824,6 +854,8 @@ export namespace Prisma {
     UserSchedule: 'UserSchedule',
     TimeEntry: 'TimeEntry',
     Break: 'Break',
+    UserStreak: 'UserStreak',
+    NqlFunctionMapping: 'NqlFunctionMapping',
     NlqSqlMapping: 'NlqSqlMapping'
   };
 
@@ -840,7 +872,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userHoliday" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break" | "nlqSqlMapping"
+      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userHoliday" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break" | "userStreak" | "nqlFunctionMapping" | "nlqSqlMapping"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1611,6 +1643,146 @@ export namespace Prisma {
           count: {
             args: Prisma.BreakCountArgs<ExtArgs>
             result: $Utils.Optional<BreakCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserStreak: {
+        payload: Prisma.$UserStreakPayload<ExtArgs>
+        fields: Prisma.UserStreakFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserStreakFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserStreakFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>
+          }
+          findFirst: {
+            args: Prisma.UserStreakFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserStreakFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>
+          }
+          findMany: {
+            args: Prisma.UserStreakFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>[]
+          }
+          create: {
+            args: Prisma.UserStreakCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>
+          }
+          createMany: {
+            args: Prisma.UserStreakCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserStreakCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>[]
+          }
+          delete: {
+            args: Prisma.UserStreakDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>
+          }
+          update: {
+            args: Prisma.UserStreakUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserStreakDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserStreakUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserStreakUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserStreakPayload>
+          }
+          aggregate: {
+            args: Prisma.UserStreakAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserStreak>
+          }
+          groupBy: {
+            args: Prisma.UserStreakGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserStreakGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserStreakCountArgs<ExtArgs>
+            result: $Utils.Optional<UserStreakCountAggregateOutputType> | number
+          }
+        }
+      }
+      NqlFunctionMapping: {
+        payload: Prisma.$NqlFunctionMappingPayload<ExtArgs>
+        fields: Prisma.NqlFunctionMappingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NqlFunctionMappingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NqlFunctionMappingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>
+          }
+          findFirst: {
+            args: Prisma.NqlFunctionMappingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NqlFunctionMappingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>
+          }
+          findMany: {
+            args: Prisma.NqlFunctionMappingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>[]
+          }
+          create: {
+            args: Prisma.NqlFunctionMappingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>
+          }
+          createMany: {
+            args: Prisma.NqlFunctionMappingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NqlFunctionMappingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>[]
+          }
+          delete: {
+            args: Prisma.NqlFunctionMappingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>
+          }
+          update: {
+            args: Prisma.NqlFunctionMappingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>
+          }
+          deleteMany: {
+            args: Prisma.NqlFunctionMappingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NqlFunctionMappingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.NqlFunctionMappingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NqlFunctionMappingPayload>
+          }
+          aggregate: {
+            args: Prisma.NqlFunctionMappingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNqlFunctionMapping>
+          }
+          groupBy: {
+            args: Prisma.NqlFunctionMappingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NqlFunctionMappingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NqlFunctionMappingCountArgs<ExtArgs>
+            result: $Utils.Optional<NqlFunctionMappingCountAggregateOutputType> | number
           }
         }
       }
@@ -12319,75 +12491,1835 @@ export namespace Prisma {
 
 
   /**
+   * Model UserStreak
+   */
+
+  export type AggregateUserStreak = {
+    _count: UserStreakCountAggregateOutputType | null
+    _avg: UserStreakAvgAggregateOutputType | null
+    _sum: UserStreakSumAggregateOutputType | null
+    _min: UserStreakMinAggregateOutputType | null
+    _max: UserStreakMaxAggregateOutputType | null
+  }
+
+  export type UserStreakAvgAggregateOutputType = {
+    currentStreak: number | null
+  }
+
+  export type UserStreakSumAggregateOutputType = {
+    currentStreak: number | null
+  }
+
+  export type UserStreakMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    currentStreak: number | null
+    lastLoginDate: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserStreakMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    currentStreak: number | null
+    lastLoginDate: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserStreakCountAggregateOutputType = {
+    id: number
+    userId: number
+    currentStreak: number
+    lastLoginDate: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserStreakAvgAggregateInputType = {
+    currentStreak?: true
+  }
+
+  export type UserStreakSumAggregateInputType = {
+    currentStreak?: true
+  }
+
+  export type UserStreakMinAggregateInputType = {
+    id?: true
+    userId?: true
+    currentStreak?: true
+    lastLoginDate?: true
+    updatedAt?: true
+  }
+
+  export type UserStreakMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    currentStreak?: true
+    lastLoginDate?: true
+    updatedAt?: true
+  }
+
+  export type UserStreakCountAggregateInputType = {
+    id?: true
+    userId?: true
+    currentStreak?: true
+    lastLoginDate?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserStreakAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserStreak to aggregate.
+     */
+    where?: UserStreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserStreaks to fetch.
+     */
+    orderBy?: UserStreakOrderByWithRelationInput | UserStreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserStreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserStreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserStreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserStreaks
+    **/
+    _count?: true | UserStreakCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserStreakAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserStreakSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserStreakMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserStreakMaxAggregateInputType
+  }
+
+  export type GetUserStreakAggregateType<T extends UserStreakAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserStreak]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserStreak[P]>
+      : GetScalarType<T[P], AggregateUserStreak[P]>
+  }
+
+
+
+
+  export type UserStreakGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserStreakWhereInput
+    orderBy?: UserStreakOrderByWithAggregationInput | UserStreakOrderByWithAggregationInput[]
+    by: UserStreakScalarFieldEnum[] | UserStreakScalarFieldEnum
+    having?: UserStreakScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserStreakCountAggregateInputType | true
+    _avg?: UserStreakAvgAggregateInputType
+    _sum?: UserStreakSumAggregateInputType
+    _min?: UserStreakMinAggregateInputType
+    _max?: UserStreakMaxAggregateInputType
+  }
+
+  export type UserStreakGroupByOutputType = {
+    id: string
+    userId: string
+    currentStreak: number
+    lastLoginDate: Date
+    updatedAt: Date
+    _count: UserStreakCountAggregateOutputType | null
+    _avg: UserStreakAvgAggregateOutputType | null
+    _sum: UserStreakSumAggregateOutputType | null
+    _min: UserStreakMinAggregateOutputType | null
+    _max: UserStreakMaxAggregateOutputType | null
+  }
+
+  type GetUserStreakGroupByPayload<T extends UserStreakGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserStreakGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserStreakGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserStreakGroupByOutputType[P]>
+            : GetScalarType<T[P], UserStreakGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserStreakSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    currentStreak?: boolean
+    lastLoginDate?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userStreak"]>
+
+  export type UserStreakSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    currentStreak?: boolean
+    lastLoginDate?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["userStreak"]>
+
+  export type UserStreakSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    currentStreak?: boolean
+    lastLoginDate?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $UserStreakPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserStreak"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      currentStreak: number
+      lastLoginDate: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userStreak"]>
+    composites: {}
+  }
+
+  type UserStreakGetPayload<S extends boolean | null | undefined | UserStreakDefaultArgs> = $Result.GetResult<Prisma.$UserStreakPayload, S>
+
+  type UserStreakCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UserStreakFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UserStreakCountAggregateInputType | true
+    }
+
+  export interface UserStreakDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserStreak'], meta: { name: 'UserStreak' } }
+    /**
+     * Find zero or one UserStreak that matches the filter.
+     * @param {UserStreakFindUniqueArgs} args - Arguments to find a UserStreak
+     * @example
+     * // Get one UserStreak
+     * const userStreak = await prisma.userStreak.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserStreakFindUniqueArgs>(args: SelectSubset<T, UserStreakFindUniqueArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one UserStreak that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {UserStreakFindUniqueOrThrowArgs} args - Arguments to find a UserStreak
+     * @example
+     * // Get one UserStreak
+     * const userStreak = await prisma.userStreak.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserStreakFindUniqueOrThrowArgs>(args: SelectSubset<T, UserStreakFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first UserStreak that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakFindFirstArgs} args - Arguments to find a UserStreak
+     * @example
+     * // Get one UserStreak
+     * const userStreak = await prisma.userStreak.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserStreakFindFirstArgs>(args?: SelectSubset<T, UserStreakFindFirstArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first UserStreak that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakFindFirstOrThrowArgs} args - Arguments to find a UserStreak
+     * @example
+     * // Get one UserStreak
+     * const userStreak = await prisma.userStreak.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserStreakFindFirstOrThrowArgs>(args?: SelectSubset<T, UserStreakFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more UserStreaks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserStreaks
+     * const userStreaks = await prisma.userStreak.findMany()
+     * 
+     * // Get first 10 UserStreaks
+     * const userStreaks = await prisma.userStreak.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userStreakWithIdOnly = await prisma.userStreak.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserStreakFindManyArgs>(args?: SelectSubset<T, UserStreakFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a UserStreak.
+     * @param {UserStreakCreateArgs} args - Arguments to create a UserStreak.
+     * @example
+     * // Create one UserStreak
+     * const UserStreak = await prisma.userStreak.create({
+     *   data: {
+     *     // ... data to create a UserStreak
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserStreakCreateArgs>(args: SelectSubset<T, UserStreakCreateArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many UserStreaks.
+     * @param {UserStreakCreateManyArgs} args - Arguments to create many UserStreaks.
+     * @example
+     * // Create many UserStreaks
+     * const userStreak = await prisma.userStreak.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserStreakCreateManyArgs>(args?: SelectSubset<T, UserStreakCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserStreaks and returns the data saved in the database.
+     * @param {UserStreakCreateManyAndReturnArgs} args - Arguments to create many UserStreaks.
+     * @example
+     * // Create many UserStreaks
+     * const userStreak = await prisma.userStreak.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserStreaks and only return the `id`
+     * const userStreakWithIdOnly = await prisma.userStreak.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserStreakCreateManyAndReturnArgs>(args?: SelectSubset<T, UserStreakCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a UserStreak.
+     * @param {UserStreakDeleteArgs} args - Arguments to delete one UserStreak.
+     * @example
+     * // Delete one UserStreak
+     * const UserStreak = await prisma.userStreak.delete({
+     *   where: {
+     *     // ... filter to delete one UserStreak
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserStreakDeleteArgs>(args: SelectSubset<T, UserStreakDeleteArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one UserStreak.
+     * @param {UserStreakUpdateArgs} args - Arguments to update one UserStreak.
+     * @example
+     * // Update one UserStreak
+     * const userStreak = await prisma.userStreak.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserStreakUpdateArgs>(args: SelectSubset<T, UserStreakUpdateArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more UserStreaks.
+     * @param {UserStreakDeleteManyArgs} args - Arguments to filter UserStreaks to delete.
+     * @example
+     * // Delete a few UserStreaks
+     * const { count } = await prisma.userStreak.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserStreakDeleteManyArgs>(args?: SelectSubset<T, UserStreakDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserStreaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserStreaks
+     * const userStreak = await prisma.userStreak.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserStreakUpdateManyArgs>(args: SelectSubset<T, UserStreakUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserStreak.
+     * @param {UserStreakUpsertArgs} args - Arguments to update or create a UserStreak.
+     * @example
+     * // Update or create a UserStreak
+     * const userStreak = await prisma.userStreak.upsert({
+     *   create: {
+     *     // ... data to create a UserStreak
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserStreak we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserStreakUpsertArgs>(args: SelectSubset<T, UserStreakUpsertArgs<ExtArgs>>): Prisma__UserStreakClient<$Result.GetResult<Prisma.$UserStreakPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of UserStreaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakCountArgs} args - Arguments to filter UserStreaks to count.
+     * @example
+     * // Count the number of UserStreaks
+     * const count = await prisma.userStreak.count({
+     *   where: {
+     *     // ... the filter for the UserStreaks we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserStreakCountArgs>(
+      args?: Subset<T, UserStreakCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserStreakCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserStreak.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserStreakAggregateArgs>(args: Subset<T, UserStreakAggregateArgs>): Prisma.PrismaPromise<GetUserStreakAggregateType<T>>
+
+    /**
+     * Group by UserStreak.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserStreakGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserStreakGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserStreakGroupByArgs['orderBy'] }
+        : { orderBy?: UserStreakGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserStreakGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserStreakGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserStreak model
+   */
+  readonly fields: UserStreakFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserStreak.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserStreakClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserStreak model
+   */ 
+  interface UserStreakFieldRefs {
+    readonly id: FieldRef<"UserStreak", 'String'>
+    readonly userId: FieldRef<"UserStreak", 'String'>
+    readonly currentStreak: FieldRef<"UserStreak", 'Int'>
+    readonly lastLoginDate: FieldRef<"UserStreak", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserStreak", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserStreak findUnique
+   */
+  export type UserStreakFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * Filter, which UserStreak to fetch.
+     */
+    where: UserStreakWhereUniqueInput
+  }
+
+  /**
+   * UserStreak findUniqueOrThrow
+   */
+  export type UserStreakFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * Filter, which UserStreak to fetch.
+     */
+    where: UserStreakWhereUniqueInput
+  }
+
+  /**
+   * UserStreak findFirst
+   */
+  export type UserStreakFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * Filter, which UserStreak to fetch.
+     */
+    where?: UserStreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserStreaks to fetch.
+     */
+    orderBy?: UserStreakOrderByWithRelationInput | UserStreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserStreaks.
+     */
+    cursor?: UserStreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserStreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserStreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserStreaks.
+     */
+    distinct?: UserStreakScalarFieldEnum | UserStreakScalarFieldEnum[]
+  }
+
+  /**
+   * UserStreak findFirstOrThrow
+   */
+  export type UserStreakFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * Filter, which UserStreak to fetch.
+     */
+    where?: UserStreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserStreaks to fetch.
+     */
+    orderBy?: UserStreakOrderByWithRelationInput | UserStreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserStreaks.
+     */
+    cursor?: UserStreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserStreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserStreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserStreaks.
+     */
+    distinct?: UserStreakScalarFieldEnum | UserStreakScalarFieldEnum[]
+  }
+
+  /**
+   * UserStreak findMany
+   */
+  export type UserStreakFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * Filter, which UserStreaks to fetch.
+     */
+    where?: UserStreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserStreaks to fetch.
+     */
+    orderBy?: UserStreakOrderByWithRelationInput | UserStreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserStreaks.
+     */
+    cursor?: UserStreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserStreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserStreaks.
+     */
+    skip?: number
+    distinct?: UserStreakScalarFieldEnum | UserStreakScalarFieldEnum[]
+  }
+
+  /**
+   * UserStreak create
+   */
+  export type UserStreakCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * The data needed to create a UserStreak.
+     */
+    data: XOR<UserStreakCreateInput, UserStreakUncheckedCreateInput>
+  }
+
+  /**
+   * UserStreak createMany
+   */
+  export type UserStreakCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserStreaks.
+     */
+    data: UserStreakCreateManyInput | UserStreakCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserStreak createManyAndReturn
+   */
+  export type UserStreakCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many UserStreaks.
+     */
+    data: UserStreakCreateManyInput | UserStreakCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserStreak update
+   */
+  export type UserStreakUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * The data needed to update a UserStreak.
+     */
+    data: XOR<UserStreakUpdateInput, UserStreakUncheckedUpdateInput>
+    /**
+     * Choose, which UserStreak to update.
+     */
+    where: UserStreakWhereUniqueInput
+  }
+
+  /**
+   * UserStreak updateMany
+   */
+  export type UserStreakUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserStreaks.
+     */
+    data: XOR<UserStreakUpdateManyMutationInput, UserStreakUncheckedUpdateManyInput>
+    /**
+     * Filter which UserStreaks to update
+     */
+    where?: UserStreakWhereInput
+  }
+
+  /**
+   * UserStreak upsert
+   */
+  export type UserStreakUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * The filter to search for the UserStreak to update in case it exists.
+     */
+    where: UserStreakWhereUniqueInput
+    /**
+     * In case the UserStreak found by the `where` argument doesn't exist, create a new UserStreak with this data.
+     */
+    create: XOR<UserStreakCreateInput, UserStreakUncheckedCreateInput>
+    /**
+     * In case the UserStreak was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserStreakUpdateInput, UserStreakUncheckedUpdateInput>
+  }
+
+  /**
+   * UserStreak delete
+   */
+  export type UserStreakDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+    /**
+     * Filter which UserStreak to delete.
+     */
+    where: UserStreakWhereUniqueInput
+  }
+
+  /**
+   * UserStreak deleteMany
+   */
+  export type UserStreakDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserStreaks to delete
+     */
+    where?: UserStreakWhereInput
+  }
+
+  /**
+   * UserStreak without action
+   */
+  export type UserStreakDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserStreak
+     */
+    select?: UserStreakSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model NqlFunctionMapping
+   */
+
+  export type AggregateNqlFunctionMapping = {
+    _count: NqlFunctionMappingCountAggregateOutputType | null
+    _min: NqlFunctionMappingMinAggregateOutputType | null
+    _max: NqlFunctionMappingMaxAggregateOutputType | null
+  }
+
+  export type NqlFunctionMappingMinAggregateOutputType = {
+    id: string | null
+    nlq: string | null
+    function: string | null
+  }
+
+  export type NqlFunctionMappingMaxAggregateOutputType = {
+    id: string | null
+    nlq: string | null
+    function: string | null
+  }
+
+  export type NqlFunctionMappingCountAggregateOutputType = {
+    id: number
+    nlq: number
+    function: number
+    input: number
+    cases: number
+    _all: number
+  }
+
+
+  export type NqlFunctionMappingMinAggregateInputType = {
+    id?: true
+    nlq?: true
+    function?: true
+  }
+
+  export type NqlFunctionMappingMaxAggregateInputType = {
+    id?: true
+    nlq?: true
+    function?: true
+  }
+
+  export type NqlFunctionMappingCountAggregateInputType = {
+    id?: true
+    nlq?: true
+    function?: true
+    input?: true
+    cases?: true
+    _all?: true
+  }
+
+  export type NqlFunctionMappingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NqlFunctionMapping to aggregate.
+     */
+    where?: NqlFunctionMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NqlFunctionMappings to fetch.
+     */
+    orderBy?: NqlFunctionMappingOrderByWithRelationInput | NqlFunctionMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NqlFunctionMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NqlFunctionMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NqlFunctionMappings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NqlFunctionMappings
+    **/
+    _count?: true | NqlFunctionMappingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NqlFunctionMappingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NqlFunctionMappingMaxAggregateInputType
+  }
+
+  export type GetNqlFunctionMappingAggregateType<T extends NqlFunctionMappingAggregateArgs> = {
+        [P in keyof T & keyof AggregateNqlFunctionMapping]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNqlFunctionMapping[P]>
+      : GetScalarType<T[P], AggregateNqlFunctionMapping[P]>
+  }
+
+
+
+
+  export type NqlFunctionMappingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NqlFunctionMappingWhereInput
+    orderBy?: NqlFunctionMappingOrderByWithAggregationInput | NqlFunctionMappingOrderByWithAggregationInput[]
+    by: NqlFunctionMappingScalarFieldEnum[] | NqlFunctionMappingScalarFieldEnum
+    having?: NqlFunctionMappingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NqlFunctionMappingCountAggregateInputType | true
+    _min?: NqlFunctionMappingMinAggregateInputType
+    _max?: NqlFunctionMappingMaxAggregateInputType
+  }
+
+  export type NqlFunctionMappingGroupByOutputType = {
+    id: string
+    nlq: string
+    function: string
+    input: JsonValue
+    cases: JsonValue
+    _count: NqlFunctionMappingCountAggregateOutputType | null
+    _min: NqlFunctionMappingMinAggregateOutputType | null
+    _max: NqlFunctionMappingMaxAggregateOutputType | null
+  }
+
+  type GetNqlFunctionMappingGroupByPayload<T extends NqlFunctionMappingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NqlFunctionMappingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NqlFunctionMappingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NqlFunctionMappingGroupByOutputType[P]>
+            : GetScalarType<T[P], NqlFunctionMappingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NqlFunctionMappingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nlq?: boolean
+    function?: boolean
+    input?: boolean
+    cases?: boolean
+  }, ExtArgs["result"]["nqlFunctionMapping"]>
+
+  export type NqlFunctionMappingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nlq?: boolean
+    function?: boolean
+    input?: boolean
+    cases?: boolean
+  }, ExtArgs["result"]["nqlFunctionMapping"]>
+
+  export type NqlFunctionMappingSelectScalar = {
+    id?: boolean
+    nlq?: boolean
+    function?: boolean
+    input?: boolean
+    cases?: boolean
+  }
+
+
+  export type $NqlFunctionMappingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NqlFunctionMapping"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      nlq: string
+      function: string
+      input: Prisma.JsonValue
+      cases: Prisma.JsonValue
+    }, ExtArgs["result"]["nqlFunctionMapping"]>
+    composites: {}
+  }
+
+  type NqlFunctionMappingGetPayload<S extends boolean | null | undefined | NqlFunctionMappingDefaultArgs> = $Result.GetResult<Prisma.$NqlFunctionMappingPayload, S>
+
+  type NqlFunctionMappingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<NqlFunctionMappingFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: NqlFunctionMappingCountAggregateInputType | true
+    }
+
+  export interface NqlFunctionMappingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NqlFunctionMapping'], meta: { name: 'NqlFunctionMapping' } }
+    /**
+     * Find zero or one NqlFunctionMapping that matches the filter.
+     * @param {NqlFunctionMappingFindUniqueArgs} args - Arguments to find a NqlFunctionMapping
+     * @example
+     * // Get one NqlFunctionMapping
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NqlFunctionMappingFindUniqueArgs>(args: SelectSubset<T, NqlFunctionMappingFindUniqueArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one NqlFunctionMapping that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {NqlFunctionMappingFindUniqueOrThrowArgs} args - Arguments to find a NqlFunctionMapping
+     * @example
+     * // Get one NqlFunctionMapping
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NqlFunctionMappingFindUniqueOrThrowArgs>(args: SelectSubset<T, NqlFunctionMappingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first NqlFunctionMapping that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingFindFirstArgs} args - Arguments to find a NqlFunctionMapping
+     * @example
+     * // Get one NqlFunctionMapping
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NqlFunctionMappingFindFirstArgs>(args?: SelectSubset<T, NqlFunctionMappingFindFirstArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first NqlFunctionMapping that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingFindFirstOrThrowArgs} args - Arguments to find a NqlFunctionMapping
+     * @example
+     * // Get one NqlFunctionMapping
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NqlFunctionMappingFindFirstOrThrowArgs>(args?: SelectSubset<T, NqlFunctionMappingFindFirstOrThrowArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more NqlFunctionMappings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NqlFunctionMappings
+     * const nqlFunctionMappings = await prisma.nqlFunctionMapping.findMany()
+     * 
+     * // Get first 10 NqlFunctionMappings
+     * const nqlFunctionMappings = await prisma.nqlFunctionMapping.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nqlFunctionMappingWithIdOnly = await prisma.nqlFunctionMapping.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NqlFunctionMappingFindManyArgs>(args?: SelectSubset<T, NqlFunctionMappingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a NqlFunctionMapping.
+     * @param {NqlFunctionMappingCreateArgs} args - Arguments to create a NqlFunctionMapping.
+     * @example
+     * // Create one NqlFunctionMapping
+     * const NqlFunctionMapping = await prisma.nqlFunctionMapping.create({
+     *   data: {
+     *     // ... data to create a NqlFunctionMapping
+     *   }
+     * })
+     * 
+     */
+    create<T extends NqlFunctionMappingCreateArgs>(args: SelectSubset<T, NqlFunctionMappingCreateArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many NqlFunctionMappings.
+     * @param {NqlFunctionMappingCreateManyArgs} args - Arguments to create many NqlFunctionMappings.
+     * @example
+     * // Create many NqlFunctionMappings
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NqlFunctionMappingCreateManyArgs>(args?: SelectSubset<T, NqlFunctionMappingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NqlFunctionMappings and returns the data saved in the database.
+     * @param {NqlFunctionMappingCreateManyAndReturnArgs} args - Arguments to create many NqlFunctionMappings.
+     * @example
+     * // Create many NqlFunctionMappings
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NqlFunctionMappings and only return the `id`
+     * const nqlFunctionMappingWithIdOnly = await prisma.nqlFunctionMapping.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NqlFunctionMappingCreateManyAndReturnArgs>(args?: SelectSubset<T, NqlFunctionMappingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a NqlFunctionMapping.
+     * @param {NqlFunctionMappingDeleteArgs} args - Arguments to delete one NqlFunctionMapping.
+     * @example
+     * // Delete one NqlFunctionMapping
+     * const NqlFunctionMapping = await prisma.nqlFunctionMapping.delete({
+     *   where: {
+     *     // ... filter to delete one NqlFunctionMapping
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NqlFunctionMappingDeleteArgs>(args: SelectSubset<T, NqlFunctionMappingDeleteArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one NqlFunctionMapping.
+     * @param {NqlFunctionMappingUpdateArgs} args - Arguments to update one NqlFunctionMapping.
+     * @example
+     * // Update one NqlFunctionMapping
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NqlFunctionMappingUpdateArgs>(args: SelectSubset<T, NqlFunctionMappingUpdateArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more NqlFunctionMappings.
+     * @param {NqlFunctionMappingDeleteManyArgs} args - Arguments to filter NqlFunctionMappings to delete.
+     * @example
+     * // Delete a few NqlFunctionMappings
+     * const { count } = await prisma.nqlFunctionMapping.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NqlFunctionMappingDeleteManyArgs>(args?: SelectSubset<T, NqlFunctionMappingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NqlFunctionMappings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NqlFunctionMappings
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NqlFunctionMappingUpdateManyArgs>(args: SelectSubset<T, NqlFunctionMappingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one NqlFunctionMapping.
+     * @param {NqlFunctionMappingUpsertArgs} args - Arguments to update or create a NqlFunctionMapping.
+     * @example
+     * // Update or create a NqlFunctionMapping
+     * const nqlFunctionMapping = await prisma.nqlFunctionMapping.upsert({
+     *   create: {
+     *     // ... data to create a NqlFunctionMapping
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NqlFunctionMapping we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NqlFunctionMappingUpsertArgs>(args: SelectSubset<T, NqlFunctionMappingUpsertArgs<ExtArgs>>): Prisma__NqlFunctionMappingClient<$Result.GetResult<Prisma.$NqlFunctionMappingPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of NqlFunctionMappings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingCountArgs} args - Arguments to filter NqlFunctionMappings to count.
+     * @example
+     * // Count the number of NqlFunctionMappings
+     * const count = await prisma.nqlFunctionMapping.count({
+     *   where: {
+     *     // ... the filter for the NqlFunctionMappings we want to count
+     *   }
+     * })
+    **/
+    count<T extends NqlFunctionMappingCountArgs>(
+      args?: Subset<T, NqlFunctionMappingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NqlFunctionMappingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NqlFunctionMapping.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NqlFunctionMappingAggregateArgs>(args: Subset<T, NqlFunctionMappingAggregateArgs>): Prisma.PrismaPromise<GetNqlFunctionMappingAggregateType<T>>
+
+    /**
+     * Group by NqlFunctionMapping.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NqlFunctionMappingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NqlFunctionMappingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NqlFunctionMappingGroupByArgs['orderBy'] }
+        : { orderBy?: NqlFunctionMappingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NqlFunctionMappingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNqlFunctionMappingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NqlFunctionMapping model
+   */
+  readonly fields: NqlFunctionMappingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NqlFunctionMapping.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NqlFunctionMappingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NqlFunctionMapping model
+   */ 
+  interface NqlFunctionMappingFieldRefs {
+    readonly id: FieldRef<"NqlFunctionMapping", 'String'>
+    readonly nlq: FieldRef<"NqlFunctionMapping", 'String'>
+    readonly function: FieldRef<"NqlFunctionMapping", 'String'>
+    readonly input: FieldRef<"NqlFunctionMapping", 'Json'>
+    readonly cases: FieldRef<"NqlFunctionMapping", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NqlFunctionMapping findUnique
+   */
+  export type NqlFunctionMappingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NqlFunctionMapping to fetch.
+     */
+    where: NqlFunctionMappingWhereUniqueInput
+  }
+
+  /**
+   * NqlFunctionMapping findUniqueOrThrow
+   */
+  export type NqlFunctionMappingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NqlFunctionMapping to fetch.
+     */
+    where: NqlFunctionMappingWhereUniqueInput
+  }
+
+  /**
+   * NqlFunctionMapping findFirst
+   */
+  export type NqlFunctionMappingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NqlFunctionMapping to fetch.
+     */
+    where?: NqlFunctionMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NqlFunctionMappings to fetch.
+     */
+    orderBy?: NqlFunctionMappingOrderByWithRelationInput | NqlFunctionMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NqlFunctionMappings.
+     */
+    cursor?: NqlFunctionMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NqlFunctionMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NqlFunctionMappings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NqlFunctionMappings.
+     */
+    distinct?: NqlFunctionMappingScalarFieldEnum | NqlFunctionMappingScalarFieldEnum[]
+  }
+
+  /**
+   * NqlFunctionMapping findFirstOrThrow
+   */
+  export type NqlFunctionMappingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NqlFunctionMapping to fetch.
+     */
+    where?: NqlFunctionMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NqlFunctionMappings to fetch.
+     */
+    orderBy?: NqlFunctionMappingOrderByWithRelationInput | NqlFunctionMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NqlFunctionMappings.
+     */
+    cursor?: NqlFunctionMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NqlFunctionMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NqlFunctionMappings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NqlFunctionMappings.
+     */
+    distinct?: NqlFunctionMappingScalarFieldEnum | NqlFunctionMappingScalarFieldEnum[]
+  }
+
+  /**
+   * NqlFunctionMapping findMany
+   */
+  export type NqlFunctionMappingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * Filter, which NqlFunctionMappings to fetch.
+     */
+    where?: NqlFunctionMappingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NqlFunctionMappings to fetch.
+     */
+    orderBy?: NqlFunctionMappingOrderByWithRelationInput | NqlFunctionMappingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NqlFunctionMappings.
+     */
+    cursor?: NqlFunctionMappingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NqlFunctionMappings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NqlFunctionMappings.
+     */
+    skip?: number
+    distinct?: NqlFunctionMappingScalarFieldEnum | NqlFunctionMappingScalarFieldEnum[]
+  }
+
+  /**
+   * NqlFunctionMapping create
+   */
+  export type NqlFunctionMappingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * The data needed to create a NqlFunctionMapping.
+     */
+    data: XOR<NqlFunctionMappingCreateInput, NqlFunctionMappingUncheckedCreateInput>
+  }
+
+  /**
+   * NqlFunctionMapping createMany
+   */
+  export type NqlFunctionMappingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NqlFunctionMappings.
+     */
+    data: NqlFunctionMappingCreateManyInput | NqlFunctionMappingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NqlFunctionMapping createManyAndReturn
+   */
+  export type NqlFunctionMappingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many NqlFunctionMappings.
+     */
+    data: NqlFunctionMappingCreateManyInput | NqlFunctionMappingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NqlFunctionMapping update
+   */
+  export type NqlFunctionMappingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * The data needed to update a NqlFunctionMapping.
+     */
+    data: XOR<NqlFunctionMappingUpdateInput, NqlFunctionMappingUncheckedUpdateInput>
+    /**
+     * Choose, which NqlFunctionMapping to update.
+     */
+    where: NqlFunctionMappingWhereUniqueInput
+  }
+
+  /**
+   * NqlFunctionMapping updateMany
+   */
+  export type NqlFunctionMappingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NqlFunctionMappings.
+     */
+    data: XOR<NqlFunctionMappingUpdateManyMutationInput, NqlFunctionMappingUncheckedUpdateManyInput>
+    /**
+     * Filter which NqlFunctionMappings to update
+     */
+    where?: NqlFunctionMappingWhereInput
+  }
+
+  /**
+   * NqlFunctionMapping upsert
+   */
+  export type NqlFunctionMappingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * The filter to search for the NqlFunctionMapping to update in case it exists.
+     */
+    where: NqlFunctionMappingWhereUniqueInput
+    /**
+     * In case the NqlFunctionMapping found by the `where` argument doesn't exist, create a new NqlFunctionMapping with this data.
+     */
+    create: XOR<NqlFunctionMappingCreateInput, NqlFunctionMappingUncheckedCreateInput>
+    /**
+     * In case the NqlFunctionMapping was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NqlFunctionMappingUpdateInput, NqlFunctionMappingUncheckedUpdateInput>
+  }
+
+  /**
+   * NqlFunctionMapping delete
+   */
+  export type NqlFunctionMappingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+    /**
+     * Filter which NqlFunctionMapping to delete.
+     */
+    where: NqlFunctionMappingWhereUniqueInput
+  }
+
+  /**
+   * NqlFunctionMapping deleteMany
+   */
+  export type NqlFunctionMappingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NqlFunctionMappings to delete
+     */
+    where?: NqlFunctionMappingWhereInput
+  }
+
+  /**
+   * NqlFunctionMapping without action
+   */
+  export type NqlFunctionMappingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NqlFunctionMapping
+     */
+    select?: NqlFunctionMappingSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model NlqSqlMapping
    */
 
   export type AggregateNlqSqlMapping = {
     _count: NlqSqlMappingCountAggregateOutputType | null
-    _avg: NlqSqlMappingAvgAggregateOutputType | null
-    _sum: NlqSqlMappingSumAggregateOutputType | null
     _min: NlqSqlMappingMinAggregateOutputType | null
     _max: NlqSqlMappingMaxAggregateOutputType | null
   }
 
-  export type NlqSqlMappingAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type NlqSqlMappingSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type NlqSqlMappingMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     nlq: string | null
     sql: string | null
-    embedding: Buffer | null
   }
 
   export type NlqSqlMappingMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     nlq: string | null
     sql: string | null
-    embedding: Buffer | null
   }
 
   export type NlqSqlMappingCountAggregateOutputType = {
     id: number
     nlq: number
     sql: number
-    embedding: number
+    cases: number
     _all: number
   }
 
-
-  export type NlqSqlMappingAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type NlqSqlMappingSumAggregateInputType = {
-    id?: true
-  }
 
   export type NlqSqlMappingMinAggregateInputType = {
     id?: true
     nlq?: true
     sql?: true
-    embedding?: true
   }
 
   export type NlqSqlMappingMaxAggregateInputType = {
     id?: true
     nlq?: true
     sql?: true
-    embedding?: true
   }
 
   export type NlqSqlMappingCountAggregateInputType = {
     id?: true
     nlq?: true
     sql?: true
-    embedding?: true
+    cases?: true
     _all?: true
   }
 
@@ -12429,18 +14361,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: NlqSqlMappingAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: NlqSqlMappingSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: NlqSqlMappingMinAggregateInputType
@@ -12471,20 +14391,16 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: NlqSqlMappingCountAggregateInputType | true
-    _avg?: NlqSqlMappingAvgAggregateInputType
-    _sum?: NlqSqlMappingSumAggregateInputType
     _min?: NlqSqlMappingMinAggregateInputType
     _max?: NlqSqlMappingMaxAggregateInputType
   }
 
   export type NlqSqlMappingGroupByOutputType = {
-    id: number
+    id: string
     nlq: string
     sql: string
-    embedding: Buffer | null
+    cases: JsonValue
     _count: NlqSqlMappingCountAggregateOutputType | null
-    _avg: NlqSqlMappingAvgAggregateOutputType | null
-    _sum: NlqSqlMappingSumAggregateOutputType | null
     _min: NlqSqlMappingMinAggregateOutputType | null
     _max: NlqSqlMappingMaxAggregateOutputType | null
   }
@@ -12507,21 +14423,21 @@ export namespace Prisma {
     id?: boolean
     nlq?: boolean
     sql?: boolean
-    embedding?: boolean
+    cases?: boolean
   }, ExtArgs["result"]["nlqSqlMapping"]>
 
   export type NlqSqlMappingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nlq?: boolean
     sql?: boolean
-    embedding?: boolean
+    cases?: boolean
   }, ExtArgs["result"]["nlqSqlMapping"]>
 
   export type NlqSqlMappingSelectScalar = {
     id?: boolean
     nlq?: boolean
     sql?: boolean
-    embedding?: boolean
+    cases?: boolean
   }
 
 
@@ -12529,10 +14445,10 @@ export namespace Prisma {
     name: "NlqSqlMapping"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       nlq: string
       sql: string
-      embedding: Buffer | null
+      cases: Prisma.JsonValue
     }, ExtArgs["result"]["nlqSqlMapping"]>
     composites: {}
   }
@@ -12926,10 +14842,10 @@ export namespace Prisma {
    * Fields of the NlqSqlMapping model
    */ 
   interface NlqSqlMappingFieldRefs {
-    readonly id: FieldRef<"NlqSqlMapping", 'Int'>
+    readonly id: FieldRef<"NlqSqlMapping", 'String'>
     readonly nlq: FieldRef<"NlqSqlMapping", 'String'>
     readonly sql: FieldRef<"NlqSqlMapping", 'String'>
-    readonly embedding: FieldRef<"NlqSqlMapping", 'Bytes'>
+    readonly cases: FieldRef<"NlqSqlMapping", 'Json'>
   }
     
 
@@ -13357,11 +15273,33 @@ export namespace Prisma {
   export type BreakScalarFieldEnum = (typeof BreakScalarFieldEnum)[keyof typeof BreakScalarFieldEnum]
 
 
+  export const UserStreakScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    currentStreak: 'currentStreak',
+    lastLoginDate: 'lastLoginDate',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserStreakScalarFieldEnum = (typeof UserStreakScalarFieldEnum)[keyof typeof UserStreakScalarFieldEnum]
+
+
+  export const NqlFunctionMappingScalarFieldEnum: {
+    id: 'id',
+    nlq: 'nlq',
+    function: 'function',
+    input: 'input',
+    cases: 'cases'
+  };
+
+  export type NqlFunctionMappingScalarFieldEnum = (typeof NqlFunctionMappingScalarFieldEnum)[keyof typeof NqlFunctionMappingScalarFieldEnum]
+
+
   export const NlqSqlMappingScalarFieldEnum: {
     id: 'id',
     nlq: 'nlq',
     sql: 'sql',
-    embedding: 'embedding'
+    cases: 'cases'
   };
 
   export type NlqSqlMappingScalarFieldEnum = (typeof NlqSqlMappingScalarFieldEnum)[keyof typeof NlqSqlMappingScalarFieldEnum]
@@ -13373,6 +15311,13 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -13389,6 +15334,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -13509,16 +15463,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Bytes'
+   * Reference to a field of type 'Json'
    */
-  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
-    
-
-
-  /**
-   * Reference to a field of type 'Bytes[]'
-   */
-  export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
 
 
@@ -14171,53 +16118,157 @@ export namespace Prisma {
     breakEnd?: DateTimeNullableWithAggregatesFilter<"Break"> | Date | string | null
   }
 
+  export type UserStreakWhereInput = {
+    AND?: UserStreakWhereInput | UserStreakWhereInput[]
+    OR?: UserStreakWhereInput[]
+    NOT?: UserStreakWhereInput | UserStreakWhereInput[]
+    id?: StringFilter<"UserStreak"> | string
+    userId?: StringFilter<"UserStreak"> | string
+    currentStreak?: IntFilter<"UserStreak"> | number
+    lastLoginDate?: DateTimeFilter<"UserStreak"> | Date | string
+    updatedAt?: DateTimeFilter<"UserStreak"> | Date | string
+  }
+
+  export type UserStreakOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    currentStreak?: SortOrder
+    lastLoginDate?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserStreakWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: UserStreakWhereInput | UserStreakWhereInput[]
+    OR?: UserStreakWhereInput[]
+    NOT?: UserStreakWhereInput | UserStreakWhereInput[]
+    currentStreak?: IntFilter<"UserStreak"> | number
+    lastLoginDate?: DateTimeFilter<"UserStreak"> | Date | string
+    updatedAt?: DateTimeFilter<"UserStreak"> | Date | string
+  }, "id" | "userId">
+
+  export type UserStreakOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    currentStreak?: SortOrder
+    lastLoginDate?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserStreakCountOrderByAggregateInput
+    _avg?: UserStreakAvgOrderByAggregateInput
+    _max?: UserStreakMaxOrderByAggregateInput
+    _min?: UserStreakMinOrderByAggregateInput
+    _sum?: UserStreakSumOrderByAggregateInput
+  }
+
+  export type UserStreakScalarWhereWithAggregatesInput = {
+    AND?: UserStreakScalarWhereWithAggregatesInput | UserStreakScalarWhereWithAggregatesInput[]
+    OR?: UserStreakScalarWhereWithAggregatesInput[]
+    NOT?: UserStreakScalarWhereWithAggregatesInput | UserStreakScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserStreak"> | string
+    userId?: StringWithAggregatesFilter<"UserStreak"> | string
+    currentStreak?: IntWithAggregatesFilter<"UserStreak"> | number
+    lastLoginDate?: DateTimeWithAggregatesFilter<"UserStreak"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserStreak"> | Date | string
+  }
+
+  export type NqlFunctionMappingWhereInput = {
+    AND?: NqlFunctionMappingWhereInput | NqlFunctionMappingWhereInput[]
+    OR?: NqlFunctionMappingWhereInput[]
+    NOT?: NqlFunctionMappingWhereInput | NqlFunctionMappingWhereInput[]
+    id?: UuidFilter<"NqlFunctionMapping"> | string
+    nlq?: StringFilter<"NqlFunctionMapping"> | string
+    function?: StringFilter<"NqlFunctionMapping"> | string
+    input?: JsonFilter<"NqlFunctionMapping">
+    cases?: JsonFilter<"NqlFunctionMapping">
+  }
+
+  export type NqlFunctionMappingOrderByWithRelationInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    function?: SortOrder
+    input?: SortOrder
+    cases?: SortOrder
+  }
+
+  export type NqlFunctionMappingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NqlFunctionMappingWhereInput | NqlFunctionMappingWhereInput[]
+    OR?: NqlFunctionMappingWhereInput[]
+    NOT?: NqlFunctionMappingWhereInput | NqlFunctionMappingWhereInput[]
+    nlq?: StringFilter<"NqlFunctionMapping"> | string
+    function?: StringFilter<"NqlFunctionMapping"> | string
+    input?: JsonFilter<"NqlFunctionMapping">
+    cases?: JsonFilter<"NqlFunctionMapping">
+  }, "id">
+
+  export type NqlFunctionMappingOrderByWithAggregationInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    function?: SortOrder
+    input?: SortOrder
+    cases?: SortOrder
+    _count?: NqlFunctionMappingCountOrderByAggregateInput
+    _max?: NqlFunctionMappingMaxOrderByAggregateInput
+    _min?: NqlFunctionMappingMinOrderByAggregateInput
+  }
+
+  export type NqlFunctionMappingScalarWhereWithAggregatesInput = {
+    AND?: NqlFunctionMappingScalarWhereWithAggregatesInput | NqlFunctionMappingScalarWhereWithAggregatesInput[]
+    OR?: NqlFunctionMappingScalarWhereWithAggregatesInput[]
+    NOT?: NqlFunctionMappingScalarWhereWithAggregatesInput | NqlFunctionMappingScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"NqlFunctionMapping"> | string
+    nlq?: StringWithAggregatesFilter<"NqlFunctionMapping"> | string
+    function?: StringWithAggregatesFilter<"NqlFunctionMapping"> | string
+    input?: JsonWithAggregatesFilter<"NqlFunctionMapping">
+    cases?: JsonWithAggregatesFilter<"NqlFunctionMapping">
+  }
+
   export type NlqSqlMappingWhereInput = {
     AND?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
     OR?: NlqSqlMappingWhereInput[]
     NOT?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
-    id?: IntFilter<"NlqSqlMapping"> | number
+    id?: UuidFilter<"NlqSqlMapping"> | string
     nlq?: StringFilter<"NlqSqlMapping"> | string
     sql?: StringFilter<"NlqSqlMapping"> | string
-    embedding?: BytesNullableFilter<"NlqSqlMapping"> | Buffer | null
+    cases?: JsonFilter<"NlqSqlMapping">
   }
 
   export type NlqSqlMappingOrderByWithRelationInput = {
     id?: SortOrder
     nlq?: SortOrder
     sql?: SortOrder
-    embedding?: SortOrderInput | SortOrder
+    cases?: SortOrder
   }
 
   export type NlqSqlMappingWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
     OR?: NlqSqlMappingWhereInput[]
     NOT?: NlqSqlMappingWhereInput | NlqSqlMappingWhereInput[]
     nlq?: StringFilter<"NlqSqlMapping"> | string
     sql?: StringFilter<"NlqSqlMapping"> | string
-    embedding?: BytesNullableFilter<"NlqSqlMapping"> | Buffer | null
+    cases?: JsonFilter<"NlqSqlMapping">
   }, "id">
 
   export type NlqSqlMappingOrderByWithAggregationInput = {
     id?: SortOrder
     nlq?: SortOrder
     sql?: SortOrder
-    embedding?: SortOrderInput | SortOrder
+    cases?: SortOrder
     _count?: NlqSqlMappingCountOrderByAggregateInput
-    _avg?: NlqSqlMappingAvgOrderByAggregateInput
     _max?: NlqSqlMappingMaxOrderByAggregateInput
     _min?: NlqSqlMappingMinOrderByAggregateInput
-    _sum?: NlqSqlMappingSumOrderByAggregateInput
   }
 
   export type NlqSqlMappingScalarWhereWithAggregatesInput = {
     AND?: NlqSqlMappingScalarWhereWithAggregatesInput | NlqSqlMappingScalarWhereWithAggregatesInput[]
     OR?: NlqSqlMappingScalarWhereWithAggregatesInput[]
     NOT?: NlqSqlMappingScalarWhereWithAggregatesInput | NlqSqlMappingScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"NlqSqlMapping"> | number
+    id?: UuidWithAggregatesFilter<"NlqSqlMapping"> | string
     nlq?: StringWithAggregatesFilter<"NlqSqlMapping"> | string
     sql?: StringWithAggregatesFilter<"NlqSqlMapping"> | string
-    embedding?: BytesNullableWithAggregatesFilter<"NlqSqlMapping"> | Buffer | null
+    cases?: JsonWithAggregatesFilter<"NlqSqlMapping">
   }
 
   export type organisationCreateInput = {
@@ -14884,50 +16935,165 @@ export namespace Prisma {
     breakEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type UserStreakCreateInput = {
+    id?: string
+    userId: string
+    currentStreak?: number
+    lastLoginDate: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserStreakUncheckedCreateInput = {
+    id?: string
+    userId: string
+    currentStreak?: number
+    lastLoginDate: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserStreakUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    currentStreak?: IntFieldUpdateOperationsInput | number
+    lastLoginDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserStreakUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    currentStreak?: IntFieldUpdateOperationsInput | number
+    lastLoginDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserStreakCreateManyInput = {
+    id?: string
+    userId: string
+    currentStreak?: number
+    lastLoginDate: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserStreakUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    currentStreak?: IntFieldUpdateOperationsInput | number
+    lastLoginDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserStreakUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    currentStreak?: IntFieldUpdateOperationsInput | number
+    lastLoginDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NqlFunctionMappingCreateInput = {
+    id?: string
+    nlq: string
+    function: string
+    input: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type NqlFunctionMappingUncheckedCreateInput = {
+    id?: string
+    nlq: string
+    function: string
+    input: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type NqlFunctionMappingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nlq?: StringFieldUpdateOperationsInput | string
+    function?: StringFieldUpdateOperationsInput | string
+    input?: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type NqlFunctionMappingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nlq?: StringFieldUpdateOperationsInput | string
+    function?: StringFieldUpdateOperationsInput | string
+    input?: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type NqlFunctionMappingCreateManyInput = {
+    id?: string
+    nlq: string
+    function: string
+    input: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type NqlFunctionMappingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nlq?: StringFieldUpdateOperationsInput | string
+    function?: StringFieldUpdateOperationsInput | string
+    input?: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type NqlFunctionMappingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nlq?: StringFieldUpdateOperationsInput | string
+    function?: StringFieldUpdateOperationsInput | string
+    input?: JsonNullValueInput | InputJsonValue
+    cases?: JsonNullValueInput | InputJsonValue
+  }
+
   export type NlqSqlMappingCreateInput = {
+    id?: string
     nlq: string
     sql: string
-    embedding?: Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type NlqSqlMappingUncheckedCreateInput = {
-    id?: number
+    id?: string
     nlq: string
     sql: string
-    embedding?: Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type NlqSqlMappingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nlq?: StringFieldUpdateOperationsInput | string
     sql?: StringFieldUpdateOperationsInput | string
-    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type NlqSqlMappingUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nlq?: StringFieldUpdateOperationsInput | string
     sql?: StringFieldUpdateOperationsInput | string
-    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type NlqSqlMappingCreateManyInput = {
-    id?: number
+    id?: string
     nlq: string
     sql: string
-    embedding?: Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type NlqSqlMappingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nlq?: StringFieldUpdateOperationsInput | string
     sql?: StringFieldUpdateOperationsInput | string
-    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type NlqSqlMappingUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nlq?: StringFieldUpdateOperationsInput | string
     sql?: StringFieldUpdateOperationsInput | string
-    embedding?: NullableBytesFieldUpdateOperationsInput | Buffer | null
+    cases?: JsonNullValueInput | InputJsonValue
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -15627,50 +17793,122 @@ export namespace Prisma {
     breakEnd?: SortOrder
   }
 
-  export type BytesNullableFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableFilter<$PrismaModel> | Buffer | null
+  export type UserStreakCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    currentStreak?: SortOrder
+    lastLoginDate?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserStreakAvgOrderByAggregateInput = {
+    currentStreak?: SortOrder
+  }
+
+  export type UserStreakMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    currentStreak?: SortOrder
+    lastLoginDate?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserStreakMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    currentStreak?: SortOrder
+    lastLoginDate?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserStreakSumOrderByAggregateInput = {
+    currentStreak?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NqlFunctionMappingCountOrderByAggregateInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    function?: SortOrder
+    input?: SortOrder
+    cases?: SortOrder
+  }
+
+  export type NqlFunctionMappingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    function?: SortOrder
+  }
+
+  export type NqlFunctionMappingMinOrderByAggregateInput = {
+    id?: SortOrder
+    nlq?: SortOrder
+    function?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type NlqSqlMappingCountOrderByAggregateInput = {
     id?: SortOrder
     nlq?: SortOrder
     sql?: SortOrder
-    embedding?: SortOrder
-  }
-
-  export type NlqSqlMappingAvgOrderByAggregateInput = {
-    id?: SortOrder
+    cases?: SortOrder
   }
 
   export type NlqSqlMappingMaxOrderByAggregateInput = {
     id?: SortOrder
     nlq?: SortOrder
     sql?: SortOrder
-    embedding?: SortOrder
   }
 
   export type NlqSqlMappingMinOrderByAggregateInput = {
     id?: SortOrder
     nlq?: SortOrder
     sql?: SortOrder
-    embedding?: SortOrder
-  }
-
-  export type NlqSqlMappingSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type BytesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Buffer | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBytesNullableFilter<$PrismaModel>
-    _max?: NestedBytesNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -16019,10 +18257,6 @@ export namespace Prisma {
     update?: XOR<XOR<TimeEntryUpdateToOneWithWhereWithoutBreaksInput, TimeEntryUpdateWithoutBreaksInput>, TimeEntryUncheckedUpdateWithoutBreaksInput>
   }
 
-  export type NullableBytesFieldUpdateOperationsInput = {
-    set?: Buffer | null
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -16330,22 +18564,27 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedBytesNullableFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableFilter<$PrismaModel> | Buffer | null
-  }
-
-  export type NestedBytesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Buffer | BytesFieldRefInput<$PrismaModel> | null
-    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel> | null
-    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Buffer | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBytesNullableFilter<$PrismaModel>
-    _max?: NestedBytesNullableFilter<$PrismaModel>
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type UserCategoryCreateWithoutUsersInput = {
@@ -17042,6 +19281,14 @@ export namespace Prisma {
      * @deprecated Use BreakDefaultArgs instead
      */
     export type BreakArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BreakDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UserStreakDefaultArgs instead
+     */
+    export type UserStreakArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserStreakDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use NqlFunctionMappingDefaultArgs instead
+     */
+    export type NqlFunctionMappingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = NqlFunctionMappingDefaultArgs<ExtArgs>
     /**
      * @deprecated Use NlqSqlMappingDefaultArgs instead
      */

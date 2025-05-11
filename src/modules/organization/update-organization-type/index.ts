@@ -19,6 +19,7 @@ export const updateOrganizationTypeEndpoint = createPrivateEndpointWithZod(
   async ({ data, orgId }) => {
     const { type } = data.body;
 
+    // todo: only admin should be able to update
     const org = await timePrisma.organisation.findUnique({ where: { orgId } });
     if (!org) {
       throw new HttpException(404, 'Organization not found');

@@ -214,16 +214,36 @@ exports.Prisma.BreakScalarFieldEnum = {
   breakEnd: 'breakEnd'
 };
 
+exports.Prisma.UserStreakScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  currentStreak: 'currentStreak',
+  lastLoginDate: 'lastLoginDate',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.NqlFunctionMappingScalarFieldEnum = {
+  id: 'id',
+  nlq: 'nlq',
+  function: 'function',
+  input: 'input',
+  cases: 'cases'
+};
+
 exports.Prisma.NlqSqlMappingScalarFieldEnum = {
   id: 'id',
   nlq: 'nlq',
   sql: 'sql',
-  embedding: 'embedding'
+  cases: 'cases'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -234,6 +254,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.organisationType = exports.$Enums.organisationType = {
   GOOD: 'GOOD',
@@ -270,6 +296,8 @@ exports.Prisma.ModelName = {
   UserSchedule: 'UserSchedule',
   TimeEntry: 'TimeEntry',
   Break: 'Break',
+  UserStreak: 'UserStreak',
+  NqlFunctionMapping: 'NqlFunctionMapping',
   NlqSqlMapping: 'NlqSqlMapping'
 };
 

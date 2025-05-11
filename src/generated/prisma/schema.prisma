@@ -146,9 +146,25 @@ model Break {
   timeEntry   TimeEntry @relation(fields: [timeEntryId], references: [id])
 }
 
+model UserStreak {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  currentStreak Int      @default(0)
+  lastLoginDate DateTime
+  updatedAt     DateTime @updatedAt
+}
+
+model NqlFunctionMapping {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nlq      String
+  function String
+  input    Json
+  cases    Json   @default("{}")
+}
+
 model NlqSqlMapping {
-  id        Int    @id @default(autoincrement())
-  nlq       String
-  sql       String
-  embedding Bytes?
+  id    String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nlq   String
+  sql   String
+  cases Json   @default("{}")
 }
