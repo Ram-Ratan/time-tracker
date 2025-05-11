@@ -157,9 +157,17 @@ model UserStreak {
   updatedAt      DateTime @updatedAt
 }
 
+model NqlFunctionMapping {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nlq String
+  function String
+  input Json
+  cases Json @default("{}")
+}
+
 model NlqSqlMapping {
-  id        Int    @id @default(autoincrement())
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   nlq       String
   sql       String
-  embedding Bytes? 
+  cases     Json  @default("{}")
 }
