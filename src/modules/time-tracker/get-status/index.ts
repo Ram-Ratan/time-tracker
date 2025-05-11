@@ -1,7 +1,7 @@
 import { createHTTPResponse } from '@talent-monk/utils';
 import { createPrivateEndpointWithZod } from '@talent-monk/utils';
 import { StatusCodes } from 'http-status-codes';
-import { z } from 'zod';
+import { date, z } from 'zod';
 import prismaFactory from 'utils/prisma';
 import timePrisma from 'utils/prisma/time-tracker';
 import { getDay } from 'date-fns';
@@ -19,7 +19,11 @@ type status =
 
 export const getStatusEndpoint = createPrivateEndpointWithZod(
     'GET STATUS',
-    z.any(),
+    z.object({
+        query: z.object({
+            date: z.string().transform((st)=> new Date(st)).optional()
+        }),
+    }),
     z.any(),
     async (input) => {
         try {
@@ -31,7 +35,7 @@ export const getStatusEndpoint = createPrivateEndpointWithZod(
                 }
             });
 
-            const now = new Date();
+            const now = input.data.query.date? new Date(input.data.query.date): new Date();
 
             // check for working day from userSchedule table
 
