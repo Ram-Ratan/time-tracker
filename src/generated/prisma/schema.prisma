@@ -146,6 +146,14 @@ model Break {
   timeEntry   TimeEntry @relation(fields: [timeEntryId], references: [id])
 }
 
+model UserStreak {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  currentStreak Int      @default(0)
+  lastLoginDate DateTime
+  updatedAt     DateTime @updatedAt
+}
+
 model NlqSqlMapping {
   id        Int    @id @default(autoincrement())
   nlq       String

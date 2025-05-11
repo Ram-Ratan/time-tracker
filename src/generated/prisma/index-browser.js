@@ -214,6 +214,14 @@ exports.Prisma.BreakScalarFieldEnum = {
   breakEnd: 'breakEnd'
 };
 
+exports.Prisma.UserStreakScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  currentStreak: 'currentStreak',
+  lastLoginDate: 'lastLoginDate',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.NlqSqlMappingScalarFieldEnum = {
   id: 'id',
   nlq: 'nlq',
@@ -270,6 +278,7 @@ exports.Prisma.ModelName = {
   UserSchedule: 'UserSchedule',
   TimeEntry: 'TimeEntry',
   Break: 'Break',
+  UserStreak: 'UserStreak',
   NlqSqlMapping: 'NlqSqlMapping'
 };
 
