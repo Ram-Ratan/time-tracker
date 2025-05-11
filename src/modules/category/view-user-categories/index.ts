@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { createHTTPResponse, createPublicEndpointWithZod } from '@talent-monk/utils';
+import { createHTTPResponse, createPrivateEndpointWithZod } from '@talent-monk/utils';
 import { StatusCodes } from 'http-status-codes';
 import timePrisma from 'utils/prisma/time-tracker';
 
-export const getUserCategoriesEndpoint = createPublicEndpointWithZod(
+export const getUserCategoriesEndpoint = createPrivateEndpointWithZod(
   'GET USER CATEGORIES',
   z.object({}),
   z.array(
