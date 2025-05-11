@@ -1,19 +1,20 @@
 import { Router } from 'express';
 import { helloWorldEndpoint } from 'modules/hello-world';
-import { getCommonHolidaysEndpoint } from 'modules/holidays/get-common-holidays';
-import { upsertHolidayEndpoint } from 'modules/holidays/upsert-holidays';
-import timeTrackerServiceRouter from 'modules/time-tracker/timeTracker.router';
+import holidaysRouter from 'modules/holidays/holidaysRouter';
+import categoryRouter from 'modules/category/categoryRouter';
+import leaveRouter from 'modules/leave/leaveRouter';
+import organizationRouter from 'modules/organization/organizationRouter';
+import userRouter from 'modules/user/userRouter';
+import openAIRouter from 'modules/openAi/openAIRouter';
 
-const myServiceRouter = Router();
+const surfaceServiceRouter = Router();
 
-myServiceRouter.get('/hello-world', helloWorldEndpoint);
-myServiceRouter.get('/get-common-holidays', getCommonHolidaysEndpoint);
-myServiceRouter.post('/upsert-holidays', upsertHolidayEndpoint)
+surfaceServiceRouter.get('/hello-world', helloWorldEndpoint);
+surfaceServiceRouter.use('/category', categoryRouter);
+surfaceServiceRouter.use('/holidays', holidaysRouter);
+surfaceServiceRouter.use('/leave', leaveRouter);
+surfaceServiceRouter.use('/organization', organizationRouter);
+surfaceServiceRouter.use('/user', userRouter);
+surfaceServiceRouter.use('/openai', openAIRouter);
 
-myServiceRouter.use('/time-tracker', timeTrackerServiceRouter);
-
-
-
-//Coooment to restart
-
-export default myServiceRouter;
+export default surfaceServiceRouter;

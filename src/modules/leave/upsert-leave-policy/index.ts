@@ -8,7 +8,7 @@ export const upsertLeavePolicyEndpoint = createPrivateEndpointWithZod(
   'UPSERT LEAVE POLICY',
   z.object({
     body: z.object({
-      categoryId: z.string().uuid(),
+      categoryId: z.string().uuid().optional(),
       sickLeaves: z.number().nonnegative().optional(),
       vacationLeaves: z.number().nonnegative().optional(),
       parentalLeaves: z.number().nonnegative().optional(),
@@ -21,13 +21,25 @@ export const upsertLeavePolicyEndpoint = createPrivateEndpointWithZod(
     id: z.string().uuid()
   }),
   async (input) => {
+    let categoryId = input.data.body.categoryId;
     const {
-      categoryId,
       sickLeaves = 0,
       vacationLeaves = 0,
       parentalLeaves = 0,
       maternityLeaves = 0,
     } = input.data.body;
+
+    if(!categoryId){
+      const category = await timePrisma.userCategory.findFirst({
+        where: {
+          name: 'DEFAULT'
+        }
+      })
+      if(!category){
+        throw new Error('Default category not found');
+      }
+      categoryId = category?.id! 
+    }
 
     try {
       const leavePolicy = await timePrisma.leavePolicy.upsert({

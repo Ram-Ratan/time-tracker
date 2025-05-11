@@ -129,14 +129,15 @@ exports.Prisma.OrganisationScalarFieldEnum = {
 
 exports.Prisma.UserCategoryLinkUpScalarFieldEnum = {
   id: 'id',
-  uid: 'uid',
+  userId: 'userId',
+  userName: 'userName',
   categoryId: 'categoryId',
   createdAt: 'createdAt'
 };
 
 exports.Prisma.UserLeavesScalarFieldEnum = {
   id: 'id',
-  uid: 'uid',
+  userId: 'userId',
   sickLeaves: 'sickLeaves',
   vacationLeaves: 'vacationLeaves',
   parentalLeaves: 'parentalLeaves',
@@ -144,10 +145,18 @@ exports.Prisma.UserLeavesScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.UserHolidayScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  holidayId: 'holidayId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.UserCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  optionalHolidays: 'optionalHolidays'
 };
 
 exports.Prisma.HolidayScalarFieldEnum = {
@@ -171,8 +180,9 @@ exports.Prisma.LeavePolicyScalarFieldEnum = {
 exports.Prisma.LeaveScalarFieldEnum = {
   id: 'id',
   type: 'type',
-  uid: 'uid',
+  userId: 'userId',
   message: 'message',
+  effectiveDays: 'effectiveDays',
   startDate: 'startDate',
   endDate: 'endDate',
   status: 'status',
@@ -202,6 +212,13 @@ exports.Prisma.BreakScalarFieldEnum = {
   timeEntryId: 'timeEntryId',
   breakStart: 'breakStart',
   breakEnd: 'breakEnd'
+};
+
+exports.Prisma.NlqSqlMappingScalarFieldEnum = {
+  id: 'id',
+  nlq: 'nlq',
+  sql: 'sql',
+  embedding: 'embedding'
 };
 
 exports.Prisma.SortOrder = {
@@ -245,13 +262,15 @@ exports.Prisma.ModelName = {
   organisation: 'organisation',
   UserCategoryLinkUp: 'UserCategoryLinkUp',
   UserLeaves: 'UserLeaves',
+  UserHoliday: 'UserHoliday',
   UserCategory: 'UserCategory',
   Holiday: 'Holiday',
   LeavePolicy: 'LeavePolicy',
   Leave: 'Leave',
   UserSchedule: 'UserSchedule',
   TimeEntry: 'TimeEntry',
-  Break: 'Break'
+  Break: 'Break',
+  NlqSqlMapping: 'NlqSqlMapping'
 };
 
 /**
