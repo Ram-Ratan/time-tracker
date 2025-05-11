@@ -5,6 +5,7 @@ import { z } from 'zod';
 import prismaFactory from 'utils/prisma';
 import { EmployeeHandler } from '@talent-monk/client-shared';
 import { getUserSummaryService } from '../my-summary/query';
+import { getMyReportees } from 'utils/employee/getMyReportees';
 
 export const myReporterSummaryEndpoint = createPrivateEndpointWithZod(
     'MY REPORTER SUMMARY',
@@ -28,20 +29,9 @@ export const myReporterSummaryEndpoint = createPrivateEndpointWithZod(
                 }
             });
             if (userIds.length === 0) {
-                const managerObject = await prisma.employeeFieldData.findMany({
-                    where: {
-                        value: user.id,
-                        field: {
-                            name: 'reportingManager'
-                        }
-                    },
-                    select: {
-                        userId: true,
-                        value: true
-                    }
-                });
+                const reportees = await getMyReportees(user.id);
 
-                userIds = managerObject.map((user) => {
+                userIds = reportees.map((user) => {
                     return user.userId;
                 });
             }
