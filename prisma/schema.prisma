@@ -22,7 +22,8 @@ model organisation {
 model UserCategoryLinkUp {
   id         String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId  String          @db.Uuid @unique
-  categoryId String        @db.Uuid
+  userName String         @default("Unknown")
+  categoryId String        @db.Uuid 
   category   UserCategory  @relation("UserCategoryLinkUp", fields: [categoryId], references: [id])
   createdAt  DateTime      @default(now())
   
@@ -31,7 +32,7 @@ model UserCategoryLinkUp {
 
 model UserLeaves {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  userId  String          @db.Uuid @unique
+  userId  String          @db.Uuid  @unique
   sickLeaves Decimal @db.Decimal(5, 2)
   vacationLeaves Decimal @db.Decimal(5, 2)
   parentalLeaves Decimal @db.Decimal(5, 2)
@@ -103,8 +104,9 @@ enum LeaveStatus {
 model Leave {
   id         String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   type       LeaveType
-  userId  String          @db.Uuid @unique
+  userId     String      @db.Uuid
   message    String?
+  effectiveDays Decimal?
   startDate  DateTime
   endDate    DateTime
   status     LeaveStatus @default(PENDING)
@@ -144,6 +146,37 @@ model Break {
   timeEntryId   String
   breakStart    DateTime
   breakEnd      DateTime?
-
   timeEntry     TimeEntry @relation(fields: [timeEntryId], references: [id])
+}
+
+model UserStreak {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  currentStreak  Int      @default(0)
+  lastLoginDate  DateTime
+  updatedAt      DateTime @updatedAt
+}
+
+model RequestAdjustment {
+  id          String   @id @default(uuid())
+  timeEntryId String
+  updateLoginTime DateTime?
+  updateLogoutTime DateTime?
+  reason      String
+  createdAt   DateTime @default(now())
+}
+
+model NqlFunctionMapping {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nlq String
+  function String
+  input Json
+  cases Json @default("{}")
+}
+
+model NlqSqlMapping {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nlq       String
+  sql       String
+  cases     Json  @default("{}")
 }

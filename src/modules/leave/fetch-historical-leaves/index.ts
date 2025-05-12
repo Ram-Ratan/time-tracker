@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { createPrivateEndpointWithZod, createHTTPResponse } from '@talent-monk/utils';
 import { StatusCodes } from 'http-status-codes';
 import timePrisma from 'utils/prisma/time-tracker';
+import prismaFactory from 'utils/prisma';
 
 export const getEmployeeLeaveHistoryEndpoint = createPrivateEndpointWithZod(
   'GET EMPLOYEE LEAVE HISTORY',
@@ -19,18 +20,25 @@ export const getEmployeeLeaveHistoryEndpoint = createPrivateEndpointWithZod(
       status: z.string(),
     })
   ),
-  async ({ data }) => {
+  async ({ data, userAuthId }) => {
     let { employeeId } = data.query;
     const prisma = prismaFactory.get();
 
     if (!employeeId) {
       const currentUser = await prisma.user.findUnique({
-        where: { uid: data.userAuthId },
+        where: { uid: userAuthId },
         select: { id: true },
       });
       if (!currentUser) throw new Error('User not found');
 
       employeeId = currentUser.id;
+    }
+    else {
+      // check is manager of employee
+      const isManager = await isManagerOfEmployee(employeeId, currentUser.id);
+      if (!isManager) {
+        throw new Error('You are not authorized to view this user\'s leave data');
+      }
     }
 
     // Fetch all leaves for the given employee

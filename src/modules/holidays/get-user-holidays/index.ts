@@ -3,6 +3,7 @@ import { createPrivateEndpointWithZod, createHTTPResponse } from '@talent-monk/u
 import { StatusCodes } from 'http-status-codes';
 import prismaFactory from 'utils/prisma';
 import timePrisma from 'utils/prisma/time-tracker';
+import { EmployeeHandler } from '@talent-monk/client-shared';
 
 export const getAllHolidaysForUserEndpoint = createPrivateEndpointWithZod(
   'GET ALL HOLIDAYS FOR USER CATEGORY',
@@ -37,14 +38,19 @@ export const getAllHolidaysForUserEndpoint = createPrivateEndpointWithZod(
             }
           })
           if (!defaultCategory) throw new Error('Default category not found');  
+          const userDetails = await EmployeeHandler.getFieldsDataForOne({
+            userId: user.id
+          })
           userCategoryLink = await timePrisma.userCategoryLinkUp.create({
             data: {
               userId: user.id,
+              userName: userDetails.fullName.value,
               categoryId: defaultCategory.id
             }
           })
         }
       } catch (error) {
+        console.log(error)
         throw new Error('User category not found');
       }
       

@@ -130,6 +130,7 @@ exports.Prisma.OrganisationScalarFieldEnum = {
 exports.Prisma.UserCategoryLinkUpScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  userName: 'userName',
   categoryId: 'categoryId',
   createdAt: 'createdAt'
 };
@@ -181,6 +182,7 @@ exports.Prisma.LeaveScalarFieldEnum = {
   type: 'type',
   userId: 'userId',
   message: 'message',
+  effectiveDays: 'effectiveDays',
   startDate: 'startDate',
   endDate: 'endDate',
   status: 'status',
@@ -212,9 +214,45 @@ exports.Prisma.BreakScalarFieldEnum = {
   breakEnd: 'breakEnd'
 };
 
+exports.Prisma.UserStreakScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  currentStreak: 'currentStreak',
+  lastLoginDate: 'lastLoginDate',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RequestAdjustmentScalarFieldEnum = {
+  id: 'id',
+  timeEntryId: 'timeEntryId',
+  updateLoginTime: 'updateLoginTime',
+  updateLogoutTime: 'updateLogoutTime',
+  reason: 'reason',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.NqlFunctionMappingScalarFieldEnum = {
+  id: 'id',
+  nlq: 'nlq',
+  function: 'function',
+  input: 'input',
+  cases: 'cases'
+};
+
+exports.Prisma.NlqSqlMappingScalarFieldEnum = {
+  id: 'id',
+  nlq: 'nlq',
+  sql: 'sql',
+  cases: 'cases'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -225,6 +263,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.organisationType = exports.$Enums.organisationType = {
   GOOD: 'GOOD',
@@ -260,7 +304,11 @@ exports.Prisma.ModelName = {
   Leave: 'Leave',
   UserSchedule: 'UserSchedule',
   TimeEntry: 'TimeEntry',
-  Break: 'Break'
+  Break: 'Break',
+  UserStreak: 'UserStreak',
+  RequestAdjustment: 'RequestAdjustment',
+  NqlFunctionMapping: 'NqlFunctionMapping',
+  NlqSqlMapping: 'NlqSqlMapping'
 };
 
 /**

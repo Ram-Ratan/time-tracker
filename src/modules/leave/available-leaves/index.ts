@@ -3,6 +3,7 @@ import { createPrivateEndpointWithZod, createHTTPResponse } from '@talent-monk/u
 import { StatusCodes } from 'http-status-codes';
 import prismaFactory from 'utils/prisma';
 import { isManagerOfEmployee } from 'utils/checkManager';
+import timePrisma from 'utils/prisma/time-tracker';
 
 export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
   'GET AVAILABLE LEAVES',
@@ -24,7 +25,7 @@ export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
     if (!userId) {
       const currentUser = await prisma.user.findUnique({
         where: { uid: userAuthId },
-        select: { id: true },
+        select: { id: true }
       });
       if (!currentUser) throw new Error('User not found');
 
@@ -42,12 +43,31 @@ export const getAvailableLeavesEndpoint = createPrivateEndpointWithZod(
       }
     }
 
-    const userLeaves = await prisma.userLeaves.findUnique({
+    let userLeaves = await timePrisma.userLeaves.findUnique({
       where: { userId },
     });
 
     if (!userLeaves) {
-      throw new Error('Leave data not found for this user');
+      const category = await timePrisma.userCategoryLinkUp.findUnique({
+        where: { userId },
+        select: { categoryId: true },
+      }); 
+      if (!category) throw new Error('User category not found');
+      const leavePolicy = await timePrisma.leavePolicy.findUnique({
+        where: { categoryId: category.categoryId }
+      });
+      if (!leavePolicy) throw new Error('Leave policy not found');
+
+      userLeaves = await timePrisma.userLeaves.create({
+        data: {
+          userId,
+          sickLeaves: leavePolicy.sickLeaves,
+          vacationLeaves: leavePolicy.vacationLeaves,
+          parentalLeaves: leavePolicy.parentalLeaves,
+          maternityLeaves: leavePolicy.maternityLeaves
+        }
+      });
+      
     }
 
     return {
