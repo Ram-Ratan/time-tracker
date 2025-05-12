@@ -222,6 +222,15 @@ exports.Prisma.UserStreakScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RequestAdjustmentScalarFieldEnum = {
+  id: 'id',
+  timeEntryId: 'timeEntryId',
+  updateLoginTime: 'updateLoginTime',
+  updateLogoutTime: 'updateLogoutTime',
+  reason: 'reason',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.NqlFunctionMappingScalarFieldEnum = {
   id: 'id',
   nlq: 'nlq',
@@ -297,6 +306,7 @@ exports.Prisma.ModelName = {
   TimeEntry: 'TimeEntry',
   Break: 'Break',
   UserStreak: 'UserStreak',
+  RequestAdjustment: 'RequestAdjustment',
   NqlFunctionMapping: 'NqlFunctionMapping',
   NlqSqlMapping: 'NlqSqlMapping'
 };
