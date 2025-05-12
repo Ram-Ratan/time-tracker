@@ -1,11 +1,11 @@
 //get all the holidays for a category
 
 import { z } from 'zod';
-import { createHTTPResponse, createPublicEndpointWithZod } from '@talent-monk/utils';
+import { createHTTPResponse, createPrivateEndpointWithZod } from '@talent-monk/utils';
 import { StatusCodes } from 'http-status-codes';
 import timePrisma from 'utils/prisma/time-tracker';
 
-export const getHolidaysAndLeavesForCategoriesEndpoint = createPublicEndpointWithZod(
+export const getHolidaysAndLeavesForCategoriesEndpoint = createPrivateEndpointWithZod(
   'GET HOLIDAYS AND LEAVES FOR CATEGORIES',
   z.object({
     query: z.object({
