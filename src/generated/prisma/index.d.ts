@@ -74,6 +74,11 @@ export type Break = $Result.DefaultSelection<Prisma.$BreakPayload>
  */
 export type UserStreak = $Result.DefaultSelection<Prisma.$UserStreakPayload>
 /**
+ * Model RequestAdjustment
+ * 
+ */
+export type RequestAdjustment = $Result.DefaultSelection<Prisma.$RequestAdjustmentPayload>
+/**
  * Model NqlFunctionMapping
  * 
  */
@@ -382,6 +387,16 @@ export class PrismaClient<
     * ```
     */
   get userStreak(): Prisma.UserStreakDelegate<ExtArgs>;
+
+  /**
+   * `prisma.requestAdjustment`: Exposes CRUD operations for the **RequestAdjustment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RequestAdjustments
+    * const requestAdjustments = await prisma.requestAdjustment.findMany()
+    * ```
+    */
+  get requestAdjustment(): Prisma.RequestAdjustmentDelegate<ExtArgs>;
 
   /**
    * `prisma.nqlFunctionMapping`: Exposes CRUD operations for the **NqlFunctionMapping** model.
@@ -855,6 +870,7 @@ export namespace Prisma {
     TimeEntry: 'TimeEntry',
     Break: 'Break',
     UserStreak: 'UserStreak',
+    RequestAdjustment: 'RequestAdjustment',
     NqlFunctionMapping: 'NqlFunctionMapping',
     NlqSqlMapping: 'NlqSqlMapping'
   };
@@ -872,7 +888,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userHoliday" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break" | "userStreak" | "nqlFunctionMapping" | "nlqSqlMapping"
+      modelProps: "organisation" | "userCategoryLinkUp" | "userLeaves" | "userHoliday" | "userCategory" | "holiday" | "leavePolicy" | "leave" | "userSchedule" | "timeEntry" | "break" | "userStreak" | "requestAdjustment" | "nqlFunctionMapping" | "nlqSqlMapping"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1713,6 +1729,76 @@ export namespace Prisma {
           count: {
             args: Prisma.UserStreakCountArgs<ExtArgs>
             result: $Utils.Optional<UserStreakCountAggregateOutputType> | number
+          }
+        }
+      }
+      RequestAdjustment: {
+        payload: Prisma.$RequestAdjustmentPayload<ExtArgs>
+        fields: Prisma.RequestAdjustmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RequestAdjustmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RequestAdjustmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>
+          }
+          findFirst: {
+            args: Prisma.RequestAdjustmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RequestAdjustmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>
+          }
+          findMany: {
+            args: Prisma.RequestAdjustmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>[]
+          }
+          create: {
+            args: Prisma.RequestAdjustmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>
+          }
+          createMany: {
+            args: Prisma.RequestAdjustmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RequestAdjustmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>[]
+          }
+          delete: {
+            args: Prisma.RequestAdjustmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>
+          }
+          update: {
+            args: Prisma.RequestAdjustmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.RequestAdjustmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RequestAdjustmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RequestAdjustmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestAdjustmentPayload>
+          }
+          aggregate: {
+            args: Prisma.RequestAdjustmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRequestAdjustment>
+          }
+          groupBy: {
+            args: Prisma.RequestAdjustmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RequestAdjustmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RequestAdjustmentCountArgs<ExtArgs>
+            result: $Utils.Optional<RequestAdjustmentCountAggregateOutputType> | number
           }
         }
       }
@@ -13403,6 +13489,896 @@ export namespace Prisma {
 
 
   /**
+   * Model RequestAdjustment
+   */
+
+  export type AggregateRequestAdjustment = {
+    _count: RequestAdjustmentCountAggregateOutputType | null
+    _min: RequestAdjustmentMinAggregateOutputType | null
+    _max: RequestAdjustmentMaxAggregateOutputType | null
+  }
+
+  export type RequestAdjustmentMinAggregateOutputType = {
+    id: string | null
+    timeEntryId: string | null
+    updateLoginTime: Date | null
+    updateLogoutTime: Date | null
+    reason: string | null
+    createdAt: Date | null
+  }
+
+  export type RequestAdjustmentMaxAggregateOutputType = {
+    id: string | null
+    timeEntryId: string | null
+    updateLoginTime: Date | null
+    updateLogoutTime: Date | null
+    reason: string | null
+    createdAt: Date | null
+  }
+
+  export type RequestAdjustmentCountAggregateOutputType = {
+    id: number
+    timeEntryId: number
+    updateLoginTime: number
+    updateLogoutTime: number
+    reason: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RequestAdjustmentMinAggregateInputType = {
+    id?: true
+    timeEntryId?: true
+    updateLoginTime?: true
+    updateLogoutTime?: true
+    reason?: true
+    createdAt?: true
+  }
+
+  export type RequestAdjustmentMaxAggregateInputType = {
+    id?: true
+    timeEntryId?: true
+    updateLoginTime?: true
+    updateLogoutTime?: true
+    reason?: true
+    createdAt?: true
+  }
+
+  export type RequestAdjustmentCountAggregateInputType = {
+    id?: true
+    timeEntryId?: true
+    updateLoginTime?: true
+    updateLogoutTime?: true
+    reason?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RequestAdjustmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RequestAdjustment to aggregate.
+     */
+    where?: RequestAdjustmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestAdjustments to fetch.
+     */
+    orderBy?: RequestAdjustmentOrderByWithRelationInput | RequestAdjustmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RequestAdjustmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestAdjustments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RequestAdjustments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RequestAdjustments
+    **/
+    _count?: true | RequestAdjustmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RequestAdjustmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RequestAdjustmentMaxAggregateInputType
+  }
+
+  export type GetRequestAdjustmentAggregateType<T extends RequestAdjustmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateRequestAdjustment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRequestAdjustment[P]>
+      : GetScalarType<T[P], AggregateRequestAdjustment[P]>
+  }
+
+
+
+
+  export type RequestAdjustmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RequestAdjustmentWhereInput
+    orderBy?: RequestAdjustmentOrderByWithAggregationInput | RequestAdjustmentOrderByWithAggregationInput[]
+    by: RequestAdjustmentScalarFieldEnum[] | RequestAdjustmentScalarFieldEnum
+    having?: RequestAdjustmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RequestAdjustmentCountAggregateInputType | true
+    _min?: RequestAdjustmentMinAggregateInputType
+    _max?: RequestAdjustmentMaxAggregateInputType
+  }
+
+  export type RequestAdjustmentGroupByOutputType = {
+    id: string
+    timeEntryId: string
+    updateLoginTime: Date | null
+    updateLogoutTime: Date | null
+    reason: string
+    createdAt: Date
+    _count: RequestAdjustmentCountAggregateOutputType | null
+    _min: RequestAdjustmentMinAggregateOutputType | null
+    _max: RequestAdjustmentMaxAggregateOutputType | null
+  }
+
+  type GetRequestAdjustmentGroupByPayload<T extends RequestAdjustmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RequestAdjustmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RequestAdjustmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RequestAdjustmentGroupByOutputType[P]>
+            : GetScalarType<T[P], RequestAdjustmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RequestAdjustmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timeEntryId?: boolean
+    updateLoginTime?: boolean
+    updateLogoutTime?: boolean
+    reason?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["requestAdjustment"]>
+
+  export type RequestAdjustmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timeEntryId?: boolean
+    updateLoginTime?: boolean
+    updateLogoutTime?: boolean
+    reason?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["requestAdjustment"]>
+
+  export type RequestAdjustmentSelectScalar = {
+    id?: boolean
+    timeEntryId?: boolean
+    updateLoginTime?: boolean
+    updateLogoutTime?: boolean
+    reason?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $RequestAdjustmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RequestAdjustment"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      timeEntryId: string
+      updateLoginTime: Date | null
+      updateLogoutTime: Date | null
+      reason: string
+      createdAt: Date
+    }, ExtArgs["result"]["requestAdjustment"]>
+    composites: {}
+  }
+
+  type RequestAdjustmentGetPayload<S extends boolean | null | undefined | RequestAdjustmentDefaultArgs> = $Result.GetResult<Prisma.$RequestAdjustmentPayload, S>
+
+  type RequestAdjustmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<RequestAdjustmentFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: RequestAdjustmentCountAggregateInputType | true
+    }
+
+  export interface RequestAdjustmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RequestAdjustment'], meta: { name: 'RequestAdjustment' } }
+    /**
+     * Find zero or one RequestAdjustment that matches the filter.
+     * @param {RequestAdjustmentFindUniqueArgs} args - Arguments to find a RequestAdjustment
+     * @example
+     * // Get one RequestAdjustment
+     * const requestAdjustment = await prisma.requestAdjustment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RequestAdjustmentFindUniqueArgs>(args: SelectSubset<T, RequestAdjustmentFindUniqueArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one RequestAdjustment that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {RequestAdjustmentFindUniqueOrThrowArgs} args - Arguments to find a RequestAdjustment
+     * @example
+     * // Get one RequestAdjustment
+     * const requestAdjustment = await prisma.requestAdjustment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RequestAdjustmentFindUniqueOrThrowArgs>(args: SelectSubset<T, RequestAdjustmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first RequestAdjustment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentFindFirstArgs} args - Arguments to find a RequestAdjustment
+     * @example
+     * // Get one RequestAdjustment
+     * const requestAdjustment = await prisma.requestAdjustment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RequestAdjustmentFindFirstArgs>(args?: SelectSubset<T, RequestAdjustmentFindFirstArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first RequestAdjustment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentFindFirstOrThrowArgs} args - Arguments to find a RequestAdjustment
+     * @example
+     * // Get one RequestAdjustment
+     * const requestAdjustment = await prisma.requestAdjustment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RequestAdjustmentFindFirstOrThrowArgs>(args?: SelectSubset<T, RequestAdjustmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more RequestAdjustments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RequestAdjustments
+     * const requestAdjustments = await prisma.requestAdjustment.findMany()
+     * 
+     * // Get first 10 RequestAdjustments
+     * const requestAdjustments = await prisma.requestAdjustment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const requestAdjustmentWithIdOnly = await prisma.requestAdjustment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RequestAdjustmentFindManyArgs>(args?: SelectSubset<T, RequestAdjustmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a RequestAdjustment.
+     * @param {RequestAdjustmentCreateArgs} args - Arguments to create a RequestAdjustment.
+     * @example
+     * // Create one RequestAdjustment
+     * const RequestAdjustment = await prisma.requestAdjustment.create({
+     *   data: {
+     *     // ... data to create a RequestAdjustment
+     *   }
+     * })
+     * 
+     */
+    create<T extends RequestAdjustmentCreateArgs>(args: SelectSubset<T, RequestAdjustmentCreateArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many RequestAdjustments.
+     * @param {RequestAdjustmentCreateManyArgs} args - Arguments to create many RequestAdjustments.
+     * @example
+     * // Create many RequestAdjustments
+     * const requestAdjustment = await prisma.requestAdjustment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RequestAdjustmentCreateManyArgs>(args?: SelectSubset<T, RequestAdjustmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RequestAdjustments and returns the data saved in the database.
+     * @param {RequestAdjustmentCreateManyAndReturnArgs} args - Arguments to create many RequestAdjustments.
+     * @example
+     * // Create many RequestAdjustments
+     * const requestAdjustment = await prisma.requestAdjustment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RequestAdjustments and only return the `id`
+     * const requestAdjustmentWithIdOnly = await prisma.requestAdjustment.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RequestAdjustmentCreateManyAndReturnArgs>(args?: SelectSubset<T, RequestAdjustmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a RequestAdjustment.
+     * @param {RequestAdjustmentDeleteArgs} args - Arguments to delete one RequestAdjustment.
+     * @example
+     * // Delete one RequestAdjustment
+     * const RequestAdjustment = await prisma.requestAdjustment.delete({
+     *   where: {
+     *     // ... filter to delete one RequestAdjustment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RequestAdjustmentDeleteArgs>(args: SelectSubset<T, RequestAdjustmentDeleteArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one RequestAdjustment.
+     * @param {RequestAdjustmentUpdateArgs} args - Arguments to update one RequestAdjustment.
+     * @example
+     * // Update one RequestAdjustment
+     * const requestAdjustment = await prisma.requestAdjustment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RequestAdjustmentUpdateArgs>(args: SelectSubset<T, RequestAdjustmentUpdateArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more RequestAdjustments.
+     * @param {RequestAdjustmentDeleteManyArgs} args - Arguments to filter RequestAdjustments to delete.
+     * @example
+     * // Delete a few RequestAdjustments
+     * const { count } = await prisma.requestAdjustment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RequestAdjustmentDeleteManyArgs>(args?: SelectSubset<T, RequestAdjustmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RequestAdjustments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RequestAdjustments
+     * const requestAdjustment = await prisma.requestAdjustment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RequestAdjustmentUpdateManyArgs>(args: SelectSubset<T, RequestAdjustmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RequestAdjustment.
+     * @param {RequestAdjustmentUpsertArgs} args - Arguments to update or create a RequestAdjustment.
+     * @example
+     * // Update or create a RequestAdjustment
+     * const requestAdjustment = await prisma.requestAdjustment.upsert({
+     *   create: {
+     *     // ... data to create a RequestAdjustment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RequestAdjustment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RequestAdjustmentUpsertArgs>(args: SelectSubset<T, RequestAdjustmentUpsertArgs<ExtArgs>>): Prisma__RequestAdjustmentClient<$Result.GetResult<Prisma.$RequestAdjustmentPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of RequestAdjustments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentCountArgs} args - Arguments to filter RequestAdjustments to count.
+     * @example
+     * // Count the number of RequestAdjustments
+     * const count = await prisma.requestAdjustment.count({
+     *   where: {
+     *     // ... the filter for the RequestAdjustments we want to count
+     *   }
+     * })
+    **/
+    count<T extends RequestAdjustmentCountArgs>(
+      args?: Subset<T, RequestAdjustmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RequestAdjustmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RequestAdjustment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RequestAdjustmentAggregateArgs>(args: Subset<T, RequestAdjustmentAggregateArgs>): Prisma.PrismaPromise<GetRequestAdjustmentAggregateType<T>>
+
+    /**
+     * Group by RequestAdjustment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestAdjustmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RequestAdjustmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RequestAdjustmentGroupByArgs['orderBy'] }
+        : { orderBy?: RequestAdjustmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RequestAdjustmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRequestAdjustmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RequestAdjustment model
+   */
+  readonly fields: RequestAdjustmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RequestAdjustment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RequestAdjustmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RequestAdjustment model
+   */ 
+  interface RequestAdjustmentFieldRefs {
+    readonly id: FieldRef<"RequestAdjustment", 'String'>
+    readonly timeEntryId: FieldRef<"RequestAdjustment", 'String'>
+    readonly updateLoginTime: FieldRef<"RequestAdjustment", 'DateTime'>
+    readonly updateLogoutTime: FieldRef<"RequestAdjustment", 'DateTime'>
+    readonly reason: FieldRef<"RequestAdjustment", 'String'>
+    readonly createdAt: FieldRef<"RequestAdjustment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RequestAdjustment findUnique
+   */
+  export type RequestAdjustmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * Filter, which RequestAdjustment to fetch.
+     */
+    where: RequestAdjustmentWhereUniqueInput
+  }
+
+  /**
+   * RequestAdjustment findUniqueOrThrow
+   */
+  export type RequestAdjustmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * Filter, which RequestAdjustment to fetch.
+     */
+    where: RequestAdjustmentWhereUniqueInput
+  }
+
+  /**
+   * RequestAdjustment findFirst
+   */
+  export type RequestAdjustmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * Filter, which RequestAdjustment to fetch.
+     */
+    where?: RequestAdjustmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestAdjustments to fetch.
+     */
+    orderBy?: RequestAdjustmentOrderByWithRelationInput | RequestAdjustmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RequestAdjustments.
+     */
+    cursor?: RequestAdjustmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestAdjustments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RequestAdjustments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RequestAdjustments.
+     */
+    distinct?: RequestAdjustmentScalarFieldEnum | RequestAdjustmentScalarFieldEnum[]
+  }
+
+  /**
+   * RequestAdjustment findFirstOrThrow
+   */
+  export type RequestAdjustmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * Filter, which RequestAdjustment to fetch.
+     */
+    where?: RequestAdjustmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestAdjustments to fetch.
+     */
+    orderBy?: RequestAdjustmentOrderByWithRelationInput | RequestAdjustmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RequestAdjustments.
+     */
+    cursor?: RequestAdjustmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestAdjustments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RequestAdjustments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RequestAdjustments.
+     */
+    distinct?: RequestAdjustmentScalarFieldEnum | RequestAdjustmentScalarFieldEnum[]
+  }
+
+  /**
+   * RequestAdjustment findMany
+   */
+  export type RequestAdjustmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * Filter, which RequestAdjustments to fetch.
+     */
+    where?: RequestAdjustmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestAdjustments to fetch.
+     */
+    orderBy?: RequestAdjustmentOrderByWithRelationInput | RequestAdjustmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RequestAdjustments.
+     */
+    cursor?: RequestAdjustmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestAdjustments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RequestAdjustments.
+     */
+    skip?: number
+    distinct?: RequestAdjustmentScalarFieldEnum | RequestAdjustmentScalarFieldEnum[]
+  }
+
+  /**
+   * RequestAdjustment create
+   */
+  export type RequestAdjustmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * The data needed to create a RequestAdjustment.
+     */
+    data: XOR<RequestAdjustmentCreateInput, RequestAdjustmentUncheckedCreateInput>
+  }
+
+  /**
+   * RequestAdjustment createMany
+   */
+  export type RequestAdjustmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RequestAdjustments.
+     */
+    data: RequestAdjustmentCreateManyInput | RequestAdjustmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RequestAdjustment createManyAndReturn
+   */
+  export type RequestAdjustmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many RequestAdjustments.
+     */
+    data: RequestAdjustmentCreateManyInput | RequestAdjustmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RequestAdjustment update
+   */
+  export type RequestAdjustmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * The data needed to update a RequestAdjustment.
+     */
+    data: XOR<RequestAdjustmentUpdateInput, RequestAdjustmentUncheckedUpdateInput>
+    /**
+     * Choose, which RequestAdjustment to update.
+     */
+    where: RequestAdjustmentWhereUniqueInput
+  }
+
+  /**
+   * RequestAdjustment updateMany
+   */
+  export type RequestAdjustmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RequestAdjustments.
+     */
+    data: XOR<RequestAdjustmentUpdateManyMutationInput, RequestAdjustmentUncheckedUpdateManyInput>
+    /**
+     * Filter which RequestAdjustments to update
+     */
+    where?: RequestAdjustmentWhereInput
+  }
+
+  /**
+   * RequestAdjustment upsert
+   */
+  export type RequestAdjustmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * The filter to search for the RequestAdjustment to update in case it exists.
+     */
+    where: RequestAdjustmentWhereUniqueInput
+    /**
+     * In case the RequestAdjustment found by the `where` argument doesn't exist, create a new RequestAdjustment with this data.
+     */
+    create: XOR<RequestAdjustmentCreateInput, RequestAdjustmentUncheckedCreateInput>
+    /**
+     * In case the RequestAdjustment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RequestAdjustmentUpdateInput, RequestAdjustmentUncheckedUpdateInput>
+  }
+
+  /**
+   * RequestAdjustment delete
+   */
+  export type RequestAdjustmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+    /**
+     * Filter which RequestAdjustment to delete.
+     */
+    where: RequestAdjustmentWhereUniqueInput
+  }
+
+  /**
+   * RequestAdjustment deleteMany
+   */
+  export type RequestAdjustmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RequestAdjustments to delete
+     */
+    where?: RequestAdjustmentWhereInput
+  }
+
+  /**
+   * RequestAdjustment without action
+   */
+  export type RequestAdjustmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestAdjustment
+     */
+    select?: RequestAdjustmentSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model NqlFunctionMapping
    */
 
@@ -15284,6 +16260,18 @@ export namespace Prisma {
   export type UserStreakScalarFieldEnum = (typeof UserStreakScalarFieldEnum)[keyof typeof UserStreakScalarFieldEnum]
 
 
+  export const RequestAdjustmentScalarFieldEnum: {
+    id: 'id',
+    timeEntryId: 'timeEntryId',
+    updateLoginTime: 'updateLoginTime',
+    updateLogoutTime: 'updateLogoutTime',
+    reason: 'reason',
+    createdAt: 'createdAt'
+  };
+
+  export type RequestAdjustmentScalarFieldEnum = (typeof RequestAdjustmentScalarFieldEnum)[keyof typeof RequestAdjustmentScalarFieldEnum]
+
+
   export const NqlFunctionMappingScalarFieldEnum: {
     id: 'id',
     nlq: 'nlq',
@@ -16172,6 +17160,63 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"UserStreak"> | Date | string
   }
 
+  export type RequestAdjustmentWhereInput = {
+    AND?: RequestAdjustmentWhereInput | RequestAdjustmentWhereInput[]
+    OR?: RequestAdjustmentWhereInput[]
+    NOT?: RequestAdjustmentWhereInput | RequestAdjustmentWhereInput[]
+    id?: StringFilter<"RequestAdjustment"> | string
+    timeEntryId?: StringFilter<"RequestAdjustment"> | string
+    updateLoginTime?: DateTimeNullableFilter<"RequestAdjustment"> | Date | string | null
+    updateLogoutTime?: DateTimeNullableFilter<"RequestAdjustment"> | Date | string | null
+    reason?: StringFilter<"RequestAdjustment"> | string
+    createdAt?: DateTimeFilter<"RequestAdjustment"> | Date | string
+  }
+
+  export type RequestAdjustmentOrderByWithRelationInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    updateLoginTime?: SortOrderInput | SortOrder
+    updateLogoutTime?: SortOrderInput | SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RequestAdjustmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RequestAdjustmentWhereInput | RequestAdjustmentWhereInput[]
+    OR?: RequestAdjustmentWhereInput[]
+    NOT?: RequestAdjustmentWhereInput | RequestAdjustmentWhereInput[]
+    timeEntryId?: StringFilter<"RequestAdjustment"> | string
+    updateLoginTime?: DateTimeNullableFilter<"RequestAdjustment"> | Date | string | null
+    updateLogoutTime?: DateTimeNullableFilter<"RequestAdjustment"> | Date | string | null
+    reason?: StringFilter<"RequestAdjustment"> | string
+    createdAt?: DateTimeFilter<"RequestAdjustment"> | Date | string
+  }, "id">
+
+  export type RequestAdjustmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    updateLoginTime?: SortOrderInput | SortOrder
+    updateLogoutTime?: SortOrderInput | SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+    _count?: RequestAdjustmentCountOrderByAggregateInput
+    _max?: RequestAdjustmentMaxOrderByAggregateInput
+    _min?: RequestAdjustmentMinOrderByAggregateInput
+  }
+
+  export type RequestAdjustmentScalarWhereWithAggregatesInput = {
+    AND?: RequestAdjustmentScalarWhereWithAggregatesInput | RequestAdjustmentScalarWhereWithAggregatesInput[]
+    OR?: RequestAdjustmentScalarWhereWithAggregatesInput[]
+    NOT?: RequestAdjustmentScalarWhereWithAggregatesInput | RequestAdjustmentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RequestAdjustment"> | string
+    timeEntryId?: StringWithAggregatesFilter<"RequestAdjustment"> | string
+    updateLoginTime?: DateTimeNullableWithAggregatesFilter<"RequestAdjustment"> | Date | string | null
+    updateLogoutTime?: DateTimeNullableWithAggregatesFilter<"RequestAdjustment"> | Date | string | null
+    reason?: StringWithAggregatesFilter<"RequestAdjustment"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"RequestAdjustment"> | Date | string
+  }
+
   export type NqlFunctionMappingWhereInput = {
     AND?: NqlFunctionMappingWhereInput | NqlFunctionMappingWhereInput[]
     OR?: NqlFunctionMappingWhereInput[]
@@ -16989,6 +18034,69 @@ export namespace Prisma {
     currentStreak?: IntFieldUpdateOperationsInput | number
     lastLoginDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RequestAdjustmentCreateInput = {
+    id?: string
+    timeEntryId: string
+    updateLoginTime?: Date | string | null
+    updateLogoutTime?: Date | string | null
+    reason: string
+    createdAt?: Date | string
+  }
+
+  export type RequestAdjustmentUncheckedCreateInput = {
+    id?: string
+    timeEntryId: string
+    updateLoginTime?: Date | string | null
+    updateLogoutTime?: Date | string | null
+    reason: string
+    createdAt?: Date | string
+  }
+
+  export type RequestAdjustmentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeEntryId?: StringFieldUpdateOperationsInput | string
+    updateLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updateLogoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RequestAdjustmentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeEntryId?: StringFieldUpdateOperationsInput | string
+    updateLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updateLogoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RequestAdjustmentCreateManyInput = {
+    id?: string
+    timeEntryId: string
+    updateLoginTime?: Date | string | null
+    updateLogoutTime?: Date | string | null
+    reason: string
+    createdAt?: Date | string
+  }
+
+  export type RequestAdjustmentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeEntryId?: StringFieldUpdateOperationsInput | string
+    updateLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updateLogoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RequestAdjustmentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timeEntryId?: StringFieldUpdateOperationsInput | string
+    updateLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updateLogoutTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reason?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NqlFunctionMappingCreateInput = {
@@ -17823,6 +18931,33 @@ export namespace Prisma {
 
   export type UserStreakSumOrderByAggregateInput = {
     currentStreak?: SortOrder
+  }
+
+  export type RequestAdjustmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    updateLoginTime?: SortOrder
+    updateLogoutTime?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RequestAdjustmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    updateLoginTime?: SortOrder
+    updateLogoutTime?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RequestAdjustmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    timeEntryId?: SortOrder
+    updateLoginTime?: SortOrder
+    updateLogoutTime?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -19285,6 +20420,10 @@ export namespace Prisma {
      * @deprecated Use UserStreakDefaultArgs instead
      */
     export type UserStreakArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserStreakDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use RequestAdjustmentDefaultArgs instead
+     */
+    export type RequestAdjustmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RequestAdjustmentDefaultArgs<ExtArgs>
     /**
      * @deprecated Use NqlFunctionMappingDefaultArgs instead
      */

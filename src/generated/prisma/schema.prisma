@@ -154,6 +154,15 @@ model UserStreak {
   updatedAt     DateTime @updatedAt
 }
 
+model RequestAdjustment {
+  id               String    @id @default(uuid())
+  timeEntryId      String
+  updateLoginTime  DateTime?
+  updateLogoutTime DateTime?
+  reason           String
+  createdAt        DateTime  @default(now())
+}
+
 model NqlFunctionMapping {
   id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   nlq      String
